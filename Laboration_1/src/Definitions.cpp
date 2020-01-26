@@ -6,12 +6,21 @@ using std::endl;
 
 void assignmentFunction() {
     cout << "Enter the size of the array." << endl;
-    size_t size;
-    cin >> size;
+    int size;
+    bool valid=true; // Bool for value
+    do { // Loop to confirm proper input
+        cin >> size;
+        if (cin.fail() || size<=0) { // If fail, request new input
+            cout << "You did not enter a positive int, please retry.\n";
+            cin.clear();
+            cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+        } else
+            valid = false;
+    } while (valid);
     int *arrPtr = new int[size]; // Assign a pointer of arrays, size per input
 
     //Random Generator to generate numbers, used to fill array
-    std::default_random_engine gen(static_cast<unsigned>(time(0)));
+    std::default_random_engine gen(static_cast<unsigned>(time(nullptr)));
     std::uniform_real_distribution<double> rd(-5000,5000);
 
     size_t counter=0, row=0; // Counter to not print more than 200 per page.
@@ -30,25 +39,24 @@ void assignmentFunction() {
             cout << "|" << std::setw(7) << std::left <<arrPtr[i];
             row++;
             if (row==10) {
-                cout << "|\n";
-                row = 0;
+            cout << "|\n";
+            row = 0;
             }
         }
         counter++; // Increase counter for every iteration
         if (counter==200) { // If counter == 200, print and pause
             std::string txt = std::to_string(size-(i+1));
             pauseFunction("There are " + txt +
-             " numbers left, press any key to show the next 200 numbers.");
+             " numbers left, press any key to show the next page of numbers.");
             counter = 0;
             header = true;
             clearScreen(); // Clear console to make it easier to comprehend.
         }
     }
 
-    pauseFunction("\nEnd of array, press any key to exit");
     int* end = arrPtr + size; // Pointer to keep track of size
     int max = *arrPtr, min = *arrPtr, sum=0; // Pointer and sums being declared
-    for (int *ia = arrPtr; ia != end; ia++){ // Loop using pointers
+    for (int *ia = arrPtr; ia < end; ia++){ // Loop using pointers
         if (*ia > max) { // If ia is bigger than max
              max = *ia; // Assign value that ia is pointing at, to max
         }
@@ -56,17 +64,19 @@ void assignmentFunction() {
             min = *ia; // Assign value that ia is pointing at, to min
         }
         sum += *ia; /* For each iteration, append the value ia is pointing at
-                                                                      to sum */
+        to sum */
      }
 
-    cout << "Max:" << max << "\n";
+    cout << "\nMax:" << max << "\n";
     cout << "Min:" << min << "\n";
     cout << "Sum: " << sum << endl;
+
+    pauseFunction("\nEnd of program, press any key to exit");
 
     delete[] arrPtr; // Deletes the array, frees up memory
 }
 
-//Help functions below
+/**Help functions below**/
 void pauseFunction(const std::string& text){ /* Function used when program
  * should wait for user input before it continues */
     std::cout << text; // Prints function parameter on screen
