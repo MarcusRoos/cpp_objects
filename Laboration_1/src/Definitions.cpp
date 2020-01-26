@@ -8,41 +8,62 @@ void assignmentFunction() {
     cout << "Enter the size of the array." << endl;
     size_t size;
     cin >> size;
-    int *arrPtr = new int[size];
+    int *arrPtr = new int[size]; // Assign a pointer of arrays, size per input
 
+    //Random Generator to generate numbers, used to fill array
     std::default_random_engine gen(static_cast<unsigned>(time(0)));
     std::uniform_real_distribution<double> rd(-5000,5000);
 
-    size_t counter=0; // Counter to not print more than 200 per page.
+    size_t counter=0, row=0; // Counter to not print more than 200 per page.
+    bool header=true; // Header, prints once per page
+
     for(size_t i=0; i<size; i++) { // index loop to fill array
         arrPtr[i] = rd(gen); // Fills array with random numbers
-        cout << arrPtr[i] << endl;
+        while (header){ // Formatting
+            header = false;
+            cout << "Numbers within the array \n";
+            for (int k=0; k<80; k++)
+                cout << "_";
+            cout << "\n";
+        }
+        if(row<10) { // Formatting
+            cout << "|" << std::setw(7) << std::left <<arrPtr[i];
+            row++;
+            if (row==10) {
+                cout << "|\n";
+                row = 0;
+            }
+        }
         counter++; // Increase counter for every iteration
         if (counter==200) { // If counter == 200, print and pause
             std::string txt = std::to_string(size-(i+1));
             pauseFunction("There are " + txt +
              " numbers left, press any key to show the next 200 numbers.");
             counter = 0;
+            header = true;
+            clearScreen(); // Clear console to make it easier to comprehend.
         }
     }
 
-    int* end = arrPtr + size;
-    int max = *arrPtr, min = *arrPtr;
-    for (int *ia = arrPtr; ia != end; ia++){
-        if (*ia > max) {
-             max = *ia;
+    pauseFunction("\nEnd of array, press any key to exit");
+    int* end = arrPtr + size; // Pointer to keep track of size
+    int max = *arrPtr, min = *arrPtr, sum=0; // Pointer and sums being declared
+    for (int *ia = arrPtr; ia != end; ia++){ // Loop using pointers
+        if (*ia > max) { // If ia is bigger than max
+             max = *ia; // Assign value that ia is pointing at, to max
         }
-        if (*ia < min){
-            min = *ia;
+        if (*ia < min){ // If ia is bigger than max
+            min = *ia; // Assign value that ia is pointing at, to min
         }
-
+        sum += *ia; /* For each iteration, append the value ia is pointing at
+                                                                      to sum */
      }
-
 
     cout << "Max:" << max << "\n";
     cout << "Min:" << min << "\n";
+    cout << "Sum: " << sum << endl;
 
-    delete[] arrPtr;
+    delete[] arrPtr; // Deletes the array, frees up memory
 }
 
 //Help functions below
@@ -58,6 +79,7 @@ void pauseFunction(const std::string& text){ /* Function used when program
 
 /*Taken from anders-jens Urstad, depending on OS it will use two different
  * methods of clearing the console window.*/
+
 void clearScreen()
 {
 #if defined (__unix__) || (defined (__APPLE__) && defined (__MACH__))/*If user
