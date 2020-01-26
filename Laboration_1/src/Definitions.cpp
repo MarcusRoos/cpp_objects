@@ -27,18 +27,17 @@ void assignmentFunction() {
     }
 
     int* end = arrPtr + size;
-    int &max = *arrPtr, &min = *arrPtr;
+    int max = *arrPtr, min = *arrPtr;
     for (int *ia = arrPtr; ia != end; ia++){
         if (*ia > max) {
-             max = *ia + 1;
+             max = *ia;
+        }
+        if (*ia < min){
+            min = *ia;
         }
 
      }
-    for (int *ia = arrPtr; ia != end; ia++){
-        if (*ia < min){
-            min = *ia-1;
-        }
-    }
+
 
     cout << "Max:" << max << "\n";
     cout << "Min:" << min << "\n";
