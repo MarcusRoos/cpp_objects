@@ -1,3 +1,7 @@
+//
+// Created by Satan on 2020-01-30.
+//
+
 #ifndef DT018G_PROTOTYPES_H
 #define DT018G_PROTOTYPES_H
 
@@ -6,6 +10,6 @@
  * as Git doesn't allow empty folders to be pushed to remote origin.
  * Remove this dummy function before submission.
  */
-void assignmentFunction();
+void assignmentFunction2();
 
 #endif  // DT018G_PROTOTYPES_H
