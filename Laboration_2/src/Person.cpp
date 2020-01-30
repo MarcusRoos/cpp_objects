@@ -62,6 +62,6 @@ void printPerson(Person const &Person)
     printAddress(Person.getAddress());
     cout << "\n";
     cout << "Social Security Number: " << Person.getPersonNumber() << endl;
-    cout << "Shoe size: " << Person.getShoeSize();
+    cout << "Shoe size: " << Person.getShoeSize() << endl << endl;
 
 }

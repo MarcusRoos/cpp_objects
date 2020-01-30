@@ -20,12 +20,10 @@ int main() {
     pVector.push_back(person1);
     pVector.push_back(person2);
     pVector.push_back(person3);
-    cout << "Vector 1\n";
-    printPerson(pVector[0]);
-    cout << "Vector 2\n";
-    printPerson(pVector[1]);
-    cout << "Vector 3\n";
-    printPerson(pVector[2]);
+    for (size_t i=0; i<pVector.size(); i++){
+        cout << "Vector" << i << "\n";
+        printPerson(pVector[i]);
+    }
 
 
     return 0;
