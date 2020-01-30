@@ -2,7 +2,8 @@
 // Created by Marcus on 2020-01-30.
 //
 #include "Person.h"
-using std::vector, std::cout;
+using std::vector;
+using std::cout;
 
 int main() {
     vector<Person> pVector;
@@ -12,15 +13,20 @@ int main() {
     Names names2("Adam","Adamsson");
     Address address2("Street 2","167 50","Stockholm");
     Person person2(names2, address2, "6431", 42);
-    Names names3("Olof","Olofsson");
+    Names names3("Stefan","Gren");
     Address address3("Street 3","157 30","New York");
-    Person person3(names2, address2, "9753", 43);
+    Person person3(names3, address3, "9753", 43);
 
-    pVector[0] = person1;
-    pVector[1] = person2;
-    pVector[2] = person3;
+    pVector.push_back(person1);
+    pVector.push_back(person2);
+    pVector.push_back(person3);
+    cout << "Vector 1\n";
+    printPerson(pVector[0]);
+    cout << "Vector 2\n";
+    printPerson(pVector[1]);
+    cout << "Vector 3\n";
+    printPerson(pVector[2]);
 
-    cout << person1;
 
     return 0;
 }
