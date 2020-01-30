@@ -2,8 +2,8 @@
 // Created by Marcus on 2020-01-30.
 //
 
-#ifndef DT018G_PROTOTYPES_H
-#define DT018G_PROTOTYPES_H
+#ifndef DT018G_Names_H
+#define DT018G_Names_H
     #include <string>
     #include <iostream>
 //------------------------------------------------------------------------------

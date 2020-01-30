@@ -14,7 +14,7 @@ int main() {
     std::cout << "\nInitialized constructor, hardcoded";
     printAddress(address1);
 
-    address.setStreet("Adam");
+    address.setStreet("Street Streeson");
     address.setPostcode("800 00");
     address.setCity("TownTown");
     std::cout << "\nSetting names using names.set";

@@ -1,15 +1,36 @@
 //
-// Created by Satan on 2020-01-30.
+// Created by Marcus on 2020-01-30.
 //
 
-#ifndef DT018G_PROTOTYPES_H
-#define DT018G_PROTOTYPES_H
+#ifndef DT018G_Person_H
+#define DT018G_Person_H
 
-/**
- * This is a dummy prototype used only to enforce proper file structure,
- * as Git doesn't allow empty folders to be pushed to remote origin.
- * Remove this dummy function before submission.
- */
-void assignmentFunction2();
+#include "Address.h"
+#include "Names.h"
+#include <string>
+#include <vector>
+
+
+class Person
+{
+private:
+    Names name;
+    Address address;
+    std::string personNumber;
+    int shoeSize;
+public:
+    Person(); //Förvald konstruktor
+    Person(Names name, Address address, std::string pPersonNumber, int pShoeSize);
+    void setName(Names pName);
+    void setAddress(Address pAddress);
+    void setPersonNumber(std::string pPersonNumber);
+    void setShoeSize(int pShoeSize);
+    std::string getPersonNumber() const;
+    int getShoeSize() const;
+    Names getNames() const;
+    Address getAddress() const;
+};
+
+void printPerson(Person const &person);
 
 #endif  // DT018G_PROTOTYPES_H

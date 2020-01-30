@@ -50,7 +50,7 @@ std::string Address::getCity() const
 void printAddress(Address const &Address)
 {
     cout << endl;
-    cout << "Adress:" << endl;
+    cout << "ADDRESS:" << endl;
     cout << "Street: " << Address.getStreet() << endl;
     cout << "Postcode: " << Address.getPostcode() << endl;
     cout << "City: " << Address.getCity() << endl;

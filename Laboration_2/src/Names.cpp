@@ -40,7 +40,7 @@ std::string Names::getLastName() const
 void printNames(Names const &names)
 {
     cout << endl;
-    cout << "Namelist:" << endl;
+    cout << "NAME:" << endl;
     cout << "First name: " << names.getFirstName() << endl;
     cout << "Last name: " << names.getLastName() << endl;
 }

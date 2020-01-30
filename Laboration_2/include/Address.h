@@ -2,17 +2,17 @@
 // Created by Marcus on 2020-01-30.
 //
 
-#ifndef DT018G_PROTOTYPES_H
-#define DT018G_PROTOTYPES_H
-#include <string>
-#include <iostream>
+#ifndef DT018G_Address_H
+#define DT018G_Address_H
+    #include <string>
+    #include <iostream>
 //------------------------------------------------------------------------------
 // Class definition
 //------------------------------------------------------------------------------
 class Address
 {
 private:
-    std::string street, postcode, city; // Datamedlemmar string lastName;
+    std::string street, postcode, city; // Class members
 public:
     Address(); //Förvald konstruktor
     Address(std::string pStreet, std::string pPostcode, std::string pCity);
