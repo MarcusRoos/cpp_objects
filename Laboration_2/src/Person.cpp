@@ -40,9 +40,7 @@ void mainProgram(){
                 break;
             case 2:
                 std::cout << "2\n";
-                for (const auto &i : pVector) {
-                    printPerson(i);
-                }
+                print(pVector);
                 break;
             case 3:
                 std::cout << "3\n";
@@ -111,6 +109,12 @@ std::vector<Person>addPerson(std::vector<Person>input){
     input.push_back(person);
 
  return {std::move(input)};
+}
+
+void print(const std::vector<Person>&printVec){
+    for (const auto &i : printVec) {
+        printPerson(i);
+    }
 }
 
 Person::Person()

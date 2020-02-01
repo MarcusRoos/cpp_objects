@@ -37,5 +37,6 @@ int mainMenu();
 void pauseFunction(const std::string& text);
 std::vector<Person>addPerson(std::vector<Person>input);
 std::string validate(std::string input);
+void print(const std::vector<Person>&printVec);
 
-#endif  // DT018G_PROTOTYPES_H
+#endif // DT018G_PROTOTYPE&S_H
