@@ -5,6 +5,7 @@
 #include "Management.h"
 #include <iostream>
 #include <limits>
+#include <utility>
 
 using std::cout;
 using std::endl;
@@ -61,10 +62,10 @@ Person::Person()
 
 Person::Person(Names pName, Address pAddress, std::string pPersonNumber, int pShoeSize)
 {
-    personNumber = pPersonNumber;
+    personNumber = std::move(pPersonNumber);
     shoeSize = pShoeSize;
-    name = pName;
-    address = pAddress;
+    name = std::move(pName);
+    address = std::move(pAddress);
 }
 
 std::string Person::getPersonNumber() const

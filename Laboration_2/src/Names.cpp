@@ -4,6 +4,8 @@
 
 #include "Names.h"
 
+#include <utility>
+
 using std::cout;
 using std::endl;
 
@@ -14,18 +16,18 @@ Names::Names()
 
 Names::Names(std::string pFirstName, std::string pLastName)
 {
-    firstName = pFirstName; lastName = pLastName;
+    firstName = std::move(pFirstName); lastName = std::move(pLastName);
 }
 
 void Names::setFirstName(std::string pFirstName)
 {
-    firstName = pFirstName;
+    firstName = std::move(pFirstName);
 }
 
 
 void Names::setLastName(std::string pLastName)
 {
-    lastName = pLastName;
+    lastName = std::move(pLastName);
 }
 
 std::string Names::getFirstName() const

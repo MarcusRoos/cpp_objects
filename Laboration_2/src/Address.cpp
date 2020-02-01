@@ -4,6 +4,8 @@
 
 #include "Address.h"
 
+#include <utility>
+
 using std::cout;
 using std::endl;
 
@@ -15,22 +17,22 @@ Address::Address()
 
 Address::Address(std::string pStreet, std::string pPostcode, std::string pCity)
 {
-    street = pStreet; postcode = pPostcode; city = pCity;
+    street = std::move(pStreet); postcode = std::move(pPostcode); city = std::move(pCity);
 }
 
 void Address::setStreet(std::string pStreet)
 {
-    street = pStreet;
+    street = std::move(pStreet);
 }
 
 void Address::setPostcode(std::string pPostcode)
 {
-    postcode = pPostcode;
+    postcode = std::move(pPostcode);
 }
 
 void Address::setCity(std::string pCity)
 {
-    city = pCity;
+    city = std::move(pCity);
 }
 
 std::string Address::getStreet() const
