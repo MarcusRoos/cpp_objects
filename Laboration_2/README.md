@@ -14,7 +14,7 @@ Git: Git 2.23.0.windows.1
 ## Purpose
 The purpose of this laboration is to create our first very first object and learn
 the basics of object oriented programming (oop). We'll be using classes, objects,
-incapsulation, as well as having a class within another class.
+encapsulation, as well as having a class within another class.
 
 ## Procedures
 This task came with 3 different objectives, for these objectives I had to
@@ -37,7 +37,7 @@ requirements and not how to validate input and keeping the screen neat and clean
 I were very new to objects when this laboration started, I've used basic structs
 from the earlier course which were very naked in terms of complexity. I've learned
 how to use objects, use get/set, how to print, how a class within another class
-works as well as incapsulation.
+works as well as encapsulation.
 
 The biggest issue I had were when I had to store it all in a vector and
 iterate through it, however it wasn't such a great hindrance as we've worked with 
