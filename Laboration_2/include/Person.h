@@ -32,5 +32,9 @@ public:
 };
 
 void printPerson(Person const &person);
+void mainProgram();
+int mainMenu();
+void pauseFunction(const std::string& text);
+std::vector<Person>addPerson(std::vector<Person>input);
 
 #endif  // DT018G_PROTOTYPES_H
