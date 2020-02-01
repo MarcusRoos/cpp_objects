@@ -29,14 +29,8 @@ public:
     int getShoeSize() const;
     Names getNames() const;
     Address getAddress() const;
-};
 
-void printPerson(Person const &person);
-void mainProgram();
-int mainMenu();
-void pauseFunction(const std::string& text);
-std::vector<Person>addPerson(std::vector<Person>input);
-std::string validate(std::string input);
-void print(const std::vector<Person>&printVec);
+    void mainProgram();
+};
 
 #endif // DT018G_PROTOTYPE&S_H

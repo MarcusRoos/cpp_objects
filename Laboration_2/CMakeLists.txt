@@ -5,8 +5,8 @@
 
 # Create executable for the run configuration
 add_executable(${PROJECT_NAME}-Laboration_2-namesTest src/namesTest.cpp src/Names.cpp)
-add_executable(${PROJECT_NAME}-Laboration_2-addressTest src/addressTest.cpp src/Address.cpp)
-add_executable(${PROJECT_NAME}-Laboration_2-personTest src/personTest.cpp src/Person.cpp src/Names.cpp src/Address.cpp)
+add_executable(${PROJECT_NAME}-Laboration_2-addressTest src/addressTest.cpp src/Address.cpp src/Management.cpp src/Management.h)
+add_executable(${PROJECT_NAME}-Laboration_2-personTest src/personTest.cpp src/Person.cpp src/Names.cpp src/Address.cpp src/Management.cpp src/Management.h)
 
 # In order to avoid '../../../' semantics in include paths (relative), we need to add
 # target directory to the configuration
