@@ -11,20 +11,70 @@
 //------------------------------------------------------------------------------
 /**
  Class Names
+
+ Registers the name belonging to a person, the members of this class would
+ be first and last name. The public members are used to both set these
+ class members, as well as get them, to either give them a value or to show
+ this value.
  */
 class Names
 {
 private:
-    std::string firstName, lastName; // Class members
+    std::string firstName, lastName; // Class members of type string
 public:
-    Names(); //Pre-determined constructor
-    // Initialized constructor, take param firstName and lastName
+ /**
+ * Default constructor of the class Names
+ *
+ * @param None.
+ * @return None.
+ */
+    Names();
+/**
+ * Constructor for initialization of class Names
+ *
+ * @param String pFirstName, pLastName.
+ * @return None.
+ */
     Names(std::string pFirstName, std::string pLastName);
-    void setFirstName(std::string pFirstName); // Return nothing, param string
-    void setLastName(std::string pLastName); // Return nothing, param string
-    std::string getFirstName() const; // Return string, no param
-    std::string getLastName() const; // Return string, no param
+
+ /**
+ * Sets value for class member firstName
+ *
+ * @param String pFirstName.
+ * @return None.
+ */
+    void setFirstName(std::string pFirstName);
+
+ /**
+ * Sets value for class member lastName
+ *
+ * @param String pLastName.
+ * @return None.
+ */
+    void setLastName(std::string pLastName);
+
+ /**
+ * Returns value for class member firstName
+ *
+ * @param None.
+ * @return firstName.
+ */
+    std::string getFirstName() const;
+
+ /**
+ * Returns value for class member lastName
+ *
+ * @param None.
+ * @return lastName.
+ */
+    std::string getLastName() const;
 }; // End of class Names definition
 
-void printNames(Names const &names); // Returns nothing, param class Names
+/**
+ * Prints the class Names and its class members.
+ *
+ * @param Constant class Names.
+ * @return None.
+ */
+void printNames(Names const &names);
 #endif

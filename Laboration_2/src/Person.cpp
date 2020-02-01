@@ -10,7 +10,9 @@ using std::cout;
 using std::endl;
 
 void mainProgram(){
+    // Create a vector of objects from class Person, name vector pVector
     std::vector<Person> pVector;
+    // Give values to datamembers, store in 3 different objects
     Names names1("Olof","Olofsson");
     Address address1("Street 1","157 30","TownCity");
     Person person1(names1, address1, "9784", 41);
@@ -21,25 +23,29 @@ void mainProgram(){
     Address address3("Street 3","157 30","New York");
     Person person3(names3, address3, "9753", 43);
 
+    // Store each object within the vector as 3 elements
     pVector.push_back(person1);
     pVector.push_back(person2);
     pVector.push_back(person3);
 
+    // Loop to ensure input for the switch
     int choice=0;
     bool loop=true;
     while (loop) {
+        // Calls main menu, loads return into int choice, go to relevant case
         choice = mainMenu();
         switch (choice) {
             case 1:
-                std::cout << "1\n";
+                // If 1 is chosen call function addPerson and store in pVector
+                // Call by giving pVector as param
                 pVector = addPerson(pVector);
                 break;
             case 2:
-                std::cout << "2\n";
+                // If 2 is chosen, call print function, give pVector as param
                 print(pVector);
                 break;
             case 3:
-                std::cout << "3\n";
+                // If 3 is chosen, break loop and quit program
                 loop = false;
             default:
                 break;
@@ -89,30 +95,3 @@ void printPerson(Person const &Person)
     cout << "Shoe size: " << Person.getShoeSize() << endl << endl;
 }
 
-void pauseFunction(const std::string& text){ /* Function used when program
- * should wait for user input before it continues */
-    std::cout << text; // Prints function parameter on screen
-    std::cin.clear(); // Clear stream
-    std::cin.sync(); // Synchronizes the input stream
-    std::cin.get(); // Waits for user input before it continues
-    std::cin.clear(); // Clear stream once again to remove leftovers
-    std::cin.sync(); // Synchronizes the input stream
-}
-
-std::string validate(std::string input){ // Validate input
-    bool valid;
-    do {
-        std::getline(std::cin >> std::ws, input);
-        valid = true;
-        for (std::size_t i{}; i < input.length() && valid; ++i) { /*Iterates
- * through inputs length, checks if input is either a letter or a space,
- * anything else is considered invalid*/
-            if (!(std::isalpha(static_cast<unsigned char>(input[i])) ||
-                  std::isspace(static_cast<unsigned char>(input[i])))) {
-                valid = false;
-                std::cout << "Invalid input\n";
-            }
-        }
-    } while (!valid);
-    return input;
-}

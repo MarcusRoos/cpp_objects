@@ -22,6 +22,7 @@ void Names::setFirstName(std::string pFirstName)
     firstName = pFirstName;
 }
 
+
 void Names::setLastName(std::string pLastName)
 {
     lastName = pLastName;
@@ -37,7 +38,6 @@ std::string Names::getLastName() const
     return lastName;
 }
 
-// Prints class Names
 void printNames(Names const &names)
 {
     cout << endl;

@@ -14,6 +14,14 @@
 //------------------------------------------------------------------------------
 /**
  Class Person
+
+ Registers the name belonging to a person, the members of this class would
+ be person number and shoe size, as well as their names and address pulled from
+ two other classes called Address and Names.
+ The public members are used to both set these
+ class members, as well as get them, to either give them a value or to show
+ this value. This is done strictly by a constructor which initialize these
+ class members and assign their values to the class.
  */
 class Person
 {
@@ -23,15 +31,62 @@ private: // Class members
     std::string personNumber; // Type string called personNumber
     int shoeSize; // Type integer called shoeSize
 public:
-    Person(); //Förvald konstruktor
-    // Initialized constructor, param name, address, pPersonNumber & pShoeSize
+
+/**
+* Default constructor of the class Person
+*
+* @param None.
+* @return None.
+*/
+    Person();
+/**
+* Constructor for initialization of class Person
+*
+* @param String name, address, pPersonNumber, pShoeSize.
+* @return None.
+*/
     Person(Names name, Address address, std::string pPersonNumber, int pShoeSize);
-    std::string getPersonNumber() const; // Return string, no param
-    int getShoeSize() const; // Return int, no param
-    Names getNames() const; // Return Names, no param
-    Address getAddress() const; // Return Address, no param
+
+/**
+* Returns value for class member personNumber
+*
+* @param None.
+* @return personNumber.
+*/
+    std::string getPersonNumber() const;
+
+/**
+* Returns value for class member shoeSize
+*
+* @param None.
+* @return shoeSize.
+*/
+    int getShoeSize() const;
+
+/**
+* Returns value for class member name
+*
+* @param None.
+* @return name.
+*/
+    Names getNames() const;
+
+/**
+* Returns value for class member address
+*
+* @param None.
+* @return address.
+*/
+    Address getAddress() const;
 }; // End of class Person definition
 
-void mainProgram(); // Return nothing, param, starts main program
+/**
+ * mainProgram, will bind together all the functions and act as a switch to
+ * call functions in between each other.
+ *
+ * @param None.
+ * @return None.
+ */
+void mainProgram();
 
-#endif // DT018G_PROTOTYPE&S_H
+#endif

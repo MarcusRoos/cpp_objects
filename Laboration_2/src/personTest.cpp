@@ -4,6 +4,7 @@
 #include "Person.h"
 
 int main() {
+    //Calls the mainProgram
     mainProgram();
     return 0;
 }
