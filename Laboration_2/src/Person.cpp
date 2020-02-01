@@ -3,6 +3,7 @@
 //
 #include "Person.h"
 #include <iostream>
+#include <limits>
 
 using std::cout;
 using std::endl;
@@ -70,25 +71,39 @@ std::vector<Person>addPerson(std::vector<Person>input){
 
     std::cout << "Enter the persons first name.\n";
     std::string firstName;
-    std::cin >> firstName;
+    firstName=validate(firstName);
     std::cout << "Enter the persons last name.\n";
     std::string lastName;
-    std::cin >> lastName;
+    lastName=validate(lastName);
     std::cout << "Enter the persons street address.\n";
     std::string street;
-    std::cin >> street;
-    std::cout << "Enter the persons postcode.\n";
+    std::getline(std::cin >> std::ws, street);
+    std::cout << "Enter the persons postcode (5 characters).\n";
     std::string postcode;
     std::cin >> postcode;
+    while (postcode.length() <5 || postcode.length() >5){
+        std::cout << "Wrong input.\n";
+        std::cin >> postcode;
+    }
     std::cout << "Enter the persons city.\n";
     std::string city;
-    std::cin >> city;
-    std::cout << "Enter the persons social security number (4 digits).\n";
+    city=validate(city);
+    std::cout << "Enter the persons social security number (4 characters).\n";
     std::string personNumber;
     std::cin >> personNumber;
+    while (personNumber.length() <4 || personNumber.length() >4){
+        std::cout << "Wrong input.\n";
+        std::cin >> personNumber;
+    }
     std::cout << "Enter the persons shoesize.\n";
     int shoeSize;
     std::cin >> shoeSize;
+    while (std::cin.fail() || shoeSize<15 || shoeSize>50) { // If fail, request new input
+        cout << "You did not enter a positive int, please retry.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> shoeSize;
+    }
 
     Names names(firstName,lastName);
     Address address(street,postcode,city);
@@ -165,4 +180,22 @@ void pauseFunction(const std::string& text){ /* Function used when program
     std::cin.get(); // Waits for user input before it continues
     std::cin.clear(); // Clear stream once again to remove leftovers
     std::cin.sync(); // Synchronizes the input stream
+}
+
+std::string validate(std::string input){ // Validate input
+    bool valid;
+    do {
+        std::getline(std::cin >> std::ws, input);
+        valid = true;
+        for (std::size_t i{}; i < input.length() && valid; ++i) { /*Iterates
+ * through inputs length, checks if input is either a letter or a space,
+ * anything else is considered invalid*/
+            if (!(std::isalpha(static_cast<unsigned char>(input[i])) ||
+                  std::isspace(static_cast<unsigned char>(input[i])))) {
+                valid = false;
+                std::cout << "Invalid input\n";
+            }
+        }
+    } while (!valid);
+    return input;
 }
