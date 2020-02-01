@@ -21,16 +21,12 @@ private:
 public:
     Person(); //Förvald konstruktor
     Person(Names name, Address address, std::string pPersonNumber, int pShoeSize);
-    void setName(Names pName);
-    void setAddress(Address pAddress);
-    void setPersonNumber(std::string pPersonNumber);
-    void setShoeSize(int pShoeSize);
     std::string getPersonNumber() const;
     int getShoeSize() const;
     Names getNames() const;
     Address getAddress() const;
-
-    void mainProgram();
 };
+
+void mainProgram();
 
 #endif // DT018G_PROTOTYPE&S_H

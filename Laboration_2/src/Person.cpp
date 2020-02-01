@@ -21,13 +21,9 @@ void mainProgram(){
     Address address3("Street 3","157 30","New York");
     Person person3(names3, address3, "9753", 43);
 
-    size_t vecSize=0;
     pVector.push_back(person1);
-    vecSize++;
     pVector.push_back(person2);
-    vecSize++;
     pVector.push_back(person3);
-    vecSize++;
 
     int choice=0;
     bool loop=true;
@@ -37,7 +33,6 @@ void mainProgram(){
             case 1:
                 std::cout << "1\n";
                 pVector = addPerson(pVector);
-                vecSize++;
                 break;
             case 2:
                 std::cout << "2\n";
@@ -64,23 +59,6 @@ Person::Person(Names pName, Address pAddress, std::string pPersonNumber, int pSh
     shoeSize = pShoeSize;
     name = pName;
     address = pAddress;
-}
-void Person::setName(Names pNames)
-{
-    name = pNames;
-}
-void Person::setAddress(Address pAddress)
-{
-    address = pAddress;
-}
-void Person::setPersonNumber(std::string pPersonNumber)
-{
-    personNumber = pPersonNumber;
-}
-
-void Person::setShoeSize(int pShoeSize)
-{
-    shoeSize = pShoeSize;
 }
 
 std::string Person::getPersonNumber() const
