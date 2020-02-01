@@ -37,6 +37,7 @@ std::string Names::getLastName() const
     return lastName;
 }
 
+// Prints class Names
 void printNames(Names const &names)
 {
     cout << endl;

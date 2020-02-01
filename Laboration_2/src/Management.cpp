@@ -14,6 +14,8 @@ int mainMenu(){
     std::cin >> choice;
     while (choice<1 || choice>3){
         std::cout << "Wrong input\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> choice;
     }
     return choice;

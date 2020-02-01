@@ -9,18 +9,22 @@
 //------------------------------------------------------------------------------
 // Class definition
 //------------------------------------------------------------------------------
+/**
+ Class Names
+ */
 class Names
 {
 private:
-    std::string firstName, lastName; // Datamedlemmar string lastName;
+    std::string firstName, lastName; // Class members
 public:
-    Names(); //Förvald konstruktor
+    Names(); //Pre-determined constructor
+    // Initialized constructor, take param firstName and lastName
     Names(std::string pFirstName, std::string pLastName);
-    void setFirstName(std::string pFirstName); // Medlemsfunktioner som sätter void setLastName(string pLastName); // värden på datamedlemmar void setAccountNr(string pAccountNr);
-    void setLastName(std::string pLastName);
-    std::string getFirstName() const; // Medlemsfunktioner som returnerar string getLastName() const; // datamedlemmars värden
-    std::string getLastName() const;
-}; // Avslutar definitionen av klassen Account
+    void setFirstName(std::string pFirstName); // Return nothing, param string
+    void setLastName(std::string pLastName); // Return nothing, param string
+    std::string getFirstName() const; // Return string, no param
+    std::string getLastName() const; // Return string, no param
+}; // End of class Names definition
 
-void printNames(Names const &names);
+void printNames(Names const &names); // Returns nothing, param class Names
 #endif
