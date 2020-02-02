@@ -22,7 +22,7 @@ Address::Address(std::string pStreet, std::string pPostcode, std::string pCity)
 
 void Address::setStreet(std::string pStreet)
 {
-    street = std::move(pStreet); 
+    street = std::move(pStreet);
 }
 
 void Address::setPostcode(std::string pPostcode)

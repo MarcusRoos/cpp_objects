@@ -65,7 +65,7 @@ std::vector<Person>addPerson(std::vector<Person>input){
     int shoeSize;
     std::cin >> shoeSize;
     while (std::cin.fail() || shoeSize<15 || shoeSize>50) { // If fail, request new input
-        cout << "You did not enter a positive int, please retry.\n";
+        cout << "You did not enter a correct shoe size between 15 and 50.\n";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> shoeSize;
