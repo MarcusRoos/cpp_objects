@@ -11,18 +11,21 @@
 
 class UserInterface
 {
+public:
+    UserInterface();
+    void run();
 private:
-    void menu();
+    PersonList personList;
+    int menu();
     void addPerson();
-    void printList();
+    void displayPersons();
     void saveToFile();
     void readFromFile();
     void sortByName();
     void sortByPNr();
     void sortByShoeSize();
 
-public:
-    void run();
+
 }; // End of class Address definition
 
 
