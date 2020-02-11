@@ -18,8 +18,8 @@ std::vector<Person>personList;
 public:
     void addPerson(const Person &person);
     Person showPerson(size_t idx);
-    void readFromFile();
-    void writeToFile();
+    void readFromFile(std::string& fileName);
+    void writeToFile(std::string& fileName);
 };
 
 std::ostream &operator<<(std::ostream &os, const Person &person);

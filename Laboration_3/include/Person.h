@@ -78,6 +78,11 @@ public:
 * @return address.
 */
     Address getAddress() const;
+    void setPersonNumber(std::string pPersonNumber);
+    void setShoeSize(int pShoeSize);
+    void setNames(Names pName);
+    void setAddress(Address pAddress);
+
 }; // End of class Person definition
 
 /**
@@ -88,5 +93,4 @@ public:
  * @return None.
  */
 void mainProgram();
-
 #endif

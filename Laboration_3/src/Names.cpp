@@ -49,6 +49,17 @@ void printNames(Names const &names)
 }
 
 std::ostream &operator<<(std::ostream &os, const Names &names){
-    os << names.getFirstName();
-    os << names.getLastName();
+    os << names.getFirstName() << '|' << names.getLastName() << '|';
+
+    return os;
+}
+
+std::istream &operator>>(std::istream &is, Names &names){
+    std::string tmpString;
+    getline(is,tmpString,'|');
+    names.setFirstName(tmpString);
+    getline(is,tmpString,'|');
+    names.setLastName(tmpString);
+
+    return is;
 }

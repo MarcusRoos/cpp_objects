@@ -60,7 +60,19 @@ void printAddress(Address const &Address)
 }
 
 std::ostream &operator<<(std::ostream &os, const Address &address){
-    os << address.getStreet();
-    os << address.getPostcode();
-    os << address.getCity();
+    os << address.getStreet() << '|' << address.getPostcode() << '|'
+    << address.getCity() << '|';
+    return os;
+}
+
+std::istream &operator>>(std::istream &is, Address &address){
+    std::string tmpString;
+    getline(is,tmpString,'|');
+    address.setStreet(tmpString);
+    getline(is,tmpString,'|');
+    address.setPostcode(tmpString);
+    getline(is,tmpString,'|');
+    address.setCity(tmpString);
+
+    return is;
 }

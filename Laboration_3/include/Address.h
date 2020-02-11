@@ -96,4 +96,5 @@ public:
  */
 void printAddress(Address const &address);
 std::ostream &operator<<(std::ostream &os, const Address &address);
+std::istream &operator>>(std::istream &is, Address &address);
 #endif

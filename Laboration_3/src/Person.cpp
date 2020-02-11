@@ -85,6 +85,19 @@ Address Person::getAddress() const
     return address;
 }
 
+void Person::setPersonNumber(std::string pPersonNumber){
+    personNumber = std::move(pPersonNumber);
+}
+void Person::setShoeSize(int pShoeSize){
+    shoeSize = pShoeSize;
+}
+void Person::setNames(Names pName){
+    name = std::move(pName);
+}
+void Person::setAddress(Address pAddress){
+    address = pAddress;
+}
+
 void printPerson(Person const &Person)
 {
     cout << "PERSON:";

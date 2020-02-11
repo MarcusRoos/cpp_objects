@@ -23,18 +23,18 @@ Person PersonList::showPerson(size_t idx){
     }
 }
 
-void PersonList::writeToFile(){
+void PersonList::writeToFile(std::string& fileName){
     using namespace std;
     ofstream outFile(fileName, ios::out);
 
-    for (auto person : personList){
+    for (const auto& person : personList){
         outFile << person << endl;
     }
     outFile.close();
 }
 
 
-void PersonList::readFromFile(){
+void PersonList::readFromFile(std::string& fileName){
     using namespace std;
 ifstream inFile(fileName, ios::in);
 personList.clear();
@@ -51,8 +51,23 @@ std::ostream &operator<<(std::ostream &os, const Person &person){
     os << person.getNames();
     os << person.getPersonNumber();
     os << person.getShoeSize();
+    return os;
 }
 
 std::istream &operator>>(std::istream &is, Person &person){
+    std::string tmpString;
+    Address tmpAddress;
+    Names tmpNames;
+    getline(is,tmpString,'|');
+    person.setAddress(tmpAddress);
+    getline(is,tmpString,'|');
+    person.setNames(tmpNames);
+    getline(is,tmpString,'|');
+    person.setPersonNumber(tmpString);
+    int tmpInt;
+    is >> tmpInt;
+    is.get();
+    person.setShoeSize(tmpInt);
 
+    return is;
 }

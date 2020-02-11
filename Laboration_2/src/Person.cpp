@@ -67,20 +67,20 @@ Person::Person(Names pName, Address pAddress, std::string pPersonNumber, int pSh
     address = std::move(pAddress);
 }
 
-std::string Person::getPersonNumber() const
+std::string Person::getPersonNumber(std::string string) const
 {
     return personNumber;
 }
 
-int Person::getShoeSize() const
+int Person::getShoeSize(int i) const
 {
     return shoeSize;
 }
-Names Person::getNames() const
+Names Person::getNames(std::string string) const
 {
     return name;
 }
-Address Person::getAddress() const
+Address Person::getAddress(std::string string) const
 {
     return address;
 }
@@ -88,10 +88,11 @@ Address Person::getAddress() const
 void printPerson(Person const &Person)
 {
     cout << "PERSON:";
-    printNames(Person.getNames());
-    printAddress(Person.getAddress());
+    printNames(Person.getNames(std::__cxx11::string()));
+    printAddress(Person.getAddress(std::__cxx11::string()));
     cout << "\n";
-    cout << "Social Security Number: " << Person.getPersonNumber() << endl;
-    cout << "Shoe size: " << Person.getShoeSize() << endl << endl;
+    cout << "Social Security Number: " << Person.getPersonNumber(
+            std::__cxx11::string()) << endl;
+    cout << "Shoe size: " << Person.getShoeSize(0) << endl << endl;
 }
 

@@ -80,4 +80,5 @@ public:
 void printNames(Names const &names);
 
 std::ostream &operator<<(std::ostream &os, const Names &names);
+std::istream &operator>>(std::istream &is, Names &names);
 #endif
