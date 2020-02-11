@@ -54,7 +54,7 @@ std::ostream &operator<<(std::ostream &os, const Names &names){
     return os;
 }
 
-std::istream &operator>>(std::istream &is, Names &names){
+std::istream &operator>>(std::istream &is, Names &names){ 
     std::string tmpString;
     getline(is,tmpString,'|');
     names.setFirstName(tmpString);
