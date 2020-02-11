@@ -95,4 +95,5 @@ public:
  * @return None.
  */
 void printAddress(Address const &address);
+std::ostream &operator<<(std::ostream &os, const Address &address);
 #endif

@@ -58,3 +58,9 @@ void printAddress(Address const &Address)
     cout << "Postcode: " << Address.getPostcode() << endl;
     cout << "City: " << Address.getCity() << endl;
 }
+
+std::ostream &operator<<(std::ostream &os, const Address &address){
+    os << address.getStreet();
+    os << address.getPostcode();
+    os << address.getCity();
+}

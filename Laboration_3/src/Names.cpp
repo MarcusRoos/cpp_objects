@@ -47,3 +47,8 @@ void printNames(Names const &names)
     cout << "First name: " << names.getFirstName() << endl;
     cout << "Last name: " << names.getLastName() << endl;
 }
+
+std::ostream &operator<<(std::ostream &os, const Names &names){
+    os << names.getFirstName();
+    os << names.getLastName();
+}

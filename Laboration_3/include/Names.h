@@ -6,6 +6,7 @@
 #define DT018G_Names_H
 #include <string>
 #include <iostream>
+
 //------------------------------------------------------------------------------
 // Class definition
 //------------------------------------------------------------------------------
@@ -77,4 +78,6 @@ public:
  * @return None.
  */
 void printNames(Names const &names);
+
+std::ostream &operator<<(std::ostream &os, const Names &names);
 #endif

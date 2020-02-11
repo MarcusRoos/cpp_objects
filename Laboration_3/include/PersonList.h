@@ -6,5 +6,23 @@
 
 #ifndef DT019G_PERSONLIST_H
 #define DT019G_PERSONLIST_H
+#include <string>
+#include <vector>
+#include <Person.h>
+#include <fstream>
+
+class PersonList {
+private:
+std::vector<Person>personList;
+
+public:
+    void addPerson(const Person &person);
+    Person showPerson(size_t idx);
+    void readFromFile();
+    void writeToFile();
+};
+
+std::ostream &operator<<(std::ostream &os, const Person &person);
+std::istream &operator>>(std::istream &is, Person &person);
 
 #endif //DT019G_PERSONLIST_H
