@@ -6,8 +6,11 @@
 #include <iostream>
 #include "UserInterface.h"
 
-
-PersonList UserInterface::run() {
-    std::cout <<"Hi\n";
-    return PersonList();
+void UserInterface::menu(){
+    std::cout << "Test\n";
 }
+
+void UserInterface::run() {
+    menu();
+}
+

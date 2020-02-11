@@ -22,7 +22,7 @@ private:
     void sortByShoeSize();
 
 public:
-    PersonList run();
+    void run();
 }; // End of class Address definition
 
 
