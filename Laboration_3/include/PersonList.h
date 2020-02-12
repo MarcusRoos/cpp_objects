@@ -19,9 +19,11 @@ std::string FileName;
 public:
     void addPerson(const Person &person);
     Person showPerson(size_t idx);
-    void readFromFile(std::string& fileName);
-    void writeToFile(std::string& fileName);
+    void readFromFile();
+    void writeToFile();
     int personListSize();
+
+    void setFileName(std::string tmpFile);
 };
 
 std::ostream &operator<<(std::ostream &os, const Person &person);

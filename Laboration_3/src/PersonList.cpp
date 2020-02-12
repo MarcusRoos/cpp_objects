@@ -8,6 +8,7 @@
 #include "PersonList.h"
 #include "Management.h"
 #include <iostream>
+#include <utility>
 
 
 void PersonList::addPerson(const Person& person)
@@ -24,9 +25,9 @@ Person PersonList::showPerson(size_t idx){
     }
 }
 
-void PersonList::writeToFile(std::string& fileName){
+void PersonList::writeToFile(){
     using namespace std;
-    ofstream outFile(fileName, ios::out);
+    ofstream outFile(FileName, ios::out);
 
     for (const auto& person : personList){
         outFile << person << endl;
@@ -35,20 +36,26 @@ void PersonList::writeToFile(std::string& fileName){
 }
 
 
-void PersonList::readFromFile(std::string& fileName){
+void PersonList::readFromFile(){
     using namespace std;
-ifstream inFile(fileName, ios::in);
+ifstream inFile(FileName, ios::in);
 personList.clear();
 
 Person tmpPerson;
+
 while (inFile >> tmpPerson){
     personList.push_back(tmpPerson);
 }
+
 inFile.close();
 }
 
 int PersonList::personListSize() {
     return personList.size();
+}
+
+void PersonList::setFileName(std::string tmpFile) {
+    FileName = std::move(tmpFile);
 }
 
 std::ostream &operator<<(std::ostream &os, const Person &person){
@@ -64,10 +71,19 @@ std::istream &operator>>(std::istream &is, Person &person){
     Address tmpAddress;
     Names tmpNames;
     getline(is,tmpString,'|');
-    person.setAddress(tmpAddress);
+    tmpNames.setFirstName(tmpString);
     getline(is,tmpString,'|');
+    tmpNames.setLastName(tmpString);
     person.setNames(tmpNames);
     getline(is,tmpString,'|');
+    tmpAddress.setStreet(tmpString);
+    getline(is,tmpString,'|');
+    tmpAddress.setPostcode(tmpString);
+    getline(is,tmpString,'|');
+    tmpAddress.setCity(tmpString);
+    person.setAddress(tmpAddress);
+    getline(is,tmpString,'|');
+    tmpString += '|';
     person.setPersonNumber(tmpString);
     int tmpInt;
     is >> tmpInt;

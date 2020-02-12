@@ -26,9 +26,11 @@ void UserInterface::run() {
             break;
         case 3:
             std::cout << "3 - Save\n";
+            saveToFile();
             break;
         case 4:
             std::cout << "4 - Load\n";
+            readFromFile();
             break;
         case 5:
             std::cout << "5 - SortName\n";
@@ -107,12 +109,15 @@ void UserInterface::addPerson(){
 void UserInterface::displayPersons(){
     std::cout << "Enter index to return a person.\n";
     Person person;
-    size_t idx=0;
-    std::cin >> idx;
     personList.personListSize();
     if (personList.personListSize() == 0)
         std::cout << "Empty list\n";
     else {
+        std::cout << "The list currently contain \"" << personList.personListSize()
+        << "\" elements, enter any index between " << "0 and " <<
+        personList.personListSize()-1 << ".\n";
+        size_t idx=0;
+        std::cin >> idx;
         for (size_t i = 0; i <= idx; i++) {
             person = personList.showPerson(i);
             std::cout << "\n" << person << std::endl;
@@ -123,10 +128,21 @@ void UserInterface::displayPersons(){
 
 void UserInterface::saveToFile(){
     std::cout << "saveToFile\n";
+    std::string fileName;
+    std::cout << "Enter name of the file to save to.\n";
+    std::cin >> fileName;
+    personList.setFileName(fileName);
+    personList.writeToFile();
 }
 
 void UserInterface::readFromFile(){
     std::cout << "readFromFile\n";
+    std::cout << "Enter name of the file to load from.\n";
+    std::string fileName;
+    std::cin >> fileName;
+    personList.setFileName(fileName);
+    personList.readFromFile();
+
 }
 
 void UserInterface::sortByName(){
