@@ -21,6 +21,7 @@ public:
     Person showPerson(size_t idx);
     void readFromFile(std::string& fileName);
     void writeToFile(std::string& fileName);
+    int personListSize();
 };
 
 std::ostream &operator<<(std::ostream &os, const Person &person);

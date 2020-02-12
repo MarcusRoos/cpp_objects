@@ -109,8 +109,16 @@ void UserInterface::displayPersons(){
     Person person;
     size_t idx=0;
     std::cin >> idx;
-    person=personList.showPerson(idx);
-    std::cout << "\n"<< person << std::endl;
+    personList.personListSize();
+    if (personList.personListSize() == 0)
+        std::cout << "Empty list\n";
+    else {
+        for (size_t i = 0; i <= idx; i++) {
+            person = personList.showPerson(i);
+            std::cout << "\n" << person << std::endl;
+        }
+    }
+
 }
 
 void UserInterface::saveToFile(){

@@ -47,6 +47,10 @@ while (inFile >> tmpPerson){
 inFile.close();
 }
 
+int PersonList::personListSize() {
+    return personList.size();
+}
+
 std::ostream &operator<<(std::ostream &os, const Person &person){
     os << person.getAddress();
     os << person.getNames();
