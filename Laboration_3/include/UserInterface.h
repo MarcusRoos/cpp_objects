@@ -8,6 +8,7 @@
 #define DT019G_USERINTERFACE_H
 
 #include "PersonList.h"
+#include "Management.h"
 
 class UserInterface
 {

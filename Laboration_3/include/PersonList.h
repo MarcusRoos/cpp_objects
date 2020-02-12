@@ -14,6 +14,7 @@
 class PersonList {
 private:
 std::vector<Person>personList;
+std::string FileName;
 
 public:
     void addPerson(const Person &person);
