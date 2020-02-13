@@ -32,5 +32,7 @@ public:
 
 std::ostream &operator<<(std::ostream &os, const Person &person);
 std::istream &operator>>(std::istream &is, Person &person);
+//bool operator==(const Person &person) const;
+//bool operator<(const Person &person) const;
 
 #endif //DT019G_PERSONLIST_H

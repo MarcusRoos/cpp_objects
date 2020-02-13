@@ -63,3 +63,11 @@ std::istream &operator>>(std::istream &is, Names &names){
 
     return is;
 }
+
+bool Names::operator<(const Names &names) const {
+    return lastName < names.lastName;
+}
+
+bool Names::operator==(const Names &names) const {
+    return lastName == names.lastName;
+}

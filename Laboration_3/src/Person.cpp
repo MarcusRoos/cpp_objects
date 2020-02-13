@@ -63,3 +63,9 @@ void printPerson(Person const &Person)
     cout << "Social Security Number: " << Person.getPersonNumber() << endl;
     cout << "Shoe size: " << Person.getShoeSize() << endl << endl;
 }
+bool Person::operator<(const Person &person) const {
+    return false;
+}
+bool Person::operator==(const Person &person) const {
+    return false;
+}

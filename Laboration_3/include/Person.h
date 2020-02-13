@@ -83,6 +83,8 @@ public:
     void setNames(Names pName);
     void setAddress(Address pAddress);
 
+    bool operator<(const Person &person) const;
+    bool operator==(const Person &person) const;
 }; // End of class Person definition
 
 /**

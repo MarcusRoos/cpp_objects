@@ -86,6 +86,8 @@ public:
     * @return city.
     */
     std::string getCity() const;
+
+
 }; // End of class Address definition
 
 /**
@@ -97,4 +99,10 @@ public:
 void printAddress(Address const &address);
 std::ostream &operator<<(std::ostream &os, const Address &address);
 std::istream &operator>>(std::istream &is, Address &address);
+/*bool operator<(const Address &address) const;
+bool operator==(const Address &address) const;*/
+
+
+
+
 #endif

@@ -30,6 +30,7 @@ public:
     * @return None.
     */
     Names();
+
 /**
  * Constructor for initialization of class Names
  *
@@ -69,6 +70,10 @@ public:
     * @return lastName.
     */
     std::string getLastName() const;
+
+    bool operator==(const Names &names) const;
+    bool operator<(const Names &names) const;
+
 }; // End of class Names definition
 
 /**
