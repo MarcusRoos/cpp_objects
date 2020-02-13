@@ -107,23 +107,19 @@ void UserInterface::addPerson(){
 }
 
 void UserInterface::displayPersons(){
-    std::cout << "Enter index to return a person.\n";
+    std::cout << "Printed list of persons.\n";
     Person person;
     personList.personListSize();
     if (personList.personListSize() == 0)
         std::cout << "Empty list\n";
     else {
         std::cout << "The list currently contain \"" << personList.personListSize()
-        << "\" elements, enter any index between " << "0 and " <<
-        personList.personListSize()-1 << ".\n";
-        size_t idx=0;
-        std::cin >> idx;
-        for (size_t i = 0; i <= idx; i++) {
-            person = personList.showPerson(i);
-            std::cout << "\n" << person << std::endl;
+        << "\" elements.\n\n";
+        for (size_t idx = 0; idx < personList.personListSize(); idx++) {
+            person = personList.showPerson(idx);
+            std::cout  << person << std::endl;
         }
     }
-
 }
 
 void UserInterface::saveToFile(){
@@ -142,19 +138,21 @@ void UserInterface::readFromFile(){
     std::cin >> fileName;
     personList.setFileName(fileName);
     personList.readFromFile();
-
 }
 
 void UserInterface::sortByName(){
     std::cout << "sortByName\n";
+    personList.sortByName();
 }
 
 void UserInterface::sortByPNr(){
     std::cout << "SortByPNr\n";
+    personList.sortByNr();
 }
 
 void UserInterface::sortByShoeSize(){
     std::cout << "sortByShoeSize\n";
+    personList.sortByShoe();
 }
 
 UserInterface::UserInterface() = default;

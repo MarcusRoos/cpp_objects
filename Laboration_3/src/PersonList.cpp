@@ -58,9 +58,24 @@ void PersonList::setFileName(std::string tmpFile) {
     FileName = std::move(tmpFile);
 }
 
+std::string PersonList::getFileName() const
+{
+    return FileName;
+}
+
+void PersonList::sortByName(){
+
+}
+void PersonList::sortByNr(){
+
+}
+void PersonList::sortByShoe(){
+
+}
+
 std::ostream &operator<<(std::ostream &os, const Person &person){
-    os << person.getAddress();
     os << person.getNames();
+    os << person.getAddress();
     os << person.getPersonNumber();
     os << person.getShoeSize();
     return os;
@@ -74,15 +89,15 @@ std::istream &operator>>(std::istream &is, Person &person){
     tmpNames.setFirstName(tmpString);
     getline(is,tmpString,'|');
     tmpNames.setLastName(tmpString);
-    person.setNames(tmpNames);
     getline(is,tmpString,'|');
     tmpAddress.setStreet(tmpString);
     getline(is,tmpString,'|');
     tmpAddress.setPostcode(tmpString);
     getline(is,tmpString,'|');
     tmpAddress.setCity(tmpString);
-    person.setAddress(tmpAddress);
     getline(is,tmpString,'|');
+    person.setNames(tmpNames);
+    person.setAddress(tmpAddress);
     tmpString += '|';
     person.setPersonNumber(tmpString);
     int tmpInt;

@@ -22,8 +22,12 @@ public:
     void readFromFile();
     void writeToFile();
     int personListSize();
+    void sortByName();
+    void sortByNr();
+    void sortByShoe();
 
     void setFileName(std::string tmpFile);
+    std::string getFileName() const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Person &person);
