@@ -76,9 +76,3 @@ std::istream &operator>>(std::istream &is, Address &address){
 
     return is;
 }
-bool Address::operator<(const Address &address) const {
-    return false;
-}
-bool Address::operator==(const Address &address) const {
-    return false;
-}
