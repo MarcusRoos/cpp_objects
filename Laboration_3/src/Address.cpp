@@ -76,3 +76,16 @@ std::istream &operator>>(std::istream &is, Address &address){
 
     return is;
 }
+
+bool Address::operator < (const Address& a) const
+{
+    if (city == a.city)
+        return a.street < street;
+    else
+        return (city < a.city);
+}
+
+bool Address::operator == (const Address& a) const
+{
+    return true;
+}

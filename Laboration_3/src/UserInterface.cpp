@@ -34,6 +34,7 @@ void UserInterface::run() {
             break;
         case 5:
             std::cout << "5 - SortName\n";
+            sortByName();
             break;
         case 6:
             std::cout << "6 - SortNumber\n";

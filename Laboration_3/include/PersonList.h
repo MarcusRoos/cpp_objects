@@ -25,14 +25,11 @@ public:
     void sortByName();
     void sortByNr();
     void sortByShoe();
-
     void setFileName(std::string tmpFile);
     std::string getFileName() const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Person &person);
 std::istream &operator>>(std::istream &is, Person &person);
-//bool operator==(const Person &person) const;
-//bool operator<(const Person &person) const;
 
 #endif //DT019G_PERSONLIST_H

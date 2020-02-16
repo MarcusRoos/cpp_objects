@@ -71,8 +71,8 @@ public:
     */
     std::string getLastName() const;
 
-    bool operator==(const Names &names) const;
-    bool operator<(const Names &names) const;
+    bool operator < (const Names& a) const;
+    bool operator == (const Names& a) const;
 
 }; // End of class Names definition
 

@@ -9,6 +9,7 @@
 #include "Management.h"
 #include <iostream>
 #include <utility>
+#include <algorithm>
 
 
 void PersonList::addPerson(const Person& person)
@@ -63,14 +64,28 @@ std::string PersonList::getFileName() const
     return FileName;
 }
 
-void PersonList::sortByName(){
+struct compareNumber
+{
+    bool operator()( const Person& a, const Person& b ) const {
+        return a.getPersonNumber() < b.getPersonNumber();
+    }
+};
 
+struct compareShoe
+{
+    bool operator()( const Person& a, const Person& b ) const {
+        return a.getShoeSize() < b.getShoeSize();
+    }
+};
+
+void PersonList::sortByName(){
+    std::sort(personList.begin(), personList.end());
 }
 void PersonList::sortByNr(){
-
+    std::sort( personList.begin(), personList.end(), compareNumber());
 }
 void PersonList::sortByShoe(){
-
+    std::sort( personList.begin(), personList.end(), compareShoe());
 }
 
 std::ostream &operator<<(std::ostream &os, const Person &person){
@@ -107,3 +122,5 @@ std::istream &operator>>(std::istream &is, Person &person){
 
     return is;
 }
+
+

@@ -5,6 +5,7 @@
 #include "Names.h"
 
 #include <utility>
+#include <cstring>
 
 using std::cout;
 using std::endl;
@@ -64,10 +65,15 @@ std::istream &operator>>(std::istream &is, Names &names){
     return is;
 }
 
-bool Names::operator<(const Names &names) const {
-    return lastName < names.lastName;
+bool Names::operator < (const Names& a) const
+{
+    if (lastName == a.lastName)
+        return a.firstName < firstName;
+    else
+        return (a.lastName < lastName);
 }
 
-bool Names::operator==(const Names &names) const {
-    return lastName == names.lastName;
+bool Names::operator == (const Names& a) const
+{
+    return true;
 }
