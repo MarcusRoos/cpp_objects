@@ -64,12 +64,10 @@ void printPerson(Person const &Person)
     cout << "Shoe size: " << Person.getShoeSize() << endl << endl;
 }
 
-bool Person::operator < (const Person& a) const
-{
+bool Person::operator < (const Person& a) const {
     if (name == a.name) {
         return address < a.address;
-    }
-    else {
+    } else {
         return name < a.name;
     }
 }
@@ -78,6 +76,8 @@ bool Person::operator == (const Person& a) const
 {
     return true;
 }
+
+
 std::ostream &operator<<(std::ostream &os, const Person &person){
     os << person.getNames();
     os << person.getAddress();
