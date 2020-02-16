@@ -89,5 +89,5 @@ bool Address::operator < (const Address& a) const
 
 bool Address::operator == (const Address& a) const
 {
-    return a.street < street;
+    return city == a.city && street == a.street;
 }

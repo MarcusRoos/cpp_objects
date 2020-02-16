@@ -75,6 +75,8 @@ bool Names::operator < (const Names& a) const
     }
 }
 
+
+
 bool Names::operator == (const Names& a) const
 {
     return lastName == a.lastName && firstName == a.firstName;
