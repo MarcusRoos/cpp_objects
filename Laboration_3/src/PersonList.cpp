@@ -64,63 +64,18 @@ std::string PersonList::getFileName() const
     return FileName;
 }
 
-struct compareNumber
-{
-    bool operator()( const Person& a, const Person& b ) const {
-        return a.getPersonNumber() < b.getPersonNumber();
-    }
-};
-
-struct compareShoe
-{
-    bool operator()( const Person& a, const Person& b ) const {
-        return a.getShoeSize() < b.getShoeSize();
-    }
-};
-
 void PersonList::sortByName(){
     std::sort(personList.begin(), personList.end());
 }
 void PersonList::sortByNr(){
-    std::sort( personList.begin(), personList.end(), compareNumber());
+    sort(personList.begin(), personList.end(), [](const Person& a, const Person& b) {
+        return a.getPersonNumber() < b.getPersonNumber();
+    });
 }
+
 void PersonList::sortByShoe(){
-    std::sort( personList.begin(), personList.end(), compareShoe());
+    sort(personList.begin(), personList.end(), [](const Person& a, const Person& b) {
+        return a.getShoeSize() < b.getShoeSize();
+    });
 }
-
-std::ostream &operator<<(std::ostream &os, const Person &person){
-    os << person.getNames();
-    os << person.getAddress();
-    os << person.getPersonNumber();
-    os << person.getShoeSize();
-    return os;
-}
-
-std::istream &operator>>(std::istream &is, Person &person){
-    std::string tmpString;
-    Address tmpAddress;
-    Names tmpNames;
-    getline(is,tmpString,'|');
-    tmpNames.setFirstName(tmpString);
-    getline(is,tmpString,'|');
-    tmpNames.setLastName(tmpString);
-    getline(is,tmpString,'|');
-    tmpAddress.setStreet(tmpString);
-    getline(is,tmpString,'|');
-    tmpAddress.setPostcode(tmpString);
-    getline(is,tmpString,'|');
-    tmpAddress.setCity(tmpString);
-    getline(is,tmpString,'|');
-    person.setNames(tmpNames);
-    person.setAddress(tmpAddress);
-    tmpString += '|';
-    person.setPersonNumber(tmpString);
-    int tmpInt;
-    is >> tmpInt;
-    is.get();
-    person.setShoeSize(tmpInt);
-
-    return is;
-}
-
 

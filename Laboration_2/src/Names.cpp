@@ -42,6 +42,10 @@ std::string Names::getLastName() const
     return lastName;
 }
 
+bool Names::operator<(const Names &str) {
+    return false;
+}
+
 void printNames(Names const &names)
 {
     cout << endl;

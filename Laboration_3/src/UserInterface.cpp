@@ -38,9 +38,11 @@ void UserInterface::run() {
             break;
         case 6:
             std::cout << "6 - SortNumber\n";
+            sortByPNr();
             break;
         case 7:
             std::cout << "7 - SortShoe\n";
+            sortByShoeSize();
             break;
     }
     }while(choice!=0);

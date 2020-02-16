@@ -27,9 +27,7 @@ public:
     void sortByShoe();
     void setFileName(std::string tmpFile);
     std::string getFileName() const;
-};
 
-std::ostream &operator<<(std::ostream &os, const Person &person);
-std::istream &operator>>(std::istream &is, Person &person);
+};
 
 #endif //DT019G_PERSONLIST_H

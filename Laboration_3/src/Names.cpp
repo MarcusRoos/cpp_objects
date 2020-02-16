@@ -67,10 +67,12 @@ std::istream &operator>>(std::istream &is, Names &names){
 
 bool Names::operator < (const Names& a) const
 {
-    if (lastName == a.lastName)
+    if (lastName == a.lastName) {
         return a.firstName < firstName;
-    else
-        return (a.lastName < lastName);
+    }
+    else {
+        return a.lastName < lastName;
+    }
 }
 
 bool Names::operator == (const Names& a) const

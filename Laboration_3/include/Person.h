@@ -87,7 +87,8 @@ public:
     bool operator == (const Person& a) const;
 
 }; // End of class Person definition
-
+std::ostream &operator<<(std::ostream &os, const Person &person);
+std::istream &operator>>(std::istream &is, Person &person);
 /**
  * mainProgram, will bind together all the functions and act as a switch to
  * call functions in between each other.

@@ -66,13 +66,49 @@ void printPerson(Person const &Person)
 
 bool Person::operator < (const Person& a) const
 {
-    if (name == a.name)
+    if (name == a.name) {
         return address < a.address;
-    else
-        return (name < a.name);
+    }
+    else {
+        return name < a.name;
+    }
 }
 
 bool Person::operator == (const Person& a) const
 {
     return true;
+}
+std::ostream &operator<<(std::ostream &os, const Person &person){
+    os << person.getNames();
+    os << person.getAddress();
+    os << person.getPersonNumber();
+    os << person.getShoeSize();
+    return os;
+}
+
+std::istream &operator>>(std::istream &is, Person &person){
+    std::string tmpString;
+    Address tmpAddress;
+    Names tmpNames;
+    getline(is,tmpString,'|');
+    tmpNames.setFirstName(tmpString);
+    getline(is,tmpString,'|');
+    tmpNames.setLastName(tmpString);
+    getline(is,tmpString,'|');
+    tmpAddress.setStreet(tmpString);
+    getline(is,tmpString,'|');
+    tmpAddress.setPostcode(tmpString);
+    getline(is,tmpString,'|');
+    tmpAddress.setCity(tmpString);
+    getline(is,tmpString,'|');
+    person.setNames(tmpNames);
+    person.setAddress(tmpAddress);
+    tmpString += '|';
+    person.setPersonNumber(tmpString);
+    int tmpInt;
+    is >> tmpInt;
+    is.get();
+    person.setShoeSize(tmpInt);
+
+    return is;
 }
