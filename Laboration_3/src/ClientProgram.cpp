@@ -7,8 +7,9 @@
 #include "UserInterface.h"
 
 int main()
-{
+{ // Creates object of interface
     UserInterface userinterface;
+    // Calls function run() within class UserInterface.
     userinterface.run();
     return 0;
 }

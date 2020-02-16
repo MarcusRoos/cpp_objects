@@ -78,16 +78,71 @@ public:
 * @return address.
 */
     Address getAddress() const;
+
+/**
+* Sets value for class member personNumber
+*
+* @param String pPersonNumber.
+* @return None.
+*/
     void setPersonNumber(std::string pPersonNumber);
+
+/**
+* Sets value for class member shoeSize
+*
+* @param String pShoeSize.
+* @return None.
+*/
     void setShoeSize(int pShoeSize);
+
+/**
+* Sets value for class member name
+*
+* @param String pName.
+* @return None.
+*/
     void setNames(Names pName);
+
+/**
+ * Sets value for class member address
+ *
+ * @param String pAddress.
+ * @return None.
+ */
     void setAddress(Address pAddress);
 
+/**
+* Overloads operator < ( less than )
+*
+* @param Constant reference of class Person.
+* @return 0/1.
+*/
     bool operator < (const Person& a) const;
+
+/**
+* Overloads operator == ( comparison )
+*
+* @param Constant reference of class Person.
+* @return 0/1.
+*/
     bool operator == (const Person& a) const;
 
 }; // End of class Person definition
+
+/**
+* Overloads operator << ( out stream )
+*
+* @param Constant reference of class Person, out stream os.
+* @return os.
+*/
 std::ostream &operator<<(std::ostream &os, const Person &person);
+
+/**
+* Overloads operator >> ( in stream )
+*
+* @param Constant reference of class Person, in stream is.
+* @return is.
+*/
 std::istream &operator>>(std::istream &is, Person &person);
 /**
  * mainProgram, will bind together all the functions and act as a switch to

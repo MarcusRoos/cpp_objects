@@ -8,6 +8,10 @@
 #include "UserInterface.h"
 #include "Management.h"
 
+/**
+Run function, calls the main menu which lets user enter an integer, said
+ integer will determine which switch to toggle
+*/
 void UserInterface::run() {
     int choice=0;
     do {
@@ -42,6 +46,11 @@ void UserInterface::run() {
     }while(choice!=0);
 }
 
+/**
+The menu called from run function, prints a list of options, lets user enter
+ what they wish to do, the entered value will be returned if valid, otherwise
+ an iteration will commence until input is valid.
+*/
 int UserInterface::menu(){
     using namespace std;
     cout << "**********************************************\n";
@@ -73,6 +82,11 @@ int UserInterface::menu(){
     return choice;
 }
 
+/**
+Lets the user add a person to the person list, will prompt the user with
+ text to fill in. Several different validations to make sure input is decently
+ correct.
+*/
 void UserInterface::addPerson(){
     clearScreen();
     std::cout << "AddPerson\n";
@@ -118,6 +132,9 @@ void UserInterface::addPerson(){
     personList.addPerson(person);
 }
 
+/**
+Will print the vector of objects for the user.
+*/
 void UserInterface::displayPersons(){
     clearScreen();
     std::cout << "Printed list of persons.\n";
@@ -137,6 +154,10 @@ void UserInterface::displayPersons(){
     clearScreen();
 }
 
+/**
+Will save the vector of objects to a file, user is allowed to enter the name of
+ the file as they wish, only a few restrictions are made for different OS.
+*/
 void UserInterface::saveToFile(){
     clearScreen();
     std::cout << "SAVE TO FILE.\n";
@@ -150,6 +171,10 @@ void UserInterface::saveToFile(){
     clearScreen();
 }
 
+/**
+Will load the vector of objects from a file, user is allowed to enter the name of
+ the file as they wish, if file is not found the user will be informed.
+*/
 void UserInterface::readFromFile(){
     clearScreen();
     std::cout << "LOAD FROM FILE.\n";
@@ -173,22 +198,34 @@ void UserInterface::readFromFile(){
     }
 }
 
+/**
+Sorts the vector by name
+*/
 void UserInterface::sortByName(){
     clearScreen();
     std::cout << "Sorted list by name.\n";
     personList.sortByName();
 }
 
+/**
+Sorts the vector by social security number
+*/
 void UserInterface::sortByPNr(){
     clearScreen();
     std::cout << "Sorted list by social security number.\n";
     personList.sortByNr();
 }
 
+/**
+Sorts the vector by shoe size
+*/
 void UserInterface::sortByShoeSize(){
     clearScreen();
     std::cout << "Sort listed by shoe size.\n";
     personList.sortByShoe();
 }
 
+/**
+Default constructor
+*/
 UserInterface::UserInterface() = default;

@@ -71,7 +71,20 @@ public:
     */
     std::string getLastName() const;
 
+/**
+* Overloads operator < ( less than )
+*
+* @param Constant reference of class Address.
+* @return 0/1.
+*/
     bool operator < (const Names& a) const;
+
+/**
+* Overloads operator == ( comparison )
+*
+* @param Constant reference of class Address.
+* @return 0/1.
+*/
     bool operator == (const Names& a) const;
 
 }; // End of class Names definition
@@ -84,6 +97,19 @@ public:
  */
 void printNames(Names const &names);
 
+/**
+* Overloads operator << ( out stream )
+*
+* @param Constant reference of class Names, out stream os.
+* @return os.
+*/
 std::ostream &operator<<(std::ostream &os, const Names &names);
+
+/**
+* Overloads operator >> ( in stream )
+*
+* @param Constant reference of class Names, in stream is.
+* @return is.
+*/
 std::istream &operator>>(std::istream &is, Names &names);
 #endif

@@ -70,6 +70,14 @@ void print(const std::vector<Person>&printVec);
  */
 void clearScreen();
 
+/**
+ * Validates file name, contains restricted characters, takes a string,
+ * compare it to the stored characters and words, if not valid, will enter
+ * a loop, once valid, will return the string.
+ *
+ * @param String.
+ * @return String.
+ */
 std::string validateFileName(std::string input);
 
 #endif //DT019G_MANAGEMENT_H

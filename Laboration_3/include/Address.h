@@ -86,7 +86,21 @@ public:
     * @return city.
     */
     std::string getCity() const;
+
+/**
+* Overloads operator < ( less than )
+*
+* @param Constant reference of class Address.
+* @return 0/1.
+*/
     bool operator < (const Address& a) const;
+
+/**
+* Overloads operator == ( comparison )
+*
+* @param Constant reference of class Address.
+* @return 0/1.
+*/
     bool operator == (const Address& a) const;
 
 }; // End of class Address definition
@@ -98,10 +112,21 @@ public:
  * @return None.
  */
 void printAddress(Address const &address);
+
+/**
+* Overloads operator << ( out stream )
+*
+* @param Constant reference of class Address, out stream os.
+* @return os.
+*/
 std::ostream &operator<<(std::ostream &os, const Address &address);
+
+/**
+* Overloads operator >> ( in stream )
+*
+* @param Constant reference of class Address, in stream is.
+* @return is.
+*/
 std::istream &operator>>(std::istream &is, Address &address);
-
-
-
 
 #endif
