@@ -43,10 +43,9 @@ ifstream inFile(FileName, ios::in);
 personList.clear();
 
 Person tmpPerson;
-
-while (inFile >> tmpPerson){
-    personList.push_back(tmpPerson);
-}
+    while (inFile >> tmpPerson) {
+        personList.push_back(tmpPerson);
+    }
 
 inFile.close();
 }

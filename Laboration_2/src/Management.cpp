@@ -127,3 +127,4 @@ std::string validate(std::string input){ // Validate input
     } while (!valid);
     return input;
 }
+

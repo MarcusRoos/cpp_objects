@@ -6,6 +6,7 @@
 #include <iostream>
 #include <limits>
 #include "UserInterface.h"
+#include "Management.h"
 
 void UserInterface::run() {
     int choice=0;
@@ -13,35 +14,28 @@ void UserInterface::run() {
     choice=menu();
     switch (choice) {
         case 0:
-            std::cout << "Program terminated.\n";
+            pauseFunction("Program terminated, press any key to exit.");
         default:
             break;
         case 1:
-            std::cout << "1 Add\n";
             addPerson();
             break;
         case 2:
-            std::cout << "2 - Display\n";
             displayPersons();
             break;
         case 3:
-            std::cout << "3 - Save\n";
             saveToFile();
             break;
         case 4:
-            std::cout << "4 - Load\n";
             readFromFile();
             break;
         case 5:
-            std::cout << "5 - SortName\n";
             sortByName();
             break;
         case 6:
-            std::cout << "6 - SortNumber\n";
             sortByPNr();
             break;
         case 7:
-            std::cout << "7 - SortShoe\n";
             sortByShoeSize();
             break;
     }
@@ -80,29 +74,44 @@ int UserInterface::menu(){
 }
 
 void UserInterface::addPerson(){
+    clearScreen();
     std::cout << "AddPerson\n";
     std::cout << "Enter the persons first name.\n";
     std::string tmpFirst;
-    std::cin >> tmpFirst;
+    tmpFirst=validate(tmpFirst);
     std::cout << "Enter the persons last name.\n";
     std::string tmpLast;
-    std::cin >> tmpLast;
+    tmpLast=validate(tmpLast);
     std::cout << "Enter the persons street address.\n";
     std::string tmpStreet;
-    std::cin >> tmpStreet;
+    std::getline(std::cin >> std::ws, tmpStreet);
     std::cout << "Enter the persons postcode.\n";
     std::string tmpCode;
     std::cin >> tmpCode;
+    while (tmpCode.length() <5 || tmpCode.length() >5){
+        std::cout << "Wrong input.\n";
+        std::cin >> tmpCode;
+    }
     std::cout << "Enter the persons city.\n";
     std::string tmpCity;
-    std::cin >> tmpCity;
+    tmpCity = validate(tmpCity);
     std::cout << "Enter the persons social security number.\n";
     std::string tmpNr;
     std::cin >> tmpNr;
+    while (tmpNr.length() <4 || tmpNr.length() >4){
+        std::cout << "Wrong input, 4 integers required, you entered " <<
+        tmpNr.length() << " integers\n";
+        std::cin >> tmpNr;
+    }
     tmpNr += '|';
     std::cout << "Enter the persons shoe size.\n";
-    int tmpSize;
-    std::cin >> tmpSize;
+    int tmpSize=0;
+    while (std::cin.fail() || tmpSize<15 || tmpSize>50) { // If fail, request new input
+        std::cout << "You did not enter a correct shoe size between 15 and 50.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> tmpSize;
+    }
     Names names(tmpFirst,tmpLast);
     Address address(tmpStreet,tmpCode,tmpCity);
     Person person(names, address, tmpNr, tmpSize);
@@ -110,6 +119,7 @@ void UserInterface::addPerson(){
 }
 
 void UserInterface::displayPersons(){
+    clearScreen();
     std::cout << "Printed list of persons.\n";
     Person person;
     personList.personListSize();
@@ -123,38 +133,61 @@ void UserInterface::displayPersons(){
             std::cout  << person << std::endl;
         }
     }
+    pauseFunction("Press any key to return to main menu.");
+    clearScreen();
 }
 
 void UserInterface::saveToFile(){
-    std::cout << "saveToFile\n";
+    clearScreen();
+    std::cout << "SAVE TO FILE.\n";
     std::string fileName;
     std::cout << "Enter name of the file to save to.\n";
-    std::cin >> fileName;
+    fileName = validateFileName(fileName);
     personList.setFileName(fileName);
     personList.writeToFile();
+    std::cout << "List has been successfully saved to " << fileName << "!\n";
+    pauseFunction("Press any key to continue.\n");
+    clearScreen();
 }
 
 void UserInterface::readFromFile(){
-    std::cout << "readFromFile\n";
-    std::cout << "Enter name of the file to load from.\n";
+    clearScreen();
+    std::cout << "LOAD FROM FILE.\n";
+    std::cout << "Enter the name of the file to load from.\n";
     std::string fileName;
     std::cin >> fileName;
     personList.setFileName(fileName);
     personList.readFromFile();
+    if (personList.personListSize()==0) {
+        pauseFunction("Requested file is void of elements, "
+                      "loading unsuccessful.\n");
+        clearScreen();
+    }
+    else{
+        std::cout << "List has been loaded from file \"" << fileName <<
+        "\" successfully!\n";
+        std::cout << "This list contains " << personList.personListSize()
+                  << " elements.\n";
+        pauseFunction("Press any key to continue.");
+        clearScreen();
+    }
 }
 
 void UserInterface::sortByName(){
-    std::cout << "sortByName\n";
+    clearScreen();
+    std::cout << "Sorted list by name.\n";
     personList.sortByName();
 }
 
 void UserInterface::sortByPNr(){
-    std::cout << "SortByPNr\n";
+    clearScreen();
+    std::cout << "Sorted list by social security number.\n";
     personList.sortByNr();
 }
 
 void UserInterface::sortByShoeSize(){
-    std::cout << "sortByShoeSize\n";
+    clearScreen();
+    std::cout << "Sort listed by shoe size.\n";
     personList.sortByShoe();
 }
 

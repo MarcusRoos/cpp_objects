@@ -62,4 +62,14 @@ std::string validate(std::string input);
  */
 void print(const std::vector<Person>&printVec);
 
+/**
+ * Clears the console of text.
+ *
+ * @param None.
+ * @return None.
+ */
+void clearScreen();
+
+std::string validateFileName(std::string input);
+
 #endif //DT019G_MANAGEMENT_H
