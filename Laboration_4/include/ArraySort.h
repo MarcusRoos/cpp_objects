@@ -30,10 +30,11 @@ public:
     void setSize(int pSize);
     const ArraySort &operator=(const ArraySort &a);
     int& operator[] (int idx);
-    void bubbleSort1(int a[], int n);
+    void bubbleSort1(int n);
     void selectSort(int a[], int n);
     void insertSort(int a[], int n);
     void q1(int a[], int n);
+
 
 }; // End of class ArraySort definition
 

@@ -81,11 +81,11 @@ void swap(int &a, int &b) {
     b = tmp;
 }
 
-void ArraySort::bubbleSort1(int *a, int n) {
+void ArraySort::bubbleSort1(int n) {
     for(int pass=0; pass < n-1; pass++)
         for(int i=0; i < n-1; i++) {
-            if(a[i] > a[i+1])
-                swap(a[i], a[i+1]);
+            if(arr[i] > arr[i+1])
+                swap(arr[i], arr[i+1]);
         }
 }
 
