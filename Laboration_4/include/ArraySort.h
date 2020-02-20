@@ -27,10 +27,9 @@ public:
     void setmaxSize(int pMax);
     void setSize(int pSize);
     const ArraySort &operator=(const ArraySort &a);
-
+    int& operator[] (int idx);
 
 }; // End of class ArraySort definition
-
 
 
 #endif //DT019G_ARRAYSORT_H

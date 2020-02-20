@@ -70,3 +70,8 @@ const ArraySort &ArraySort::operator=(const ArraySort &a)
     }
     return *this;
 }
+
+int& ArraySort::operator[] (int idx)
+{
+    return arr[idx];
+}
