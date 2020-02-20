@@ -23,7 +23,6 @@ ArraySort::ArraySort (int pMaxSize): maxSize(pMaxSize), size(0)
 ArraySort:: ~ArraySort()
 {
     delete [] arr; arr = NULL;
-    cout << endl << "Running destructor for IntArray with maxSize= " << maxSize << endl;
 }
 
 int ArraySort::getValue(int idx) const
