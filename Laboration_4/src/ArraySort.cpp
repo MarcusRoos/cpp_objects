@@ -5,9 +5,7 @@
 //
 
 #include "ArraySort.h"
-
 #include <iostream>
-
 using namespace std;
 
 ArraySort::ArraySort(): maxSize(0), size(0)
@@ -25,11 +23,6 @@ ArraySort:: ~ArraySort()
     delete [] arr; arr = NULL;
 }
 
-int ArraySort::getValue(int idx) const
-{
-    return arr[idx];
-}
-
 bool ArraySort::addValue(int value)
 {
     bool valueAdded = false; if(size < maxSize)
@@ -40,38 +33,9 @@ bool ArraySort::addValue(int value)
     return valueAdded;
 }
 
-ArraySort::ArraySort (const ArraySort &a): maxSize(a.maxSize), size(a.size)
-{
-    arr = new int[a.maxSize]; for (int i=0; i<a.size; i++)
-        arr[i] = a.arr[i];
-}
-
-void ArraySort::setmaxSize(int pMax)
-{
-    maxSize = pMax;
-}
-
 void ArraySort::setSize(int pSize)
 {
     size = pSize;
-}
-
-const ArraySort &ArraySort::operator=(const ArraySort &a)
-{
-    if(this != &a) {
-        delete[]arr;
-        arr = new int[a.maxSize];
-        maxSize = a.maxSize;
-        size = a.size;
-        for (int i = 0; i < a.size; i++)
-            arr[i] = a.arr[i];
-    }
-    return *this;
-}
-
-int& ArraySort::operator[] (int idx)
-{
-    return arr[idx];
 }
 
 void swap(int &a, int &b) {

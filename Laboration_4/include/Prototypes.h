@@ -3,9 +3,17 @@
 #include "ArraySort.h"
 
 /**
- * This is a dummy prototype used only to enforce proper file structure,
- * as Git doesn't allow empty folders to be pushed to remote origin.
- * Remove this dummy function before submission.
+ Main program, gets called from main();
+ @param Two integers, a & b
+ @return void
  */
 void assignmentFunction(int a, int b);
+
+/**
+ Pauses program, waits for user input in form of a constant string, prints text.
+ @param String
+ @return void
+ */
+void pauseFunction(const std::string&);
+
 #endif  // DT018G_PROTOTYPES_H

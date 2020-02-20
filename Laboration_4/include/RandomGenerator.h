@@ -9,6 +9,12 @@
 
 #include <random>
 
+/**
+* Takes a value, generates random number
+*
+* @param integer.
+* @return integer.
+*/
 int RNG(int maxsize);
 
 #endif //DT019G_RANDOMGENERATOR_H

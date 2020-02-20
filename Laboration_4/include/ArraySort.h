@@ -10,29 +10,102 @@
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+//------------------------------------------------------------------------------
+// Class definition
+//------------------------------------------------------------------------------
+/**
+ Class ArraySort
 
+Stores an array which will be used to test out the efficiency of different
+ sorting methods. The size of the array is dynamically created, as well as
+ dynamically filled with elements.
+ */
 class ArraySort
 {
-private:
-    int* arr;
-    size_t maxSize;
-    size_t size;
-public:
+private: // Class members
+    int* arr; // Pointer for array
+    size_t maxSize; // Max Size of array
+    size_t size; // Size of array
+public: // Class functions
+
+    /**
+    * Default constructor of the class ArraySort
+    *
+    * @param None.
+    * @return None.
+    */
     ArraySort();
+
+    /**
+    * Constructor, Sets size of the array
+    *
+    * @param String pStreet, pPostcode, pCity.
+    * @return None.
+    */
     ArraySort (int pNum);
+
+    /**
+    * Constructor of the class ArraySort
+    *
+    * @param Const of class arraysort reference.
+    * @return None.
+    */
     ArraySort( const ArraySort &a);
+
+    /**
+    * Destructor of the class ArraySort
+    *
+    * @param None.
+    * @return None.
+    */
     ~ArraySort();
 
-    size_t getMaxSize() const {return maxSize;};
-    size_t getSize() const {return size;}
-    int getValue( int idx) const; bool addValue(int value);
-    void setmaxSize(int pMax);
+    /**
+    * Adds value to the array within the class
+    *
+    * @param integer.
+    * @return true/False.
+    */
+    bool addValue(int value);
+
+    /**
+    * Sets size of array
+    *
+    * @param integer.
+    * @return None.
+    */
     void setSize(int pSize);
-    const ArraySort &operator=(const ArraySort &a);
-    int& operator[] (int idx);
+
+    /**
+    * Sorting algorithm
+    *
+    * @param integer.
+    * @return None.
+    */
     void bubbleSort1(int n);
+
+    /**
+    * Sorting algorithm
+    *
+    * @param integer.
+    * @return None.
+    */
     void selectSort(int n);
+
+    /**
+    * Sorting algorithm
+    *
+    * @param integer.
+    * @return None.
+    */
     void insertSort(int n);
+
+    /**
+    * Sorting algorithm
+    *
+    * @param integer.
+    * @return None.
+    */
     void q1(int n);
 
 
