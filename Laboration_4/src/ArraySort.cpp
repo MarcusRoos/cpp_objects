@@ -89,29 +89,29 @@ void ArraySort::bubbleSort1(int n) {
         }
 }
 
-void ArraySort::selectSort(int *a, int n) {
+void ArraySort::selectSort(int n) {
     for(int i=0; i < n - 1; i++) {
         int smallIdx = i;
         for( int j= i+1; j < n; j++)
-            if(a[j] < a[smallIdx])
+            if(arr[j] < arr[smallIdx])
                 smallIdx = j;
 
         if(smallIdx != i)
-            swap(a[i], a[smallIdx]);
+            swap(arr[i], arr[smallIdx]);
     }
 }
 
-void ArraySort::insertSort(int *a, int n) {
+void ArraySort::insertSort(int n) {
     if(n > 1) {
         int save, j;
         for(int k = n - 1; k >= 0; k--) {
             j = k+1;
-            save = a[k];
-            while(j < n && save > a[j]) {
-                a[j-1] = a[j];
+            save = arr[k];
+            while(j < n && save > arr[j]) {
+                arr[j-1] = arr[j];
                 j++;
             }
-            a[j-1] = save;
+            arr[j-1] = save;
         }
     }
 }
@@ -147,6 +147,6 @@ void quick1(int a[], int first, int last) {
     }
 }
 
-void ArraySort::q1(int *a, int n) {
-    quick1(a,0,n-1);
+void ArraySort::q1(int n) {
+    quick1(arr,0,n-1);
 }

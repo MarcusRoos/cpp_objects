@@ -7,5 +7,5 @@
  * as Git doesn't allow empty folders to be pushed to remote origin.
  * Remove this dummy function before submission.
  */
-void assignmentFunction(int a);
+void assignmentFunction(int a, int b);
 #endif  // DT018G_PROTOTYPES_H

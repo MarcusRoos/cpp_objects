@@ -31,9 +31,9 @@ public:
     const ArraySort &operator=(const ArraySort &a);
     int& operator[] (int idx);
     void bubbleSort1(int n);
-    void selectSort(int a[], int n);
-    void insertSort(int a[], int n);
-    void q1(int a[], int n);
+    void selectSort(int n);
+    void insertSort(int n);
+    void q1(int n);
 
 
 }; // End of class ArraySort definition
