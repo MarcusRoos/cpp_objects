@@ -1,5 +1,5 @@
 #include "Prototypes.h"
-#include "memstat.hpp"
+//#include "memstat.hpp" Doesn't work on W10 64bit.
 #include <iostream>
 #include <string>
 #include <iomanip>
