@@ -1,11 +1,11 @@
 #include "Prototypes.h"
 //#include "memstat.hpp" Doesn't work on W10 64bit.
 #include <iostream>
-#include <string>
 #include <iomanip>
 #include <chrono>
 
 int main() {
+
     assignmentFunction();
     std::cout << "Measuring ten times." << std::endl;
         for (int i = 0; i < 10; i++) {
@@ -21,4 +21,11 @@ int main() {
         }
 
     return 0;
+}
+
+int sum(ArraySort const &a)
+{
+    int s = 0;
+    for(size_t i=0; i < a.getSize(); i++) s+= a.getValue(i);
+    return s;
 }

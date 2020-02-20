@@ -1,5 +1,6 @@
 #ifndef DT018G_PROTOTYPES_H
 #define DT018G_PROTOTYPES_H
+#include "ArraySort.h"
 
 /**
  * This is a dummy prototype used only to enforce proper file structure,
@@ -7,5 +8,5 @@
  * Remove this dummy function before submission.
  */
 void assignmentFunction();
-
+int sum(ArraySort const &a);
 #endif  // DT018G_PROTOTYPES_H

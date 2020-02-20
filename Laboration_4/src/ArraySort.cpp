@@ -50,12 +50,12 @@ ArraySort::ArraySort (const ArraySort &a): maxSize(a.maxSize), size(a.size)
 
 void ArraySort::setmaxSize(int pMax)
 {
-    maxSize = std::move(pMax);
+    maxSize = pMax;
 }
 
 void ArraySort::setSize(int pSize)
 {
-    size = std::move(pSize);
+    size = pSize;
 }
 
 const ArraySort &ArraySort::operator=(const ArraySort &a)
