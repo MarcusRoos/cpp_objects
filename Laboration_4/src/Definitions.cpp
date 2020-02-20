@@ -8,8 +8,8 @@
 using namespace std;
 
 void assignmentFunction(int a, int b) {
-    ArraySort a1(a);
-
+    auto * a1 = new ArraySort(a);
+    int tmpNum=0;
     double average = 0;
     if(b==0) {
         cout << "Testing on " << a << " elements using insert sort\n";
@@ -25,23 +25,21 @@ void assignmentFunction(int a, int b) {
     }
     for (int i = 0; i < 10; i++) {
         for(int k=0; k < a; k++) {
-            int x = RNG(a);
-            a1.addValue(x);
+            a1->addValue(RNG(a));
         }
-        cout << "\nRandom pick from index maxsize - 1 = " << a1.getValue(a-1) << endl;
         std::cout << std::fixed << std::setprecision(6);
         auto timeStart = std::chrono::high_resolution_clock::now();
         if(b==0) {
-            a1.insertSort(a);
+            a1->insertSort(a);
         }
         if (b==1) {
-            a1.q1(a);
+            a1->q1(a);
         }
         if(b==2) {
-            a1.bubbleSort1(a);
+            a1->bubbleSort1(a);
         }
         if(b==3) {
-            a1.selectSort(a);
+            a1->selectSort(a);
         }
         auto timeEnd = std::chrono::high_resolution_clock::now();
         size_t duration = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -52,8 +50,9 @@ void assignmentFunction(int a, int b) {
                   << seconds
                   << " [s]" << ", test number " << i + 1 << "/10"
                   << std::endl;
+        tmpNum = a;
+        a1->setSize(0);
     }
-
     double time = average / 10;
     cout << "\nAverage time = " << time << " [s]" << endl;
     ofstream outFile;
@@ -61,28 +60,27 @@ void assignmentFunction(int a, int b) {
 
     outFile.open(writeFile, ios::app);
     if(b==0) {
-        a1.insertSort(a);
+        a1->insertSort(a);
         outFile << "insertionsort";
         outFile << char(9);
     }
     if (b==1) {
-        a1.q1(a);
+        a1->q1(a);
         outFile << "quicksort";
         outFile << char(9);
     }
     if(b==2) {
-        a1.bubbleSort1(a);
+        a1->bubbleSort1(a);
         outFile << "bubblesort";
         outFile << char(9);
     }
     if(b==3) {
-        a1.selectSort(a);
+        a1->selectSort(a);
         outFile << "selectsort";
         outFile << char(9);
     }
+    outFile << tmpNum;
     outFile << char(9);
-    outFile << a1.getSize();
-    outFile << char(9);
-    outFile << std::setprecision(6) << time << "\n";
+    outFile << fixed << std::setprecision(6) << time << "\n";
     outFile.close();
 }
