@@ -8,5 +8,4 @@
  * Remove this dummy function before submission.
  */
 void assignmentFunction(int a);
-int sum(ArraySort const &a);
 #endif  // DT018G_PROTOTYPES_H
