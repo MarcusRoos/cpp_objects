@@ -1,6 +1,5 @@
 #include <iostream>
 #include "ArraySort.h"
-#include "sort.h"
 #include "Prototypes.h"
 #include "RandomGenerator.h"
 
@@ -23,6 +22,8 @@ void assignmentFunction() {
 
     cout << endl << "NY:" << a1.getValue(0) << endl;
     cout << endl << "FEMTUS:" << a1.getValue(4999) << endl;
+
+    //a1.bubbleSort1(a1.getValue(5), five);
 
     cout << "TEST: " << sum(a1);
 }
