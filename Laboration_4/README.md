@@ -38,3 +38,17 @@ more efficiently, however I've checked the requirements and I'm decently sure
 I've followed the requirements. The purpose of this laboration were to measure
 different sorting methods efficiently which has been done. The results are being 
 printed to an external log which later got made into a graph to compare values.
+
+For comparing the times on graphs I got very similar results for all the sorting
+algorithms with exception of quicksort, for the lower sized arrays it seemed my computer
+did the job faster than the theoretical time, but the bigger the array got, the 
+slower my computer seemed to handle the job. I read up a bit on quick sorting
+and it seems it depends on how the array is split when the sorting is done.
+The theoretical time itself is very linear, I hope my calculations are correct and seeing
+as my sorting for 5000 array size couldn't be measured in milliseconds I had to divide
+by 7 when calculating the average value. I got 4.6054E-9 as a result, using this to
+calculate the theoretical value I used the formula (k*n*log2(n)) which in the
+case of a 40000 sized array would be (4.6054E-9*40000*log2(40000)) which gave
+me the theoretical time of 0.0028 seconds, however my actual result took 0.0043 seconds.
+When looking at other theoretical times of the quicksort agorithm my calculations
+seem to be very close though.
