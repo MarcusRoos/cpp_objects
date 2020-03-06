@@ -27,7 +27,7 @@ class QList{
 private:
     Node *first, *last;
 public:
-    QList():first(nullptr),last(nullptr){};
+    QList();
     ~QList();
     void enque(Item item);
     bool deque(Item &item);
