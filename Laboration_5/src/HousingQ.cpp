@@ -19,14 +19,21 @@ void HousingQ::run() {
     ifstream file(filename);
     if(!file.is_open())
     {
-        cout << "Test\n";
+        ofstream file(filename);
+        cout << "No record of such a file, file will be saved.\n";
+        cout << "File has been saved under the name of " << filename << ".\n";
+    }
+    else {
+        ifstream file(filename);
+        cout << "File " << filename << " currently exists.\n";
+        cout << "File " << filename << " has been loaded.\n";
     }
     int choice;
     do {
         choice=Menu();
         switch (choice) {
             case 0:
-                std::cout << "Program terminated...\n";
+                pauseFunction("Program terminated, press any key to exit.");
                 break;
             case 1:
                 addPerson();

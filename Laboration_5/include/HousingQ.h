@@ -9,6 +9,7 @@
 
 #include "queue.h"
 #include <string>
+#include "Management.h"
 
 class HousingQ{
 private:
