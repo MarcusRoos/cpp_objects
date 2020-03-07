@@ -127,6 +127,7 @@ public:
 */
     bool operator == (const Person& a) const;
 
+
 }; // End of class Person definition
 
 /**

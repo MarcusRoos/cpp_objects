@@ -22,7 +22,6 @@ private:
     void printPerson();
     void removePerson();
     void save();
-
 public:
     HousingQ();
     void run();

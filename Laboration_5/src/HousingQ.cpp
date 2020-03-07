@@ -8,8 +8,10 @@
 #include <limits>
 #include "HousingQ.h"
 
-HousingQ::HousingQ() {
 
+HousingQ::HousingQ() {
+    amt=0;
+    filename="";
 }
 
 void HousingQ::run() {
@@ -58,7 +60,50 @@ void HousingQ::run() {
 }
 
 void HousingQ::addPerson() {
-    std::cout << "Case 1 ADD\n";
+    using namespace std;
+    cout << "Case 1 ADD\n";
+    std::cout << "AddPerson\n";
+    std::cout << "Enter the persons first name.\n";
+    std::string tmpFirst;
+    tmpFirst=validate(tmpFirst);
+    std::cout << "Enter the persons last name.\n";
+    std::string tmpLast;
+    tmpLast=validate(tmpLast);
+    std::cout << "Enter the persons street address.\n";
+    std::string tmpStreet;
+    std::getline(std::cin >> std::ws, tmpStreet);
+    std::cout << "Enter the persons postcode.\n";
+    std::string tmpCode;
+    std::cin >> tmpCode;
+    while (tmpCode.length() <5 || tmpCode.length() >5){
+        std::cout << "Wrong input.\n";
+        std::cin >> tmpCode;
+    }
+    std::cout << "Enter the persons city.\n";
+    std::string tmpCity;
+    tmpCity = validate(tmpCity);
+    std::cout << "Enter the persons social security number.\n";
+    std::string tmpNr;
+    std::cin >> tmpNr;
+    while (tmpNr.length() <4 || tmpNr.length() >4){
+        std::cout << "Wrong input, 4 integers required, you entered " <<
+                  tmpNr.length() << " integers\n";
+        std::cin >> tmpNr;
+    }
+    tmpNr += '|';
+    std::cout << "Enter the persons shoe size.\n";
+    int tmpSize=0;
+    while (std::cin.fail() || tmpSize<15 || tmpSize>50) { // If fail, request new input
+        std::cout << "You did not enter a correct shoe size between 15 and 50.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> tmpSize;
+    }
+    Names names(tmpFirst,tmpLast);
+    Address address(tmpStreet,tmpCode,tmpCity);
+    Item person(names, address, tmpNr, tmpSize);
+    list.enque(person);
+    amt++;
 }
 
 void HousingQ::offerHousing() {
@@ -71,6 +116,8 @@ void HousingQ::printHouses() {
 
 void HousingQ::printPerson() {
     std::cout << "Case 4 PRINTPERSON\n";
+    for (auto & it : list)
+
 }
 
 void HousingQ::removePerson() {

@@ -12,6 +12,7 @@
 Run function, calls the main menu which lets user enter an integer, said
  integer will determine which switch to toggle
 */
+
 void UserInterface::run() {
     int choice=0;
     do {
@@ -78,7 +79,6 @@ int UserInterface::menu(){
             loop = false;
         }
     }while(loop);
-
     return choice;
 }
 
