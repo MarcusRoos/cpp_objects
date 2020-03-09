@@ -150,7 +150,7 @@ void HousingQ::printInfo() {
     if (list.isEmpty())
         std::cout << "The list is empty!\n";
     for (auto & p : list){
-        tmp = p.getPersonNumber(PNr);
+        tmp = p.getPersonNumber();
         tmpCount++;
         tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
         tmp.erase(std::remove(tmp.begin(), tmp.end(), ' '), tmp.end());
@@ -162,19 +162,24 @@ void HousingQ::printInfo() {
 }
 
 void HousingQ::removePerson() {
-    std::cout << "Case 5 REMOVE\n";
+    std::cout << "Enter the persons social security number to search for: ";
     std::string PNr, tmp;
+    int tmpCount=0;
     std::cin >> PNr;
     if (list.isEmpty())
         std::cout << "The list is empty!\n";
     for (auto & p : list){
-        tmp = p.getPersonNumber(PNr);
+        tmp="";
+        tmp = p.getPersonNumber(); /* Keeps crashing here if trying to delete
+ * the first node. I have no idea why.*/
+        tmpCount++;
         tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
         tmp.erase(std::remove(tmp.begin(), tmp.end(), ' '), tmp.end());
         if (tmp == PNr) {
+            printPerson(p);
             if (list.del(p)) {
-                std::cout << "Deleted!\n";
-                amt--;
+                std::cout << "Placement: " << tmpCount << std::endl;
+                std::cout << "tmp: " << tmp << " PNr: " << PNr << std::endl;
             }
         }
     }
@@ -204,7 +209,7 @@ int HousingQ::Menu() {
     int choice=0;
     bool loop;
     do {
-        cin >> choice;
+         cin >> choice;
         if (cin.fail() || choice < 0 || choice > 6) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');

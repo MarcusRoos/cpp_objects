@@ -31,7 +31,7 @@ Names Person::getNames(std::string string) const
 }
 
 // Gets social security number
-std::string Person::getPersonNumber(std::string string) const
+std::string Person::getPersonNumber() const
 {
     return personNumber;
 }
@@ -89,8 +89,7 @@ void printPerson(Person const &Person)
     std::cout << "----------------------------------------------\n";
     printNames(Person.getNames(std::__cxx11::string()));
     printAddress(Person.getAddress(std::__cxx11::string()));
-    cout << "Social Security Number: " << Person.getPersonNumber(
-            std::__cxx11::string());
+    cout << "Social Security Number: " << Person.getPersonNumber();
     cout << "Shoe size: " << Person.getShoeSize() << endl;
     std::cout << "----------------------------------------------\n";
 }
@@ -99,7 +98,7 @@ void printPerson(Person const &Person)
 std::ostream &operator<<(std::ostream &os, const Person &person){
     os << person.getNames(std::__cxx11::string());
     os << person.getAddress(std::__cxx11::string());
-    os << person.getPersonNumber(std::__cxx11::string());
+    os << person.getPersonNumber();
     os << person.getShoeSize();
     return os;
 }
