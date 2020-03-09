@@ -10,6 +10,8 @@
 #include "queue.h"
 #include <string>
 #include "Management.h"
+#include "Person.h"
+#include <iomanip>
 
 class HousingQ{
 private:
@@ -19,7 +21,7 @@ private:
     void addPerson();
     void offerHousing();
     void printHouses();
-    void printPerson();
+    void printInfo();
     void removePerson();
     void save();
 public:
@@ -27,5 +29,6 @@ public:
     void run();
     int Menu(); // Menu function, added a separate one to make it cleaner.
 };
+
 
 #endif //DT019G_HOUSINGQ_H

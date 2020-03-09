@@ -7,7 +7,7 @@
 #include <fstream>
 #include <limits>
 #include "HousingQ.h"
-
+#include "Management.h"
 
 HousingQ::HousingQ() {
     amt=0;
@@ -15,20 +15,20 @@ HousingQ::HousingQ() {
 }
 
 void HousingQ::run() {
-    using namespace std;
-    cout << "Enter a filename to load/save the housing queue to: ";
-    cin >> filename;
-    ifstream file(filename);
+    Item database;
+    std::cout << "Enter a filename to load/save the housing queue to: ";
+    std::cin >> filename;
+    std::ifstream file(filename);
     if(!file.is_open())
     {
-        ofstream file(filename);
-        cout << "No record of such a file, file will be saved.\n";
-        cout << "File has been saved under the name of " << filename << ".\n";
+        std::ofstream file(filename);
+        std::cout << "No record of such a file, file will be saved.\n";
+        std::cout << "File has been saved under the name of " << filename << ".\n";
     }
     else {
-        ifstream file(filename);
-        cout << "File " << filename << " currently exists.\n";
-        cout << "File " << filename << " has been loaded.\n";
+        std::ifstream file(filename);
+        std::cout << "File " << filename << " currently exists.\n";
+        std::cout << "File " << filename << " has been loaded.\n";
     }
     int choice;
     do {
@@ -47,7 +47,7 @@ void HousingQ::run() {
                 printHouses();
                 break;
             case 4:
-                printPerson();
+                printInfo();
                 break;
             case 5:
                 removePerson();
@@ -90,7 +90,7 @@ void HousingQ::addPerson() {
                   tmpNr.length() << " integers\n";
         std::cin >> tmpNr;
     }
-    tmpNr += '|';
+    tmpNr += '\n';
     std::cout << "Enter the persons shoe size.\n";
     int tmpSize=0;
     while (std::cin.fail() || tmpSize<15 || tmpSize>50) { // If fail, request new input
@@ -104,24 +104,38 @@ void HousingQ::addPerson() {
     Item person(names, address, tmpNr, tmpSize);
     list.enque(person);
     amt++;
+    printPerson(person);
 }
 
 void HousingQ::offerHousing() {
     std::cout << "Case 2 OFFER\n";
+    Item person;
+    if (list.deque(person)) {
+        std::cout << "House offered to next person in queue\n";
+        std::cout << "**********************************************\n";
+        std::cout << "----------------------------------------------\n";
+        printPerson(person);
+        std::cout << "----------------------------------------------\n";
+        std::cout << "Person was offered housing\n";
+    }
+    else
+        std::cout << std::endl << "Queue is empty! \n";
 }
 
 void HousingQ::printHouses() {
     std::cout << "Case 3 PRINTHOUSE\n";
 }
 
-void HousingQ::printPerson() {
+void HousingQ::printInfo() {
+    Item item;
+    printPerson(item);
+    std::cout << list.isEmpty();
     std::cout << "Case 4 PRINTPERSON\n";
-    for (auto & it : list)
-
 }
 
 void HousingQ::removePerson() {
     std::cout << "Case 5 REMOVE\n";
+
 }
 
 void HousingQ::save() {

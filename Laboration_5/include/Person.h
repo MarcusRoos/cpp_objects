@@ -53,7 +53,7 @@ public:
 * @param None.
 * @return personNumber.
 */
-    std::string getPersonNumber() const;
+    std::string getPersonNumber(std::string string) const;
 
 /**
 * Returns value for class member shoeSize
@@ -69,7 +69,7 @@ public:
 * @param None.
 * @return name.
 */
-    Names getNames() const;
+    Names getNames(std::string string) const;
 
 /**
 * Returns value for class member address
@@ -77,7 +77,7 @@ public:
 * @param None.
 * @return address.
 */
-    Address getAddress() const;
+    Address getAddress(std::string string) const;
 
 /**
 * Sets value for class member personNumber
@@ -128,14 +128,16 @@ public:
     bool operator == (const Person& a) const;
 
 
-}; // End of class Person definition
-
 /**
 * Overloads operator << ( out stream )
 *
 * @param Constant reference of class Person, out stream os.
 * @return os.
 */
+}; // End of class Person definition
+
+void printPerson(Person const &Person);
+
 std::ostream &operator<<(std::ostream &os, const Person &person);
 
 /**

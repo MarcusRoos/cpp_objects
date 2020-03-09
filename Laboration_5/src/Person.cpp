@@ -25,13 +25,13 @@ Person::Person(Names pName, Address pAddress, std::string pPersonNumber, int pSh
 }
 
 // Gets name
-Names Person::getNames() const
+Names Person::getNames(std::string string) const
 {
     return name;
 }
 
 // Gets social security number
-std::string Person::getPersonNumber() const
+std::string Person::getPersonNumber(std::string string) const
 {
     return personNumber;
 }
@@ -43,7 +43,7 @@ int Person::getShoeSize() const
 }
 
 // Gets address
-Address Person::getAddress() const
+Address Person::getAddress(std::string string) const
 {
     return address;
 }
@@ -68,16 +68,6 @@ void Person::setAddress(Address pAddress){
     address = std::move(pAddress);
 }
 
-// Prints class person
-void printPerson(Person const &Person)
-{
-    cout << "PERSON:";
-    printNames(Person.getNames());
-    printAddress(Person.getAddress());
-    cout << "\n";
-    cout << "Social Security Number: " << Person.getPersonNumber() << endl;
-    cout << "Shoe size: " << Person.getShoeSize() << endl << endl;
-}
 
 // Defines operator <
 bool Person::operator < (const Person& a) const {
@@ -94,11 +84,20 @@ bool Person::operator == (const Person& a) const
     return true; // Returns true if comparison is a match
 }
 
+void printPerson(Person const &Person)
+{
+    printNames(Person.getNames(std::__cxx11::string()));
+    printAddress(Person.getAddress(std::__cxx11::string()));
+    cout << "Social Security Number: " << Person.getPersonNumber(
+            std::__cxx11::string());
+    cout << "Shoe size: " << Person.getShoeSize() << endl;
+}
+
 // Defines operator <<, used for out stream
 std::ostream &operator<<(std::ostream &os, const Person &person){
-    os << person.getNames();
-    os << person.getAddress();
-    os << person.getPersonNumber();
+    os << person.getNames(std::__cxx11::string());
+    os << person.getAddress(std::__cxx11::string());
+    os << person.getPersonNumber(std::__cxx11::string());
     os << person.getShoeSize();
     return os;
 }

@@ -43,10 +43,6 @@ bool QIterator::operator!=(const QIterator &qi) const {
     return *this != qi;
 }
 
-QList::QList(){
-    first=nullptr, last=nullptr;
-}
-
 QList::~QList() {
     while (!isEmpty()) {
         Node *tmp = first;
