@@ -28,6 +28,11 @@ void HousingQ::run() {
     }
     else {
         std::ifstream file(filename);
+        std::ifstream inFile(filename, std::ios::in);
+        Person tmpPerson;
+        while (inFile >> tmpPerson) {
+            list.enque(tmpPerson);
+        }
         std::cout << "File " << filename << " currently exists.\n";
         std::cout << "File " << filename << " has been loaded.\n";
     }
