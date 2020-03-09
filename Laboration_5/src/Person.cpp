@@ -124,7 +124,7 @@ std::istream &operator>>(std::istream &is, Person &person){
     getline(is,tmpString,'|');
     person.setNames(tmpNames);
     person.setAddress(tmpAddress);
-    tmpString += '|';
+    tmpString += '\n';
     person.setPersonNumber(tmpString);
     int tmpInt;
     is >> tmpInt;

@@ -29,7 +29,7 @@ void HousingQ::run() {
     else {
         std::ifstream file(filename);
         std::ifstream inFile(filename, std::ios::in);
-        Person tmpPerson;
+        Item tmpPerson;
         while (inFile >> tmpPerson) {
             list.enque(tmpPerson);
         }
@@ -161,7 +161,18 @@ void HousingQ::printInfo() {
 
 void HousingQ::removePerson() {
     std::cout << "Case 5 REMOVE\n";
-
+    std::string PNr, tmp;
+    std::cin >> PNr;
+    if (list.isEmpty())
+        std::cout << "The list is empty!\n";
+    for (auto & p : list){
+        tmp = p.getPersonNumber(PNr);
+        tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
+        tmp.erase(std::remove(tmp.begin(), tmp.end(), ' '), tmp.end());
+        if (tmp == PNr) {
+            list.del(p);
+        }
+    }
 }
 
 void HousingQ::save() {
