@@ -86,11 +86,13 @@ bool Person::operator == (const Person& a) const
 
 void printPerson(Person const &Person)
 {
+    std::cout << "----------------------------------------------\n";
     printNames(Person.getNames(std::__cxx11::string()));
     printAddress(Person.getAddress(std::__cxx11::string()));
     cout << "Social Security Number: " << Person.getPersonNumber(
             std::__cxx11::string());
     cout << "Shoe size: " << Person.getShoeSize() << endl;
+    std::cout << "----------------------------------------------\n";
 }
 
 // Defines operator <<, used for out stream
