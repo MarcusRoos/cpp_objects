@@ -169,7 +169,6 @@ void HousingQ::removePerson() {
     if (list.isEmpty())
         std::cout << "The list is empty!\n";
     for (auto & p : list){
-        tmp="";
         tmp = p.getPersonNumber(); /* Keeps crashing here if trying to delete
  * the first node. I have no idea why.*/
         tmpCount++;
@@ -180,7 +179,7 @@ void HousingQ::removePerson() {
             if (list.del(p)) {
                 std::cout << "Placement: " << tmpCount << std::endl;
                 std::cout << "tmp: " << tmp << " PNr: " << PNr << std::endl;
-            } 
+            }
         }
     }
 }

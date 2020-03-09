@@ -69,7 +69,7 @@ public:
 * @param None.
 * @return name.
 */
-    Names getNames(std::string string) const;
+    Names getNames() const;
 
 /**
 * Returns value for class member address
@@ -77,7 +77,7 @@ public:
 * @param None.
 * @return address.
 */
-    Address getAddress(std::string string) const;
+    Address getAddress() const;
 
 /**
 * Sets value for class member personNumber
@@ -126,7 +126,6 @@ public:
 * @return 0/1.
 */
     bool operator == (const Person& a) const;
-
 
 /**
 * Overloads operator << ( out stream )
