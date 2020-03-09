@@ -169,12 +169,11 @@ void HousingQ::removePerson() {
     if (list.isEmpty())
         std::cout << "The list is empty!\n";
     for (auto & p : list){
-        tmp = p.getPersonNumber(); /* Keeps crashing here if trying to delete
- * the first node. I have no idea why.*/
+        tmp = p.getPersonNumber();
         tmpCount++;
         tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
         tmp.erase(std::remove(tmp.begin(), tmp.end(), ' '), tmp.end());
-        if (tmp == PNr) {
+        if (PNr == tmp) {
             printPerson(p);
             if (list.del(p)) {
                 std::cout << "Placement: " << tmpCount << std::endl;
