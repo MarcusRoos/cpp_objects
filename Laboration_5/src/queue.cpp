@@ -94,7 +94,7 @@ bool QList::del(Item item) {
         prev = current;
         current = current->next;
     }
-    return false;
+        return false;
 }
 
 bool QList::isEmpty() const {

@@ -32,6 +32,7 @@ void HousingQ::run() {
         Item tmpPerson;
         while (inFile >> tmpPerson) {
             list.enque(tmpPerson);
+            amt++;
         }
         std::cout << "File " << filename << " currently exists.\n";
         std::cout << "File " << filename << " has been loaded.\n";
@@ -41,6 +42,7 @@ void HousingQ::run() {
         choice=Menu();
         switch (choice) {
             case 0:
+            default:
                 pauseFunction("Program terminated, press any key to exit.");
                 break;
             case 1:
@@ -170,7 +172,10 @@ void HousingQ::removePerson() {
         tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
         tmp.erase(std::remove(tmp.begin(), tmp.end(), ' '), tmp.end());
         if (tmp == PNr) {
-            list.del(p);
+            if (list.del(p)) {
+                std::cout << "Deleted!\n";
+                amt--;
+            }
         }
     }
 }
