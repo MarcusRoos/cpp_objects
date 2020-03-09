@@ -124,25 +124,31 @@ void HousingQ::offerHousing() {
 void HousingQ::printHouses() {
     std::cout << "Case 3 PRINTHOUSE\n";
     std::cout << "The housing queue contains " << amt << " persons.\n";
+    int tmpCount=0;
     for (auto & p : list){
+        tmpCount++;
+        std::cout << "Placement " << tmpCount << "\n";
         printPerson(p);
     }
 }
 
 void HousingQ::printInfo() {
     std::cout << "Case 4 PRINTPERSON\n";
-    std::cout << "Enter the persons social security number to search for: \n";
+    std::cout << "Enter the persons social security number to search for: ";
     std::string PNr, tmp;
+    int tmpCount=0;
     std::cin >> PNr;
+    if (list.isEmpty())
+        std::cout << "The list is empty!\n";
     for (auto & p : list){
         tmp = p.getPersonNumber(PNr);
+        tmpCount++;
         tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
         tmp.erase(std::remove(tmp.begin(), tmp.end(), ' '), tmp.end());
-        if (tmp == PNr)
+        if (tmp == PNr) {
+            std::cout << "Placement: "<< tmpCount << std::endl;
             printPerson(p);
-        else
-            std::cout << "A person with the social security number " << PNr <<
-            " could not be found.\n";
+        }
     }
 }
 
