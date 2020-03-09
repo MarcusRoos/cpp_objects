@@ -179,6 +179,7 @@ void HousingQ::removePerson() {
             if (list.del(p)) {
                 std::cout << "Placement: " << tmpCount << std::endl;
                 std::cout << "tmp: " << tmp << " PNr: " << PNr << std::endl;
+                break;
             }
         }
     }
