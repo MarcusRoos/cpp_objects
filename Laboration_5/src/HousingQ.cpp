@@ -23,8 +23,8 @@ void HousingQ::run() {
     if(!file.is_open())
     {
         std::ofstream file(filename);
-        std::cout << "No record of such a file, file will be saved.\n";
-        std::cout << "File has been saved under the name of " << filename << ".\n";
+        std::cout << "No record of such a file, file will be created.\n";
+        std::cout << "File has been created under the name of " << filename << ".\n";
     }
     else {
         std::ifstream file(filename);
@@ -91,7 +91,7 @@ void HousingQ::addPerson() {
                   tmpNr.length() << " integers\n";
         std::cin >> tmpNr;
     }
-    tmpNr += '\n';
+    tmpNr += '|';
     std::cout << "Enter the persons shoe size.\n";
     int tmpSize=0;
     while (std::cin.fail() || tmpSize<15 || tmpSize>50) { // If fail, request new input
@@ -118,13 +118,15 @@ void HousingQ::offerHousing() {
             std::cout << "Person was offered housing\n";
             amt--;
         } else
-            std::cout << std::endl << "Queue is empty! \n";
+            std::cout << std::endl << "The list is empty!\n";
 }
 
 void HousingQ::printHouses() {
     std::cout << "Case 3 PRINTHOUSE\n";
     std::cout << "The housing queue contains " << amt << " persons.\n";
     int tmpCount=0;
+    if (list.isEmpty())
+        std::cout << "The list is empty!\n";
     for (auto & p : list){
         tmpCount++;
         std::cout << "Placement " << tmpCount << "\n";
@@ -158,7 +160,12 @@ void HousingQ::removePerson() {
 }
 
 void HousingQ::save() {
-    std::cout << "Case 6 SAVE\n";
+    std::cout << "File \"" << filename << "\" has been saved\n";
+    std::ofstream outFile(filename, std::ios::out);
+    for (const auto& person : list){
+        outFile << person << std::endl;
+    }
+    outFile.close();
 }
 
 int HousingQ::Menu() {

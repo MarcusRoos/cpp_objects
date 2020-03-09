@@ -80,3 +80,31 @@ std::string validate(std::string input){ // Validate input
     } while (!valid);
     return input;
 }
+
+std::string validateFileName(std::string input){ // Validate input
+    bool valid;
+    do {
+        valid = true;
+        std::getline(std::cin >> std::ws, input);
+        if (input=="COM1" || input=="COM2" || input=="COM3" || input=="COM4"
+            || input=="COM5" || input=="COM6" || input=="COM7" || input=="COM8"
+            || input=="COM9" ||input=="LPT1" || input=="LPT2" || input=="LPT3"
+            || input=="LPT4" || input=="LPT5" || input=="LPT6" || input=="LPT7"
+            || input=="LPT8" || input=="LPT9" || input=="CON" || input=="PRN"
+            || input=="AUX" || input=="NUL"){ // Reserved file names
+            valid = false;
+            std::cout << "Invalid input\n";
+        }
+        for (std::size_t i{}; i < input.length() && valid; ++i) { /*Iterates
+ * through inputs length, checks if input is valid, will not accept follow
+ * characters due to being forbidden in both windows and unix systems.*/
+            if (input[i]=='<' || input[i]=='>' || input[i]=='"' || input[i]=='/'
+                || input[i]=='\\' || input[i]=='*' || input[i]==':' || input[i]=='?'
+                || input[i]=='|') { // Forbidden characters
+                valid = false;
+                std::cout << "Invalid input\n";
+            }
+        }
+    } while (!valid);
+    return input;
+}

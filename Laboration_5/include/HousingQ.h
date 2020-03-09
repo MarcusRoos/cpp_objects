@@ -30,5 +30,4 @@ public:
     int Menu(); // Menu function, added a separate one to make it cleaner.
 };
 
-
 #endif //DT019G_HOUSINGQ_H
