@@ -69,8 +69,8 @@ void HousingQ::run() {
 
 void HousingQ::addPerson() {
     using namespace std;
-    cout << "Case 1 ADD\n";
-    std::cout << "AddPerson\n";
+    cout << "Add a person.\n";
+    cout << "**********************************************\n";
     std::cout << "Enter the persons first name.\n";
     std::string tmpFirst;
     tmpFirst=validate(tmpFirst);
@@ -96,11 +96,16 @@ void HousingQ::addPerson() {
     while (tmpNr.length() <4 || tmpNr.length() >4){
         std::cout << "Wrong input, 4 integers required, you entered " <<
                   tmpNr.length() << " integers\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> tmpNr;
     }
-    tmpNr += '|';
+    tmpNr += '\n';
     std::cout << "Enter the persons shoe size.\n";
     int tmpSize=0;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin >> tmpSize;
     while (std::cin.fail() || tmpSize<15 || tmpSize>50) { // If fail, request new input
         std::cout << "You did not enter a correct shoe size between 15 and 50.\n";
         std::cin.clear();
@@ -112,11 +117,11 @@ void HousingQ::addPerson() {
     Item person(names, address, tmpNr, tmpSize);
     list.enque(person);
     amt++;
-    printPerson(person);
+    cout << "Person added successfully!\n";
 }
 
 void HousingQ::offerHousing() {
-    std::cout << "Case 2 OFFER\n";
+    std::cout << "Offer housing.\n";
     Item person;
         if (list.deque(person)) {
             std::cout << "House offered to next person in queue\n";
@@ -129,7 +134,7 @@ void HousingQ::offerHousing() {
 }
 
 void HousingQ::printHouses() {
-    std::cout << "Case 3 PRINTHOUSE\n";
+    std::cout << "Print information.\n";
     std::cout << "The housing queue contains " << amt << " persons.\n";
     int tmpCount=0;
     if (list.isEmpty())
@@ -142,7 +147,7 @@ void HousingQ::printHouses() {
 }
 
 void HousingQ::printInfo() {
-    std::cout << "Case 4 PRINTPERSON\n";
+    std::cout << "Look up a person.\n";
     std::cout << "Enter the persons social security number to search for: ";
     std::string PNr, tmp;
     int tmpCount=0;
@@ -162,6 +167,7 @@ void HousingQ::printInfo() {
 }
 
 void HousingQ::removePerson() {
+    std::cout << "Delete a person.\n";
     std::cout << "Enter the persons social security number to search for: ";
     std::string PNr, tmp;
     int tmpCount=0;
@@ -176,8 +182,8 @@ void HousingQ::removePerson() {
         if (PNr == tmp) {
             printPerson(p);
             if (list.del(p)) {
-                std::cout << "Placement: " << tmpCount << std::endl;
-                std::cout << "tmp: " << tmp << " PNr: " << PNr << std::endl;
+                std::cout << "Person deleted." << std::endl;
+                amt--;
                 break;
             }
         }
