@@ -37,13 +37,13 @@ void Names::setLastName(std::string pLastName)
 // Gets first name
 std::string Names::getFirstName() const
 {
-    return firstName;
+    return "Firstname: "+firstName;
 }
 
 // Gets last name
 std::string Names::getLastName() const
 {
-    return lastName;
+    return "Surname: "+lastName;
 }
 
 // Prints class names

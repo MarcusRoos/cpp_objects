@@ -90,6 +90,6 @@ public:
 */
     std::string getFileName() const;
 
-} // End of class PersonList definition
+}; // End of class PersonList definition
 
 #endif //DT019G_PERSONLIST_H

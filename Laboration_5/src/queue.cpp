@@ -40,7 +40,7 @@ QIterator QIterator::operator++(int) {
 }
 
 bool QIterator::operator!=(const QIterator &qi) const {
-    return *this != qi;
+    return node != qi.node;
 }
 
 QList::~QList() {

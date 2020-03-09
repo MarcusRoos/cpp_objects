@@ -53,7 +53,7 @@ public:
 * @param None.
 * @return personNumber.
 */
-    std::string getPersonNumber() const;
+    std::string getPersonNumber(std::string string) const;
 
 /**
 * Returns value for class member shoeSize
@@ -69,7 +69,7 @@ public:
 * @param None.
 * @return name.
 */
-    Names getNames() const;
+    Names getNames(std::string string) const;
 
 /**
 * Returns value for class member address
@@ -77,7 +77,7 @@ public:
 * @param None.
 * @return address.
 */
-    Address getAddress() const;
+    Address getAddress(std::string string) const;
 
 /**
 * Sets value for class member personNumber

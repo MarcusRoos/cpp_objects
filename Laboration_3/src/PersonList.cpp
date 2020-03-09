@@ -76,7 +76,7 @@ void PersonList::sortByName(){
 void PersonList::sortByNr(){
     sort(personList.begin(), personList.end(),
             [](const Person& a, const Person& b) {
-        return a.getPersonNumber() < b.getPersonNumber();
+        return a.getPersonNumber(std::__cxx11::string()) < b.getPersonNumber(std::__cxx11::string());
     });
 }
 

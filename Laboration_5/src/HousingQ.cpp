@@ -110,26 +110,28 @@ void HousingQ::addPerson() {
 void HousingQ::offerHousing() {
     std::cout << "Case 2 OFFER\n";
     Item person;
-    if (list.deque(person)) {
-        std::cout << "House offered to next person in queue\n";
-        std::cout << "**********************************************\n";
-        std::cout << "----------------------------------------------\n";
-        printPerson(person);
-        std::cout << "----------------------------------------------\n";
-        std::cout << "Person was offered housing\n";
-    }
-    else
-        std::cout << std::endl << "Queue is empty! \n";
+        if (list.deque(person)) {
+            std::cout << "House offered to next person in queue\n";
+            std::cout << "**********************************************\n";
+            std::cout << "----------------------------------------------\n";
+            printPerson(person);
+            std::cout << "----------------------------------------------\n";
+            std::cout << "Person was offered housing\n";
+            amt--;
+        } else
+            std::cout << std::endl << "Queue is empty! \n";
 }
 
 void HousingQ::printHouses() {
     std::cout << "Case 3 PRINTHOUSE\n";
+    std::cout << "The housing queue contains " << amt << " persons.\n";
+    for (QIterator p = list.begin(); p != list.end(); p++){
+        printPerson(*p);
+        std::cout << "test# " << amt << " " << std::endl;
+    }
 }
 
 void HousingQ::printInfo() {
-    Item item;
-    printPerson(item);
-    std::cout << list.isEmpty();
     std::cout << "Case 4 PRINTPERSON\n";
 }
 
