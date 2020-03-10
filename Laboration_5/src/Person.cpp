@@ -92,7 +92,7 @@ void printPerson(Person const &Person)
     cout << "Social Security Number: " << Person.getPersonNumber();
     cout << "Shoe size: " << Person.getShoeSize() << endl;
     std::cout << "----------------------------------------------\n";
-}
+} 
 
 // Defines operator <<, used for out stream
 std::ostream &operator<<(std::ostream &os, const Person &person){
