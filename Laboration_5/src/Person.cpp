@@ -92,7 +92,7 @@ void printPerson(Person const &Person)
     cout << "Social Security Number: " << Person.getPersonNumber();
     cout << "Shoe size: " << Person.getShoeSize() << endl;
     std::cout << "----------------------------------------------\n";
-} 
+}
 
 // Defines operator <<, used for out stream
 std::ostream &operator<<(std::ostream &os, const Person &person){
@@ -123,7 +123,7 @@ std::istream &operator>>(std::istream &is, Person &person){
     getline(is,tmpString,'|');
     person.setNames(tmpNames);
     person.setAddress(tmpAddress);
-    tmpString += '\n';
+    tmpString += '|';
     person.setPersonNumber(tmpString);
     int tmpInt;
     is >> tmpInt;
