@@ -9,12 +9,23 @@
 #include "HousingQ.h"
 #include "Management.h"
 #include <algorithm>
-
+/**
+The default constructor, will initialize amt by 0, and filename blank.
+*/
 HousingQ::HousingQ() {
     amt=0;
     filename="";
 }
-
+/**
+The run function, the user will be prompted to insert a filename, if said
+ file name exists the file will be loaded in using the overloaded >> operator
+ from the Person class. If the file does not exist it will be created.
+ Afterwards the run function will call a menu where the user will be presented
+ by a list of tasks the program may perform. Depending on what the user insert
+ the value will be sent back from the menu into a local variable and call
+ the appropriate switch case. Within the case the relevant function will be
+ called.
+*/
 void HousingQ::run() {
     Item database;
     std::cout << "Enter a filename to load/save the housing queue to: ";
@@ -67,6 +78,15 @@ void HousingQ::run() {
     }while(choice!=0);
 }
 
+/**
+Function addPerson(), will allow a person to enter a persons credentials to
+ be added to the list. The function is a copy paste from the previous
+ "laboration 3" with only minor tweaks to cater to the needs of a list instead
+ of a vector. All relevant user input will be validated, and if not valid will
+ enter a loop until input is acceptable. For each person added the amt
+ member of HousingQ will increase by 1 to accommodate for a new node spawning
+ inside the list.
+*/
 void HousingQ::addPerson() {
     using namespace std;
     cout << "Add a person.\n";
@@ -120,6 +140,12 @@ void HousingQ::addPerson() {
     cout << "Person added successfully!\n";
 }
 
+/**
+Function offerHousing() will offer a first person in the queue a house.
+ If the list is empty the function will inform the user, otherwise it will
+ call another function to deque the first person in the queue and inform the
+ user which person got a house.
+*/
 void HousingQ::offerHousing() {
     std::cout << "Offer housing.\n";
     Item person;
@@ -133,6 +159,12 @@ void HousingQ::offerHousing() {
             std::cout << std::endl << "The list is empty!\n";
 }
 
+/**
+Function printHouses(), will print the entire list of persons currently
+ in the housing queue, if the queue is empty the user will be informed.
+ Otherwise every single person in the queue will be printed with all
+ their information as well as their placement within the queue.
+*/
 void HousingQ::printHouses() {
     std::cout << "Print information.\n";
     std::cout << "The housing queue contains " << amt << " persons.\n";
@@ -146,6 +178,13 @@ void HousingQ::printHouses() {
     }
 }
 
+/**
+Function printInfo(), will look a specific person in the queue, the user will
+ be asked to enter a social security number as search key. If a match is
+ found the information about this person will be printed on the screen as well
+ as their placement in the queue. If the queue is empty the user will be
+ informed.
+*/
 void HousingQ::printInfo() {
     std::cout << "Look up a person.\n";
     std::cout << "Enter the persons social security number to search for: ";
@@ -166,6 +205,14 @@ void HousingQ::printInfo() {
     }
 }
 
+/**
+Function removePerson(), will remove a specific person from the queue. The
+ user will be asked to enter a persons social security number and if
+  a match is found the person will be deleted from the queue regardless of
+  their current placement. If the list is empty the user will be informed,
+  otherwise the person whose social security number was previously
+  entered will be deleted and the user will be informed.
+*/
 void HousingQ::removePerson() {
     std::cout << "Delete a person.\n";
     std::cout << "Enter the persons social security number to search for: ";
@@ -190,6 +237,11 @@ void HousingQ::removePerson() {
     }
 }
 
+/**
+Function save(), will save the current queue to the computer using the
+ overloaded >> operator from the Person class. Filename will be determined
+ depending on what the user entered at the start of the program.
+*/
 void HousingQ::save() {
     std::cout << "File \"" << filename << "\" has been saved\n";
     std::ofstream outFile(filename, std::ios::out);
@@ -199,6 +251,13 @@ void HousingQ::save() {
     outFile.close();
 }
 
+/**
+Function Menu(), prints a menu for the user to see what they are selecting,
+ requests an input in form of an integer from the user which will be
+ validated. If the number is not within the interval 0<6 the user
+ will be informed and requested to try again. Once an acceptable integer
+ has been entered the menu will return this value.
+*/
 int HousingQ::Menu() {
     using namespace std;
     cout << "**********************************************\n";
