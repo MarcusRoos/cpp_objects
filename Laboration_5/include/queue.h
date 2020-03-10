@@ -15,11 +15,47 @@ class QIterator{
 private:
     Node *node;
 public:
+    /**
+* Constructor of the class QIterator
+* Default constructor
+* @param None.
+* @return None.
+*/
     QIterator();
+    /**
+* Constructor of the class QList
+* Initializing constructor
+* @param None.
+* @return None.
+*/
     QIterator(Node *n);
+    /**
+* Overloads the operator *
+*
+* @param None.
+* @return Reference to an object of type Item.
+*/
     Item &operator*() const;
+    /**
+* Overloads the operator ++ (prefix)
+* Increases counter by 1 before action is done
+* @param None.
+* @return None.
+*/
     QIterator &operator++();
+    /**
+* Overloads the operator ++ (postfix)
+* Increases counter by 1 after action is done
+* @param Integer.
+* @return None.
+*/
     QIterator operator++(int);
+    /**
+* Overloads the operator !=
+* Returns true if both objects arent matching
+* @param Constant reference to QIterator
+* @return True/False
+*/
     bool operator!=(const QIterator &qi) const;
 };
 
