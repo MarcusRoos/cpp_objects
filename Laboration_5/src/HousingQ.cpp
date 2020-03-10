@@ -100,7 +100,7 @@ void HousingQ::addPerson() {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> tmpNr;
     }
-    tmpNr += '\n';
+    tmpNr += '|';
     std::cout << "Enter the persons shoe size.\n";
     int tmpSize=0;
     std::cin.clear();
@@ -184,7 +184,7 @@ void HousingQ::removePerson() {
             if (list.del(p)) {
                 std::cout << "Person deleted." << std::endl;
                 amt--;
-                break;
+                return;
             }
         }
     }
