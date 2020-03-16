@@ -2,7 +2,7 @@
 aux_source_directory(src/ SOURCES)
 
 # Create executable for the run configuration
-add_executable(${PROJECT_NAME}-Project ${SOURCES})
+add_executable(${PROJECT_NAME}-Project ${SOURCES} src/Management.cpp include/Management.h src/Song.cpp include/Song.h src/Time.cpp include/Time.h src/Album.cpp include/Album.h src/Jukebox.cpp include/Jukebox.h)
 
 # In order to avoid '../../../' semantics in include paths (relative), we need to add
 # target directory to the configuration

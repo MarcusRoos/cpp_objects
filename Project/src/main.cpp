@@ -1,7 +1,8 @@
-#include "Prototypes.h"
-#include "memstat.hpp"
+#include "Jukebox.h"
+//#include "memstat.hpp"
 
 int main() {
-    assignmentFunction();
+    Jukebox jukebox;
+    jukebox.run();
     return 0;
 }
