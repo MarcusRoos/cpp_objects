@@ -6,5 +6,9 @@
 
 #ifndef DT019G_JUKEBOX_H
 #define DT019G_JUKEBOX_H
-
+class Jukebox {
+private:
+    //Menu menu;
+public:
+};
 #endif //DT019G_JUKEBOX_H
