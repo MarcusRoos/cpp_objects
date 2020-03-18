@@ -15,5 +15,11 @@ private:
     std::string artist;
     Time length;
 public:
+    Song();
+    Song(std::string partist, std::string ptitle, Time length);
+    void setArtist(std::string partist);
+    void setTitle(std::string ptitle);
+    std::string getArtist() const;
+    std::string getTitle() const;
 };
 #endif //DT019G_SONG_H
