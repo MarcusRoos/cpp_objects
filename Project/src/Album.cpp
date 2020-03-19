@@ -5,3 +5,27 @@
 //
 
 #include "Album.h"
+#include <utility>
+
+void Album::setAlbum(std::string palbum) {
+    album = std::move(palbum);
+}
+
+void Album::setSong(std::vector<Song> psong) {
+    song = std::move(psong);
+}
+
+void Album::addSong(const Song& psong){
+    song.push_back(psong);
+}
+
+std::string Album::getAlbum() const {
+    return album;
+}
+
+std::vector<Song> Album::getSong() const {
+    return std::vector<Song>();
+}
+
+
+
