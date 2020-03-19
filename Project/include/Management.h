@@ -7,7 +7,8 @@
 
 #include <string>
 #include <vector>
-
+const std::string filename = "jukebox.txt";
+const char Delim = '|';
 void pauseFunction(const std::string& text);
 std::string validate(std::string input);
 std::string validateFileName(std::string input);

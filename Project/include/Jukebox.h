@@ -7,6 +7,7 @@
 #ifndef DT019G_JUKEBOX_H
 #define DT019G_JUKEBOX_H
 #include "Menu.h"
+#include "Management.h"
 class Jukebox {
 private:
     Menu menu;
