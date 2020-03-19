@@ -34,3 +34,11 @@ void Jukebox::run() {
         }
     }while(again);
 }
+
+void Jukebox::file() {
+
+}
+
+void Jukebox::print() {
+
+}

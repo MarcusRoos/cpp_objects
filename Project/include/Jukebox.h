@@ -12,6 +12,8 @@ private:
     Menu menu;
     Menu filemenu;
     Menu printmenu;
+    void file();
+    void print();
 public:
     void run();
 };
