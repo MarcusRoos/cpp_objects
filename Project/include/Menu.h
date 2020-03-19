@@ -18,9 +18,9 @@ public:
     Menu();
     Menu(std::vector<MenuItem>pmenuItem, std::string pmenuTitle);
     ~Menu()=default;
-
     void setTitle(std::string ptitle);
-    void addItem(std::string pmenuText, bool penabler);
     void printMenuItems() const;
+    int menuChoice();
+    void addItem(const std::string &pmenuText, bool penabler);
 };
 #endif //DT019G_MENU_H

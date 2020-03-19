@@ -22,7 +22,7 @@ void Menu::setTitle(std::string ptitle) {
     menuTitle = std::move(ptitle);
 }
 
-void Menu::addItem(std::string pmenuText, bool penabler) {
+void Menu::addItem(const std::string& pmenuText, bool penabler) {
    menuItem.emplace_back(pmenuText, penabler);
 }
 
@@ -35,5 +35,13 @@ void Menu::printMenuItems() const {
     cout << "***              4.  Print...                    ***\n";
     cout << "****             5.  Exit                       ****\n";
     cout << "****************************************************\n";
+}
+
+int Menu::menuChoice() {
+    using namespace std;
+    int choice;
+    cout << "Choice...";
+    cin >> choice;
+    return choice;
 }
 

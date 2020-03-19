@@ -10,6 +10,8 @@
 class Jukebox {
 private:
     Menu menu;
+    Menu filemenu;
+    Menu printmenu;
 public:
     void run();
 };
