@@ -5,3 +5,7 @@
 //
 
 #include "Jukebox.h"
+
+void Jukebox::run() {
+    menu.printMenuItems();
+}

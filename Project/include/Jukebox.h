@@ -11,5 +11,6 @@ class Jukebox {
 private:
     Menu menu;
 public:
+    void run();
 };
 #endif //DT019G_JUKEBOX_H

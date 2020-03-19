@@ -10,14 +10,14 @@ public:
 
     Time();
     Time(int pHour, int pMin=0, int pSec=0);
-
+    ~Time()=default;
     void setHour(int pHour);
     void setMin(int pMin);
-    void setSec(const int pSec);
+    void setSec(int pSec);
 
     int getHour() const { return hour; }
     int getMin() const { return min; }
-    int getMin() const { return sec; }
+    int getsec() const { return sec; }
 
 };
 

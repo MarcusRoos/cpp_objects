@@ -7,7 +7,6 @@
 
 #include <string>
 #include <vector>
-#include "Person.h"
 
 void pauseFunction(const std::string& text);
 std::string validate(std::string input);
