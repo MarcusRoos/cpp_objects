@@ -8,7 +8,6 @@
 #include <iostream>
 
 void Jukebox::run() {
-
     bool again = true;
     do
     {
@@ -23,6 +22,7 @@ void Jukebox::run() {
             case 3:
                 break;
             case 4:
+                print();
                 break;
             case 5:
                 again = false;
@@ -32,29 +32,30 @@ void Jukebox::run() {
 }
 
 void Jukebox::file() {
-    std::cout <<"**** FILE ****\n";
-    std::cout <<"1. Open\n";
-    std::cout <<"2. Save\n";
-    std::cout <<"3. Back to main menu\n";
+    filemenu.printMenuItems();
 }
 
 void Jukebox::print() {
-    std::cout <<"**** PRINT ****\n";
-    std::cout <<"1. Print one album\n";
-    std::cout <<"2. Print all sorted by album name\n";
-    std::cout <<"3. Print all sorted by album total time\n";
-    std::cout <<"4. Print simple sorted by album name\n";
-    std::cout <<"5. Print simple sroted by album total time\n";
-    std::cout <<"6. Back to main menu\n";
+    printmenu.printMenuItems();
 }
 
 Jukebox::Jukebox() {
-    menu.setTitle("Title menu");
-    filemenu.setTitle("File menu");
+    menu.setTitle("**** JUKEBOX ****");
     menu.addItem("File...", true);
     menu.addItem("Add an album", false);
     menu.addItem("Delete an album", false);
-    printmenu.setTitle("Print menu");
     menu.addItem("Print...", false);
     menu.addItem("Exit", true);
+    filemenu.setTitle("**** FILE ****");
+    filemenu.addItem("Open", true);
+    filemenu.addItem("Save", true);
+    filemenu.addItem("Back to main menu", true);
+    printmenu.setTitle("**** PRINT ****");
+    printmenu.addItem("Print one album", true);
+    printmenu.addItem("Print all sorted by album name", true);
+    printmenu.addItem("Print all sorted by album total time", true);
+    printmenu.addItem("Print simple sorted by album name", true);
+    printmenu.addItem("Print simple sorted by album total time", true);
+    printmenu.addItem("Back to main menu", true);
+
 }

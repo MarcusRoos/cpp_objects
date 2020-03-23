@@ -29,13 +29,12 @@ void Menu::addItem(const std::string& pmenuText, bool penabler) {
 void Menu::printMenuItems() const {
     using namespace std;
     int i = 0;
+    string title;
+    title = getTitle();
+    cout << title << endl;
     for (const auto& e : menuItem){
         i++;
-        cout << i << ".  " << e.getMenuText() << "  ";
-        if (e.getEnabled())
-            cout << "       Enabled\n";
-        if (!e.getEnabled())
-            cout << "       Disabled\n";
+        cout << i << ".  " << e.getMenuText() << "\n";
     }
 }
 
@@ -57,5 +56,9 @@ int Menu::menuChoice() {
     }
     if (menuItem[choice-1].getEnabled())
     return choice;
+}
+
+std::string Menu::getTitle() const {
+    return menuTitle;
 }
 
