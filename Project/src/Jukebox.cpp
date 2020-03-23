@@ -19,16 +19,12 @@ void Jukebox::run() {
                 file();
                 break;
             case 2:
-                std::cout << "Add - Disabled\n";
                 break;
             case 3:
-                std::cout << "Delete - Disabled\n";
                 break;
             case 4:
-                std::cout << "Print - Disabled\n";
                 break;
             case 5:
-                std::cout << "Exit\n";
                 again = false;
                 break;
         }
