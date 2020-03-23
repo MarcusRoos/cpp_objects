@@ -28,13 +28,15 @@ void Menu::addItem(const std::string& pmenuText, bool penabler) {
 
 void Menu::printMenuItems() const {
     using namespace std;
-    cout << "****************************************************\n";
-    cout << "****             1.  File...                    ****\n";
-    cout << "***              2.  Add an album                ***\n";
-    cout << "**               3.  Delete an album              **\n";
-    cout << "***              4.  Print...                    ***\n";
-    cout << "****             5.  Exit                       ****\n";
-    cout << "****************************************************\n";
+    int i = 0;
+    for (auto e : menuItem){
+        i++;
+        cout << i << ".  " << e.getMenuText() << "  ";
+        if (e.getEnabled())
+            cout << "       Enabled\n";
+        if (!e.getEnabled())
+            cout << "       Disabled\n";
+    }
 }
 
 int Menu::menuChoice() {
@@ -42,6 +44,11 @@ int Menu::menuChoice() {
     int choice;
     cout << "Choice...";
     cin >> choice;
+    bool test;
+    while (choice <1 || choice >5){
+        std::cout << "Wrong input.\n";
+        cin >> choice;
+    }
     return choice;
 }
 

@@ -10,12 +10,11 @@
 #include "Management.h"
 class Jukebox {
 private:
-    Menu menu;
-    Menu filemenu;
-    Menu printmenu;
+    Menu menu, filemenu, printmenu;
     void file();
     void print();
 public:
+    Jukebox();
     void run();
 };
 #endif //DT019G_JUKEBOX_H
