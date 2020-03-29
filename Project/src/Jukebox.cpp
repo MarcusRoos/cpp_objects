@@ -18,8 +18,10 @@ void Jukebox::run() {
                 file();
                 break;
             case 2:
+                addAlbum();
                 break;
             case 3:
+                deleteAlbum();
                 break;
             case 4:
                 print();
@@ -57,5 +59,19 @@ Jukebox::Jukebox() {
     printmenu.addItem("Print simple sorted by album name", true);
     printmenu.addItem("Print simple sorted by album total time", true);
     printmenu.addItem("Back to main menu", true);
+}
 
+void Jukebox::addAlbum() {
+    using namespace std;
+    cout << "Enter albums name: " << endl;
+    string tmpAlbum;
+    cin >> tmpAlbum;
+    cout << "Enter name of the song: " << endl;
+    string tmpSong;
+    cin >> tmpSong;
+    //albumList.push_back(album);
+}
+
+void Jukebox::deleteAlbum() {
+    std::cout << "I delete" << std::endl;
 }

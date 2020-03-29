@@ -8,11 +8,15 @@
 #define DT019G_JUKEBOX_H
 #include "Menu.h"
 #include "Management.h"
+#include "Album.h"
 class Jukebox {
 private:
     Menu menu, filemenu, printmenu;
+    std::vector <Album> albumList;
     void file();
     void print();
+    void addAlbum();
+    void deleteAlbum();
 public:
     Jukebox();
     void run();

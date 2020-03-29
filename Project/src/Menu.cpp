@@ -61,4 +61,3 @@ int Menu::menuChoice() {
 std::string Menu::getTitle() const {
     return menuTitle;
 }
-
