@@ -39,9 +39,9 @@ void Jukebox::file() {
 
 void Jukebox::print() {
     printmenu.printMenuItems();
-    for (auto e : albumList){
+    for (const auto& e : albumList){
         std::cout << "ALBUM: " << e.getAlbum() << std::endl;
-        for (auto f : e.getSong()){
+        for (const auto& f : e.getSong()){
             std::cout << "ARTIST: " << f.getArtist() << std::endl;
             std::cout << "SONG: " << f.getTitle() << std::endl;
         }
