@@ -26,19 +26,19 @@ void Song::setTitle(std::string ptitle)
     title = std::move(ptitle);
 }
 
-// Sets last name
+// Sets artist
 void Song::setArtist(std::string partist)
 {
     artist = std::move(partist);
 }
 
-// Gets first name
+// Gets title
 std::string Song::getTitle() const
 {
     return title;
 }
 
-// Gets last name
+// Gets artist
 std::string Song::getArtist() const
 {
     return artist;

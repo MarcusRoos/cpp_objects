@@ -24,7 +24,7 @@ std::string Album::getAlbum() const {
 }
 
 std::vector<Song> Album::getSong() const {
-    return std::vector<Song>();
+    return song;
 }
 
 

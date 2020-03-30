@@ -14,7 +14,6 @@ public:
     void setHour(int pHour);
     void setMin(int pMin);
     void setSec(int pSec);
-
     int getHour() const { return hour; }
     int getMin() const { return min; }
     int getsec() const { return sec; }

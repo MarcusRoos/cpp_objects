@@ -9,6 +9,7 @@
 #include "Menu.h"
 #include "Management.h"
 #include "Album.h"
+#include <vector>
 class Jukebox {
 private:
     Menu menu, filemenu, printmenu;

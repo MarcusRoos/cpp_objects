@@ -16,7 +16,7 @@ std::vector<Song>song;
 public:
     void setAlbum(std::string palbum);
     void setSong(std::vector<Song> psong);
-    void addSong(const Song &psong);
+    void addSong(const Song& psong);
     std::vector<Song> getSong() const;
     std::string getAlbum() const;
 };
