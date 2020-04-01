@@ -23,7 +23,6 @@ private:
     void printAllTime();
     void printSimpleName();
     void printSimpleTime();
-
 public:
     Jukebox();
     void run();

@@ -116,17 +116,16 @@ void Jukebox::addAlbum() {
     std::vector <Song> song;
     cout << "Enter albums name: " << endl;
     string tmpalbum, tmpartist, tmpsong;
-    cin >> tmpalbum;
+    std::getline(std::cin >> std::ws, tmpalbum);
     album.setAlbum(tmpalbum);
     cout << "Enter name of the artist: " << endl;
-    std::getline(std::cin,tmpartist);
-    cin >> tmpartist;
-    int count=0, length=0;
+    std::getline(std::cin >> std::ws, tmpartist);
+    tmpSong.setArtist(tmpartist);
+    int length=0;
     bool loop=true;
     do {
-        count++;
         cout << "Enter name of the song: " << endl;
-        cin >> tmpsong;
+        std::getline(std::cin >> std::ws, tmpsong);
         cout << "Enter the songs length in seconds: " << endl;
         cin >> length;
         cout << "Add another song to album " << tmpalbum << "? (1/0)\n";
@@ -145,9 +144,9 @@ void Jukebox::deleteAlbum() {
 void Jukebox::printOne() {
     std::cout << "Enter name of album to search for\n";
     std::string albumName;
-    std::cin >> albumName;
-    for (const auto& i : albumList)
-        if (albumName == i.getAlbum()){
+    std::getline(std::cin >> std::ws, albumName);
+    auto it = find_if(albumList.begin(), albumList.end(), [&albumName](const Album& a) {return a.getAlbum() == albumName;});
+        if (it != albumList.end()){
         int count=0;
         std::cout << "No.  Title                          Artist          Length\n";
         std::cout << "============================================================\n";
