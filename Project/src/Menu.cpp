@@ -50,7 +50,7 @@ int Menu::menuChoice() {
         for (auto& e : menuItem)
             e.setEnabled(true);
     }
-    while (choice <1 || choice >5){
+    while (choice <1 || choice >6){
         std::cout << "Wrong input.\n";
         cin >> choice;
     }

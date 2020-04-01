@@ -7,6 +7,7 @@
 #include "Jukebox.h"
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 void Jukebox::run() {
     bool again = true;
@@ -39,21 +40,53 @@ void Jukebox::file() {
 }
 
 void Jukebox::print() {
-    printmenu.printMenuItems();
+    bool again = true;
+    do
+    {
+        printmenu.printMenuItems();
+        switch(printmenu.menuChoice())
+        {
+            case 1:
+                std::cout << "Print one album\n";
+                printOne();
+                break;
+            case 2:
+                std::cout << "Print all sorted by album name\n";
+                printAllByName();
+                break;
+            case 3:
+                std::cout << "Print all sorted by album total time\n";
+                printAllTime();
+                break;
+            case 4:
+                std::cout << "Print simple sorted by album name\n";
+                printSimpleName();
+                break;
+            case 5:
+                std::cout << "Print simple sorted by album total time\n";
+                printSimpleTime();
+                break;
+            case 6:
+                again = false;
+                std::cout << "Back to main menu\n";
+                break;
+        }
+    }while(again);
+    /*
     int count=0;
-    std::cout << "No.    Title                          Artist          Length\n";
+    std::cout << "No.  Title                          Artist          Length\n";
     std::cout << "============================================================\n";
     for (const auto& e : albumList){
         for (const auto& f : e.getSong()){
             count++;
-            std::cout << std::left << std::setw(7) << count;
+            std::cout << std::left << std::setw(5) << count;
             std::cout << std::left << std::setw(31) << f.getTitle();
             std::cout << std::left<< std::setw(16) <<f.getArtist();
             std::cout << std::left << f.getMin() << ":"<<
             std::setw(2) << std::setfill('0') << std::right << f.getSec() <<  std::endl;
             std::cout << std::setfill(' ');
         }
-    } 
+    }*/
 }
 
 Jukebox::Jukebox() {
@@ -82,12 +115,12 @@ void Jukebox::addAlbum() {
     Song tmpSong;
     std::vector <Song> song;
     cout << "Enter albums name: " << endl;
-    string tmpAlbum, tmpartist, tmpsong;
-    cin >> tmpAlbum;
-    album.setAlbum(tmpAlbum);
+    string tmpalbum, tmpartist, tmpsong;
+    cin >> tmpalbum;
+    album.setAlbum(tmpalbum);
     cout << "Enter name of the artist: " << endl;
+    std::getline(std::cin,tmpartist);
     cin >> tmpartist;
-    tmpSong.setArtist(tmpartist);
     int count=0, length=0;
     bool loop=true;
     do {
@@ -96,7 +129,7 @@ void Jukebox::addAlbum() {
         cin >> tmpsong;
         cout << "Enter the songs length in seconds: " << endl;
         cin >> length;
-        cout << "Add another song to album " << tmpAlbum << "? (1/0)\n";
+        cout << "Add another song to album " << tmpalbum << "? (1/0)\n";
         cin >> loop;
         tmpSong.setLength(length);
         tmpSong.setTitle(tmpsong);
@@ -107,4 +140,44 @@ void Jukebox::addAlbum() {
 
 void Jukebox::deleteAlbum() {
     std::cout << "I delete" << std::endl;
+}
+
+void Jukebox::printOne() {
+    std::cout << "Enter name of album to search for\n";
+    std::string albumName;
+    std::cin >> albumName;
+    for (const auto& i : albumList)
+        if (albumName == i.getAlbum()){
+        int count=0;
+        std::cout << "No.  Title                          Artist          Length\n";
+        std::cout << "============================================================\n";
+        for (const auto& e : albumList) {
+            for (const auto &f : e.getSong()) {
+                count++;
+                std::cout << std::left << std::setw(5) << count;
+                std::cout << std::left << std::setw(31) << f.getTitle();
+                std::cout << std::left << std::setw(16) << f.getArtist();
+                std::cout << std::left << f.getMin() << ":" <<
+                          std::setw(2) << std::setfill('0') << std::right
+                          << f.getSec() << std::endl;
+                std::cout << std::setfill(' ');
+            }
+        }
+    }
+}
+
+void Jukebox::printAllByName() {
+
+}
+
+void Jukebox::printAllTime() {
+
+}
+
+void Jukebox::printSimpleName() {
+
+}
+
+void Jukebox::printSimpleTime() {
+
 }

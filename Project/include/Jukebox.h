@@ -18,6 +18,12 @@ private:
     void print();
     void addAlbum();
     void deleteAlbum();
+    void printOne();
+    void printAllByName();
+    void printAllTime();
+    void printSimpleName();
+    void printSimpleTime();
+
 public:
     Jukebox();
     void run();
