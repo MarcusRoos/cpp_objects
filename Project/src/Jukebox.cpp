@@ -53,7 +53,7 @@ void Jukebox::print() {
             std::setw(2) << std::setfill('0') << std::right << f.getSec() <<  std::endl;
             std::cout << std::setfill(' ');
         }
-    }
+    } 
 }
 
 Jukebox::Jukebox() {
