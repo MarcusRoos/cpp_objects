@@ -6,6 +6,7 @@
 
 #include "Jukebox.h"
 #include <iostream>
+#include <iomanip>
 
 void Jukebox::run() {
     bool again = true;
@@ -39,11 +40,18 @@ void Jukebox::file() {
 
 void Jukebox::print() {
     printmenu.printMenuItems();
+    int count=0;
+    std::cout << "No.    Title                          Artist          Length\n";
+    std::cout << "============================================================\n";
     for (const auto& e : albumList){
-        std::cout << "ALBUM: " << e.getAlbum() << std::endl;
         for (const auto& f : e.getSong()){
-            std::cout << "ARTIST: " << f.getArtist() << std::endl;
-            std::cout << "SONG: " << f.getTitle() << std::endl;
+            count++;
+            std::cout << std::left << std::setw(7) << count;
+            std::cout << std::left << std::setw(31) << f.getTitle();
+            std::cout << std::left<< std::setw(18) <<f.getArtist();
+            std::cout << f.getMin() << ":"<<
+            std::setw(2) << std::setfill('0') << std::right << f.getSec() <<  std::endl;
+            std::cout << std::setfill(' ');
         }
     }
 }
@@ -86,10 +94,11 @@ void Jukebox::addAlbum() {
         count++;
         cout << "Enter name of the song: " << endl;
         cin >> tmpsong;
-        cout << "Enter length of the song in seconds: " << endl;
+        cout << "Enter the songs length in seconds: " << endl;
         cin >> length;
         cout << "Add another song to album " << tmpAlbum << "? (1/0)\n";
         cin >> loop;
+        tmpSong.setLength(length);
         tmpSong.setTitle(tmpsong);
         album.addSong(tmpSong);
     }while(loop);

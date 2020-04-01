@@ -26,6 +26,10 @@ std::string Album::getAlbum() const {
 std::vector<Song> Album::getSong() const {
     return song;
 }
-
+/*
+bool Album::operator<(const Song &a) const {
+    return (a.*60 + min*60 + sec) < (a.hour*60 + a.min*60 + sec);
+}
+*/
 
 

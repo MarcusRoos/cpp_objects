@@ -7,19 +7,24 @@
 #ifndef DT019G_SONG_H
 #define DT019G_SONG_H
 #include <string>
-#include "Time.h"
+#include "Length.h"
 
 class Song {
 private:
     std::string title;
     std::string artist;
-    Time length;
+    Length length;
 public:
     Song();
-    Song(std::string partist, std::string ptitle, Time length);
+    Song(std::string partist, std::string ptitle, Length length);
     void setArtist(std::string partist);
     void setTitle(std::string ptitle);
+    void setLength(int plength);
     std::string getArtist() const;
     std::string getTitle() const;
+    int getLength() const;
+    int getHour() const;
+    int getMin() const;
+    int getSec() const;
 };
 #endif //DT019G_SONG_H

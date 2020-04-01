@@ -11,14 +11,15 @@ Song::Song()
 {
     artist = "";
     title = "";
+    length = Length(0, 0, 0);
 }
 
 // Initilizing constructor
-Song::Song(std::string partist, std::string ptitle, Time plength)
+Song::Song(std::string partist, std::string ptitle, Length plength)
 {
     artist = std::move(partist);
     title = std::move(ptitle);
-    length = plength;
+    length = Length(plength);
 }
 
 void Song::setTitle(std::string ptitle)
@@ -32,6 +33,22 @@ void Song::setArtist(std::string partist)
     artist = std::move(partist);
 }
 
+void Song::setLength(int ptitle) {
+    while (ptitle>3600){
+        int i=0;
+        i++;
+        length.setHour(i);
+        ptitle = ptitle-3600;
+    }
+    while (ptitle>60){
+        int i=0;
+        i++;
+        length.setMin(i);
+        ptitle = ptitle-60;
+    }
+    length.setSec(ptitle);
+}
+
 // Gets title
 std::string Song::getTitle() const
 {
@@ -43,3 +60,20 @@ std::string Song::getArtist() const
 {
     return artist;
 }
+
+int Song::getLength() const {
+    return length.getHour() && length.getMin() && length.getSec();
+}
+
+int Song::getHour() const {
+    return length.getHour();
+}
+
+int Song::getMin() const {
+    return length.getMin();
+}
+
+int Song::getSec() const {
+    return length.getSec();
+}
+

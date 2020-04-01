@@ -19,6 +19,7 @@ public:
     void addSong(const Song& psong);
     std::vector<Song> getSong() const;
     std::string getAlbum() const;
+  //  bool operator < (const Song& a) const;
 };
 
 #endif //DT019G_ALBUM_H
