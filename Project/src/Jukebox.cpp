@@ -48,8 +48,8 @@ void Jukebox::print() {
             count++;
             std::cout << std::left << std::setw(7) << count;
             std::cout << std::left << std::setw(31) << f.getTitle();
-            std::cout << std::left<< std::setw(18) <<f.getArtist();
-            std::cout << f.getMin() << ":"<<
+            std::cout << std::left<< std::setw(16) <<f.getArtist();
+            std::cout << std::left << f.getMin() << ":"<<
             std::setw(2) << std::setfill('0') << std::right << f.getSec() <<  std::endl;
             std::cout << std::setfill(' ');
         }
