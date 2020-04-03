@@ -41,3 +41,32 @@ Length Length::operator + (const Length& a) const
     sum.sec %= 60;
     return sum;
 }
+
+std::ostream &operator<<(std::ostream &os, const Length &length){
+    os << length.getHour() << '|' << length.getMin() << '|' << length.getSec();
+
+    return os;
+}
+
+// Defines operator >>, used for in stream
+std::istream &operator>>(std::istream &is, Length &length){
+    std::string tmpString;
+    getline(is,tmpString,'|');
+    int tmpInt=0;
+    is >> tmpInt;
+    is.get();
+    int i=1;
+    while (tmpInt>=3600){
+        length.setHour(i);
+        tmpInt = tmpInt-3600;
+        i++;
+    }
+    i=1;
+    while (tmpInt>=60){
+        length.setMin(i);
+        tmpInt = tmpInt-60;
+        i++;
+    }
+    length.setSec(tmpInt);
+    return is;
+}

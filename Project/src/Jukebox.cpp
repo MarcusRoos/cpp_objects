@@ -43,10 +43,10 @@ void Jukebox::file() {
         switch(filemenu.menuChoice())
         {
             case 1:
-                // Reads from file
+                open();
                 break;
             case 2:
-                // Saves to file
+                save();
                 break;
             case 3:
             default:
@@ -186,4 +186,24 @@ void Jukebox::printSimpleName() {
 
 void Jukebox::printSimpleTime() {
 
+}
+
+void Jukebox::open() {
+    using namespace std;
+    ifstream inFile(filename, ios::in);
+    albumList.clear();
+    Album tmpAlbum;
+    while (inFile >> tmpAlbum) {
+        albumList.push_back(tmpAlbum);
+    }
+    inFile.close();
+}
+
+void Jukebox::save() {
+    using namespace std;
+    ofstream outFile(filename, ios::out);
+    for (const auto& album : albumList) {
+        outFile << album << endl;
+    }
+    outFile.close();
 }

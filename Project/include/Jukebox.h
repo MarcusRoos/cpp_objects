@@ -9,6 +9,7 @@
 #include "Menu.h"
 #include "Management.h"
 #include "Album.h"
+#include <fstream>
 #include <vector>
 class Jukebox {
 private:
@@ -23,6 +24,8 @@ private:
     void printAllTime();
     void printSimpleName();
     void printSimpleTime();
+    void open();
+    void save();
 public:
     Jukebox();
     void run();

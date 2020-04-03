@@ -77,3 +77,25 @@ int Song::getSec() const {
     return length.getSec();
 }
 
+std::ostream &operator<<(std::ostream &os, const Song &song){
+    os << song.getLength();
+    os << song.getTitle();
+    os << song.getArtist();
+    return os;
+}
+
+/** Defines operator >>, used for in stream, will go through string until
+ * it finds a '|', will then set the class object and keep searching the
+ * string. **/
+std::istream &operator>>(std::istream &is, Song &song){
+    std::string tmpString;
+    getline(is,tmpString,'|');
+    song.setTitle(tmpString);
+    getline(is,tmpString,'|');
+    song.setArtist(tmpString);
+    int tmpInt=0;
+    is >> tmpInt;
+    is.get();
+    song.setLength(tmpInt);
+    return is;
+}
