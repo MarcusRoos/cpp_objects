@@ -165,7 +165,6 @@ void Jukebox::printOne() {
                 std::cout << std::left << f.getMin() << ":" <<
                           std::setw(2) << std::setfill('0') << std::right
                           << f.getSec() << std::endl;
-                std::cout << std::left << " TEST TIMME: " << f.getHour() << std::endl;
                 std::cout << std::setfill(' ');
             }
         }
