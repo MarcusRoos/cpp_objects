@@ -20,8 +20,9 @@ public:
     void addSong(const Song& psong);
     std::vector<Song> getSong() const;
     std::string getAlbum() const;
-    bool operator < (const Song& a) const;
+    bool operator < (const Album& a) const;
 };
 std::ostream &operator<<(std::ostream &os, const Album &album);
 std::istream &operator>>(std::istream &is, Album &album);
+
 #endif //DT019G_ALBUM_H

@@ -27,8 +27,8 @@ std::vector<Song> Album::getSong() const {
     return song;
 }
 
-bool Album::operator<(const Song &a) const {
-    return a.getLength() < a.getLength();
+bool Album::operator<(const Album &a) const {
+    return false;
 }
 
 std::ostream &operator<<(std::ostream &os, const Album &album){
@@ -42,7 +42,7 @@ std::ostream &operator<<(std::ostream &os, const Album &album){
 }
 
 /** Defines operator >>, used for in stream, will go through string until
- * it finds a '|', will then set the class object and keep searching the
+ * it finds deliminator, will then set the class object and keep searching the
  * string. **/
 std::istream &operator>>(std::istream &is, Album &album){
     std::string tmpString;

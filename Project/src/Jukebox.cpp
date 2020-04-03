@@ -107,7 +107,7 @@ Jukebox::Jukebox() {
     printmenu.addItem("Print one album", true);
     printmenu.addItem("Print all sorted by album name", true);
     printmenu.addItem("Print all sorted by album total time", true);
-    printmenu.addItem("Print simple sorted by album name", true);
+    printmenu.addItem("Print simple sorted by album name ALSO TEST", true);
     printmenu.addItem("Print simple sorted by album total time", true);
     printmenu.addItem("Back to main menu", true);
 }
@@ -176,11 +176,44 @@ void Jukebox::printAllByName() {
 }
 
 void Jukebox::printAllTime() {
-
+    std::sort(albumList.begin(), albumList.end());
+    int count=0;
+    std::cout << "No.  Title                          Artist          Length\n";
+    std::cout << "============================================================\n";
+    for (const auto& e : albumList) {
+        for (const auto &f : e.getSong()) {
+            count++;
+            std::cout << std::left << std::setw(5) << count;
+            std::cout << std::left << std::setw(31) << f.getTitle();
+            std::cout << std::left << std::setw(16) << f.getArtist();
+            if (f.getHour()>=1)
+                std::cout << std::left << f.getHour() << ":";
+            std::cout << std::left << f.getMin() << ":" <<
+                      std::setw(2) << std::setfill('0') << std::right
+                      << f.getSec() << std::endl;
+            std::cout << std::setfill(' ');
+        }
+    }
 }
 
 void Jukebox::printSimpleName() {
-
+    int count=0;
+    std::cout << "No.  Title                          Artist          Length\n";
+    std::cout << "============================================================\n";
+    for (const auto& e : albumList) {
+        for (const auto &f : e.getSong()) {
+            count++;
+            std::cout << std::left << std::setw(5) << count;
+            std::cout << std::left << std::setw(31) << f.getTitle();
+            std::cout << std::left << std::setw(16) << f.getArtist();
+            if (f.getHour()>=1)
+                std::cout << std::left << f.getHour() << ":";
+            std::cout << std::left << f.getMin() << ":" <<
+                      std::setw(2) << std::setfill('0') << std::right
+                      << f.getSec() << std::endl;
+            std::cout << std::setfill(' ');
+        }
+    }
 }
 
 void Jukebox::printSimpleTime() {
@@ -189,7 +222,7 @@ void Jukebox::printSimpleTime() {
 
 void Jukebox::open() {
     using namespace std;
-    ifstream inFile(filename, ios::in);
+    ifstream inFile(filename, ios::app);
     albumList.clear();
     Album tmpAlbum;
     while (inFile >> tmpAlbum) {
