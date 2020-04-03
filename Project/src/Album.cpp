@@ -30,5 +30,3 @@ std::vector<Song> Album::getSong() const {
 bool Album::operator<(const Song &a) const {
     return a.getLength() < a.getLength();
 }
-
-

@@ -22,5 +22,6 @@ public:
     std::string getAlbum() const;
     bool operator < (const Song& a) const;
 };
-
+std::ostream &operator<<(std::ostream &os, const Album &album);
+std::istream &operator>>(std::istream &is, Album &album);
 #endif //DT019G_ALBUM_H

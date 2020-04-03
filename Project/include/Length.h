@@ -1,7 +1,6 @@
-
 #ifndef DT019G_LENGTH_H
 #define DT019G_LENGTH_H
-
+#include <iostream>
 class Length {
 private:
     int hour, min, sec;
@@ -21,5 +20,6 @@ public:
     Length operator + (const Length& a) const;
     bool operator < (const Length& a) const;
 };
-
+std::ostream &operator<<(std::ostream &os, const Length &length);
+std::istream &operator>>(std::istream &is, Length &length);
 #endif

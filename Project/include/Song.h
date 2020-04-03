@@ -27,4 +27,6 @@ public:
     int getMin() const;
     int getSec() const;
 };
+std::ostream &operator<<(std::ostream &os, const Song &song);
+std::istream &operator>>(std::istream &is, Song &song);
 #endif //DT019G_SONG_H
