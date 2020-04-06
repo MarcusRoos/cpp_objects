@@ -54,7 +54,7 @@ std::istream &operator>>(std::istream &is, Album &album){
     is >> amount;
     std::cout << "AMOUNT " << amount << std::endl;
     getline(is,tmpString,'\n');
-    while (i<amount) {
+    do{
         int tmpInt=0;
         getline(is, tmpString, '|');
         tmpSong.setTitle(tmpString);
@@ -68,7 +68,8 @@ std::istream &operator>>(std::istream &is, Album &album){
         std::cout << "H: " << tmpSong.getHour();
         std::cout << " M: " << tmpSong.getMin();
         std::cout << " S" << tmpSong.getSec() << std::endl;
+        album.addSong(tmpSong);
         i++;
-    }
+    }while(i<amount);
     return is;
 }
