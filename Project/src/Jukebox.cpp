@@ -156,16 +156,18 @@ void Jukebox::printOne() {
         std::cout << "============================================================\n";
         for (const auto& e : albumList) {
             for (const auto &f : e.getSong()) {
-                count++;
-                std::cout << std::left << std::setw(5) << count;
-                std::cout << std::left << std::setw(31) << f.getTitle();
-                std::cout << std::left << std::setw(16) << f.getArtist();
-                if (f.getHour()>=1)
-                    std::cout << std::left << f.getHour() << ":";
-                std::cout << std::left << f.getMin() << ":" <<
-                          std::setw(2) << std::setfill('0') << std::right
-                          << f.getSec() << std::endl;
-                std::cout << std::setfill(' ');
+                if (albumName == e.getAlbum()) {
+                    count++;
+                    std::cout << std::left << std::setw(5) << count;
+                    std::cout << std::left << std::setw(31) << f.getTitle();
+                    std::cout << std::left << std::setw(16) << f.getArtist();
+                    if (f.getHour() >= 1)
+                        std::cout << std::left << f.getHour() << ":";
+                    std::cout << std::left << f.getMin() << ":" <<
+                              std::setw(2) << std::setfill('0') << std::right
+                              << f.getSec() << std::endl;
+                    std::cout << std::setfill(' ');
+                }
             }
         }
     }
