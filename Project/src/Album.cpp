@@ -46,24 +46,29 @@ std::ostream &operator<<(std::ostream &os, const Album &album){
  * string. **/
 std::istream &operator>>(std::istream &is, Album &album){
     std::string tmpString;
-    int amount=0;
+    Song tmpSong;
+    int amount=0, i=0;
     getline(is,tmpString,'\n');
     album.setAlbum(tmpString);
-    getline(is,tmpString,'\n');
+    std::cout << "Get Album " << album.getAlbum() << std::endl;
     is >> amount;
-    for (int i=0; i<amount; i++){
-        for (auto &e : album.getSong()){
-            getline(is,tmpString,'|');
-            e.setTitle(tmpString);
-            getline(is,tmpString,'|');
-            e.setArtist(tmpString);
-            getline(is,tmpString,'|');
-            int tmpInt;
-            is >> tmpInt;
-            is.get();
-            e.setLength(tmpInt);
-        }
+    std::cout << "AMOUNT " << amount << std::endl;
+    getline(is,tmpString,'\n');
+    while (i<amount) {
+        int tmpInt=0;
+        getline(is, tmpString, '|');
+        tmpSong.setTitle(tmpString);
+        std::cout << "Get Title " << tmpSong.getTitle() << std::endl;
+        getline(is, tmpString, '|');
+        tmpSong.setArtist(tmpString);
+        std::cout << "Get Artist " << tmpSong.getArtist() << std::endl;
+        is >> tmpInt;
+        is.get();
+        tmpSong.setLength(tmpInt);
+        std::cout << "H: " << tmpSong.getHour();
+        std::cout << " M: " << tmpSong.getMin();
+        std::cout << " S" << tmpSong.getSec() << std::endl;
+        i++;
     }
-
     return is;
 }

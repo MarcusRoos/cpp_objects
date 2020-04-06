@@ -50,8 +50,6 @@ std::ostream &operator<<(std::ostream &os, const Length &length){
 
 // Defines operator >>, used for in stream
 std::istream &operator>>(std::istream &is, Length &length){
-    std::string tmpString;
-    getline(is,tmpString,'|');
     int tmpInt=0;
     is >> tmpInt;
     is.get();

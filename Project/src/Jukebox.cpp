@@ -200,6 +200,9 @@ void Jukebox::printAllTime() {
 
 void Jukebox::printSimpleName() {
     int count=0;
+    for (auto test : albumList){
+        std::cout <<"TESTALBUM: " <<test.getAlbum() << std::endl  << std::endl;
+    }
     std::cout << "No.  Title                          Artist          Length\n";
     std::cout << "============================================================\n";
     for (const auto& e : albumList) {
@@ -224,7 +227,7 @@ void Jukebox::printSimpleTime() {
 
 void Jukebox::open() {
     using namespace std;
-    ifstream inFile(filename, ios::app);
+    ifstream inFile(filename, ios::in);
     albumList.clear();
     Album tmpAlbum;
     while (inFile >> tmpAlbum) {
