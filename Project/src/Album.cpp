@@ -47,11 +47,12 @@ std::ostream &operator<<(std::ostream &os, const Album &album){
 std::istream &operator>>(std::istream &is, Album &album){
     std::string tmpString;
     Song tmpSong;
-    int amount=0, i=0;
+    int amount=0, i=0, tmpAmount=0;
     getline(is,tmpString,'\n');
     album.setAlbum(tmpString);
-    std::cout << "Get Album " << album.getAlbum() << std::endl;
+    std::cout << "Get Album \"" << album.getAlbum()<< "\"" << std::endl;
     is >> amount;
+    tmpAmount = amount+2;
     std::cout << "AMOUNT " << amount << std::endl;
     getline(is,tmpString,'\n');
     do{

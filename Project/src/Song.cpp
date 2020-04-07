@@ -95,7 +95,6 @@ std::istream &operator>>(std::istream &is, Song &song){
     song.setArtist(tmpString);
     int tmpInt=0;
     is >> tmpInt;
-    is.get();
     song.setLength(tmpInt);
     return is;
 }

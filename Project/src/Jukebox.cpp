@@ -159,7 +159,7 @@ void Jukebox::printOne() {
                 if (albumName == e.getAlbum()) {
                     count++;
                     std::cout << std::left << std::setw(5) << count;
-                    std::cout << std::left << std::setw(31) << f.getTitle();
+                    std::cout << std::left << std::setw(31) << f.getTitle() << "Album: " << e.getAlbum();
                     std::cout << std::left << std::setw(16) << f.getArtist();
                     if (f.getHour() >= 1)
                         std::cout << std::left << f.getHour() << ":";
@@ -174,7 +174,9 @@ void Jukebox::printOne() {
 }
 
 void Jukebox::printAllByName() {
-
+        std::cout << albumList[0].getAlbum() << std::endl;
+        std::cout << albumList[1].getAlbum() << std::endl;
+        std::cout << albumList[2].getAlbum() << std::endl;
 }
 
 void Jukebox::printAllTime() {
@@ -200,6 +202,7 @@ void Jukebox::printAllTime() {
 
 void Jukebox::printSimpleName() {
     int count=0;
+    // TEST PRINT
     std::cout << "No.  Title                          Artist          Length\n";
     std::cout << "============================================================\n";
     for (const auto& e : albumList) {
@@ -226,9 +229,12 @@ void Jukebox::open() {
     using namespace std;
     ifstream inFile(filename, ios::in);
     albumList.clear();
-    Album tmpAlbum;
-    while (inFile >> tmpAlbum) {
-        albumList.push_back(tmpAlbum);
+    if (inFile.is_open()) {
+        while (!inFile.eof()) {
+            Album tmpAlbum;
+            inFile >> tmpAlbum;
+            albumList.push_back(tmpAlbum);
+        }
     }
     inFile.close();
 }
