@@ -28,7 +28,14 @@ std::vector<Song> Album::getSong() const {
 }
 
 bool Album::operator<(const Album &a) const {
-    return false;
+    int tmpE=0, tmpA=0;
+    for (auto &e : song){
+        tmpE += e.getLength();
+    }
+    for (auto &p : a.getSong()){
+        tmpA += p.getLength();
+    }
+    return tmpA < tmpE;
 }
 
 std::ostream &operator<<(std::ostream &os, const Album &album){

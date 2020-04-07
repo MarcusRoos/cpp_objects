@@ -206,6 +206,8 @@ void Jukebox::printAllTime() {
     std::cout << "No.  Title                          Artist          Length\n";
     std::cout << "============================================================\n";
     for (const auto& e : albumList) {
+        int time=0;
+        std::cout << "ALBUM: "<<e.getAlbum() << std::endl;
         for (const auto &f : e.getSong()) {
             count++;
             std::cout << std::left << std::setw(5) << count;
@@ -217,7 +219,9 @@ void Jukebox::printAllTime() {
                       std::setw(2) << std::setfill('0') << std::right
                       << f.getSec() << std::endl;
             std::cout << std::setfill(' ');
+            time += f.getLength();
         }
+        std::cout << "TOTAL TIME: " << time << std::endl;
     }
 }
 
