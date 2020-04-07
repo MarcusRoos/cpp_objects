@@ -141,7 +141,13 @@ void Jukebox::addAlbum() {
 }
 
 void Jukebox::deleteAlbum() {
-    std::cout << "I delete" << std::endl;
+    std::cout << "Enter name of album to delete\n";
+    std::string albumName;
+    std::getline(std::cin >> std::ws, albumName);
+    auto it = find_if(albumList.begin(), albumList.end(),
+                      [&albumName](const Album& a) {return a.getAlbum() == albumName;});
+    if (it != albumList.end()) albumList.erase(it);
+    std::cout <<"Successfully deleted album " <<albumName << std::endl;
 }
 
 void Jukebox::printOne() {
@@ -174,9 +180,7 @@ void Jukebox::printOne() {
 }
 
 void Jukebox::printAllByName() {
-        std::cout << albumList[0].getAlbum() << std::endl;
-        std::cout << albumList[1].getAlbum() << std::endl;
-        std::cout << albumList[2].getAlbum() << std::endl;
+
 }
 
 void Jukebox::printAllTime() {
