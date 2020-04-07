@@ -43,7 +43,7 @@ Length Length::operator + (const Length& a) const
 }
 
 std::ostream &operator<<(std::ostream &os, const Length &length){
-    os <<  length.getHour() + length.getMin() + length.getSec();
+    os <<  length.getHour()*3600 + length.getMin()*60 + length.getSec();
     return os;
 }
 

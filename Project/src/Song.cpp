@@ -62,7 +62,7 @@ std::string Song::getArtist() const
 }
 
 int Song::getLength() const {
-    return length.getHour() + length.getMin() + length.getSec();
+    return length.getHour()*3600 + length.getMin()*60 + length.getSec();
 }
 
 int Song::getHour() const {
