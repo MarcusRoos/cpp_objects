@@ -180,11 +180,18 @@ void Jukebox::printOne() {
 }
 
 void Jukebox::printAllByName() {
+    sort(albumList.begin(), albumList.end(),
+         [](const Album& a, const Album& b) {
+             return a.getAlbum() < b.getAlbum();
+         });
     int count=0;
-    // TEST PRINT
     std::cout << "No.  Title                          Artist          Length\n";
     std::cout << "============================================================\n";
     for (const auto& e : albumList) {
+        if(e.getAlbum().length() >0)
+        {
+            std::cout << "=== Album name: " << e.getAlbum() << " ==="<< std::endl;
+        }
         for (const auto &f : e.getSong()) {
             count++;
             std::cout << std::left << std::setw(5) << count;
@@ -226,44 +233,27 @@ void Jukebox::printAllTime() {
 }
 
 void Jukebox::printSimpleName() {
-    int count=0;
-
-    std::cout << "No.  Title                          Artist          Length\n";
-    std::cout << "============================================================\n";
-    for (const auto& e : albumList) {
-        for (const auto &f : e.getSong()) {
-            count++;
-            std::cout << std::left << std::setw(5) << count;
-            std::cout << std::left << std::setw(31) << f.getTitle();
-            std::cout << std::left << std::setw(16) << f.getArtist();
-            if (f.getHour()>=1)
-                std::cout << std::left << f.getHour() << ":";
-            std::cout << std::left << f.getMin() << ":" <<
-                      std::setw(2) << std::setfill('0') << std::right
-                      << f.getSec() << std::endl;
-            std::cout << std::setfill(' ');
-        }
+    sort(albumList.begin(), albumList.end(),
+         [](const Album &a, const Album &b) {
+             return a.getAlbum() < b.getAlbum();
+         });
+    std::cout << "Sorted by album name\n";
+    for (const auto &e : albumList) {
+        if (e.getAlbum().length() > 0)
+            std::cout << "Album name: " << e.getAlbum() << std::endl;
     }
 }
 
 void Jukebox::printSimpleTime() {
-    int count=0;
-
-    std::cout << "No.  Title                          Artist          Length\n";
-    std::cout << "============================================================\n";
-    for (const auto& e : albumList) {
-        for (const auto &f : e.getSong()) {
-            count++;
-            std::cout << std::left << std::setw(5) << count;
-            std::cout << std::left << std::setw(31) << f.getTitle();
-            std::cout << std::left << std::setw(16) << f.getArtist();
-            if (f.getHour()>=1)
-                std::cout << std::left << f.getHour() << ":";
-            std::cout << std::left << f.getMin() << ":" <<
-                      std::setw(2) << std::setfill('0') << std::right
-                      << f.getSec() << std::endl;
-            std::cout << std::setfill(' ');
-        }
+    std::sort(albumList.begin(), albumList.end());
+    for (const auto &e : albumList) {
+        int time = 0;
+        if (e.getAlbum().length() > 0)
+            std::cout << "ALBUM: " << e.getAlbum() << std::endl;
+        for (const auto &f : e.getSong())
+            time += f.getLength();
+        if (time>0)
+        std::cout << "TOTAL TIME: " << time << std::endl;
     }
 }
 
@@ -283,7 +273,7 @@ void Jukebox::open() {
 
 void Jukebox::save() {
     using namespace std;
-    ofstream outFile(filename+"1.txt", ios::out);
+    ofstream outFile(filename, ios::out);
     for (const auto& album : albumList) {
         outFile << album;
     }
