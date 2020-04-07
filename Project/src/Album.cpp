@@ -32,17 +32,24 @@ bool Album::operator<(const Album &a) const {
 }
 
 std::ostream &operator<<(std::ostream &os, const Album &album){
-    Song tmpSong;
     int amount=0, i=0;
     bool test=true;
-    for (auto &e : album.getSong()){
-        amount++;
-    }
-    os << album.getAlbum() << '\n' << amount << '\n';
+        for (auto &e : album.getSong()) {
+            amount++;
+        }
+        os << album.getAlbum() << '\n';
+        if (amount>0) {
+            os << amount << '\n';
+        }
         for (auto &p : album.getSong()) {
             os << p.getTitle() << '|' << p.getArtist() << '|'
-               << p.getLength() << '\n';
-
+               << p.getLength();
+            i++;
+            if (i == amount+1)
+                test = false;
+            if (test) {
+                os << '\n';
+            }
         }
     return os;
 }

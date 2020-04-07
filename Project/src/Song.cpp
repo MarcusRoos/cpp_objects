@@ -78,9 +78,7 @@ int Song::getSec() const {
 }
 
 std::ostream &operator<<(std::ostream &os, const Song &song){
-    os << song.getLength();
-    os << song.getTitle();
-    os << song.getArtist();
+    os << song.getTitle() << '|' << song.getArtist() << '|' << song.getLength();
     return os;
 }
 
