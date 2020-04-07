@@ -83,6 +83,7 @@ std::istream &operator>>(std::istream &is, Album &album){
         tmpSong.setArtist(tmpString);
         std::cout << "Get Artist " << tmpSong.getArtist() << std::endl;
         is >> tmpInt;
+        std::cout << "tmpInt: " << tmpInt << std::endl;
         is.get();
         tmpSong.setLength(tmpInt);
         std::cout << "H: " << tmpSong.getHour();

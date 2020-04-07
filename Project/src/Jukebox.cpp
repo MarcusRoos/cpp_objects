@@ -165,7 +165,6 @@ void Jukebox::printOne() {
                 if (albumName == e.getAlbum()) {
                     count++;
                     std::cout << std::left << std::setw(5) << count;
-                    std::cout << std::left << std::setw(31) << f.getTitle() << "Album: " << e.getAlbum();
                     std::cout << std::left << std::setw(16) << f.getArtist();
                     if (f.getHour() >= 1)
                         std::cout << std::left << f.getHour() << ":";

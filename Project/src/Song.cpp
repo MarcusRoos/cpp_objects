@@ -35,6 +35,9 @@ void Song::setArtist(std::string partist)
 
 void Song::setLength(int ptitle) {
     int i=1;
+    length.setHour(0);
+    length.setMin(0);
+    length.setSec(0);
     while (ptitle>=3600){
         length.setHour(i);
         ptitle = ptitle-3600;
