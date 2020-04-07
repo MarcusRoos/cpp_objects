@@ -32,12 +32,18 @@ bool Album::operator<(const Album &a) const {
 }
 
 std::ostream &operator<<(std::ostream &os, const Album &album){
-    os << album.getAlbum();
-    for (auto &e : album.getSong()) {
-        os << e.getTitle();
-        os << e.getArtist();
-        os << e.getLength();
+    Song tmpSong;
+    int amount=0, i=0;
+    bool test=true;
+    for (auto &e : album.getSong()){
+        amount++;
     }
+    os << album.getAlbum() << '\n' << amount << '\n';
+        for (auto &p : album.getSong()) {
+            os << p.getTitle() << '|' << p.getArtist() << '|'
+               << p.getLength() << '\n';
+
+        }
     return os;
 }
 
@@ -47,16 +53,15 @@ std::ostream &operator<<(std::ostream &os, const Album &album){
 std::istream &operator>>(std::istream &is, Album &album){
     std::string tmpString;
     Song tmpSong;
-    int amount=0, i=0, tmpAmount=0;
+    int amount=0;
     getline(is,tmpString,'\n');
     album.setAlbum(tmpString);
     std::cout << "Get Album \"" << album.getAlbum()<< "\"" << std::endl;
     is >> amount;
-    tmpAmount = amount+2;
     std::cout << "AMOUNT " << amount << std::endl;
     getline(is,tmpString,'\n');
-    do{
-        int tmpInt=0;
+    for(int i=0; i<amount; i++) {
+        int tmpInt = 0;
         getline(is, tmpString, '|');
         tmpSong.setTitle(tmpString);
         std::cout << "Get Title " << tmpSong.getTitle() << std::endl;
@@ -70,7 +75,6 @@ std::istream &operator>>(std::istream &is, Album &album){
         std::cout << " M: " << tmpSong.getMin();
         std::cout << " S" << tmpSong.getSec() << std::endl;
         album.addSong(tmpSong);
-        i++;
-    }while(i<amount);
+    }
     return is;
 }

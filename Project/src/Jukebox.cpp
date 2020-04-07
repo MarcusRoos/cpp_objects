@@ -241,9 +241,9 @@ void Jukebox::open() {
 
 void Jukebox::save() {
     using namespace std;
-    ofstream outFile(filename, ios::out);
+    ofstream outFile(filename+"1.txt", ios::out);
     for (const auto& album : albumList) {
-        outFile << album << endl;
+        outFile << album;
     }
     outFile.close();
 }
