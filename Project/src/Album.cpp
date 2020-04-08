@@ -55,7 +55,7 @@ std::ostream &operator<<(std::ostream &os, const Album &album){
             if (i == amount+1)
                 test = false;
             if (test) {
-                os << '\n';
+                os << "\n";
             }
         }
     return os;
