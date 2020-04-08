@@ -5,7 +5,6 @@
 //
 
 #include "Menu.h"
-
 #include <iostream>
 #include <utility>
 
@@ -47,8 +46,7 @@ int Menu::menuChoice() {
         cout << "Menu currently disabled\n";
     if (menuItem[choice-1].getEnabled()) {
         cout << "Menu is enabled\n";
-        for (auto& e : menuItem)
-            e.setEnabled(true);
+
     }
     while (choice <1 || choice >6){
         std::cout << "Wrong input.\n";
@@ -60,4 +58,9 @@ int Menu::menuChoice() {
 
 std::string Menu::getTitle() const {
     return menuTitle;
+}
+
+void Menu::setenableMenu() {
+    for (auto &e : menuItem)
+        e.setEnabled(true);
 }

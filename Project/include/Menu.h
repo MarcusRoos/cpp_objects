@@ -19,6 +19,7 @@ public:
     Menu(std::vector<MenuItem>pmenuItem, std::string pmenuTitle);
     ~Menu()=default;
     void setTitle(std::string ptitle);
+    void setenableMenu();
     std::string getTitle() const;
     void printMenuItems() const;
     int menuChoice();

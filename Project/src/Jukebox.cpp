@@ -260,6 +260,7 @@ void Jukebox::open() {
     using namespace std;
     ifstream inFile(filename, ios::in);
     albumList.clear();
+    menu.setenableMenu();
     if (inFile.is_open()) {
         while (!inFile.eof()) {
             Album tmpAlbum;

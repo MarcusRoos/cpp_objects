@@ -17,10 +17,6 @@ MenuItem::MenuItem(std::string pmenutext, bool penabler) {
     enabler = penabler;
 }
 
-void MenuItem::setMenuText(std::string pmenutext) {
-    menutext = std::move(pmenutext);
-}
-
 void MenuItem::setEnabled(bool penabler) {
     enabler = penabler;
 }
