@@ -36,9 +36,7 @@ void Jukebox::run() {
 }
 
 void Jukebox::file() {
-    bool again = true;
-    do
-    {
+    // I skipped a loop here as user should be returned to main menu.
         filemenu.printMenuItems();
         switch(filemenu.menuChoice())
         {
@@ -51,10 +49,8 @@ void Jukebox::file() {
             case 3:
             default:
                 // Returns to main menu
-                again = false;
                 break;
         }
-    }while(again);
 }
 
 void Jukebox::print() {
@@ -117,8 +113,9 @@ void Jukebox::addAlbum() {
     Album album;
     Song tmpSong;
     std::vector <Song> song;
-    cout << "Enter albums name: " << endl;
     string tmpalbum, tmpartist, tmpsong;
+    char again;
+    cout << "Enter albums name: " << endl;
     std::getline(std::cin >> std::ws, tmpalbum);
     album.setAlbum(tmpalbum);
     cout << "Enter name of the artist: " << endl;
@@ -131,8 +128,18 @@ void Jukebox::addAlbum() {
         std::getline(std::cin >> std::ws, tmpsong);
         cout << "Enter the songs length in seconds: " << endl;
         cin >> length;
-        cout << "Add another song to album " << tmpalbum << "? (1/0)\n";
-        cin >> loop;
+        while (length<=0 || length>9999){
+            std::cout << "Wrong input, enter a value between 1 and 9999.\n";
+            cin >> length;
+        }
+        cout << "Add another song to album " << tmpalbum << "? (Y/N)\n";
+        cin >> again;
+        while(again != 'y' && again != 'Y' && again != 'n' && again != 'N'){
+            std::cout << "Wrong input, (Y/N)\n";
+            cin >> again;
+        }
+        if (again == 'n' || again == 'N')
+            loop = false;
         tmpSong.setLength(length);
         tmpSong.setTitle(tmpsong);
         album.addSong(tmpSong);
@@ -176,6 +183,7 @@ void Jukebox::printOne() {
             }
         }
     }
+    pauseFunction("Press any key to continue...\n");
 }
 
 void Jukebox::printAllByName() {
@@ -204,6 +212,7 @@ void Jukebox::printAllByName() {
             std::cout << std::setfill(' ');
         }
     }
+    pauseFunction("Press any key to continue...\n");
 }
 
 void Jukebox::printAllTime() {
@@ -229,6 +238,7 @@ void Jukebox::printAllTime() {
         }
         std::cout << "TOTAL TIME: " << time << std::endl;
     }
+    pauseFunction("Press any key to continue...\n");
 }
 
 void Jukebox::printSimpleName() {
@@ -241,6 +251,7 @@ void Jukebox::printSimpleName() {
         if (e.getAlbum().length() > 0)
             std::cout << "Album name: " << e.getAlbum() << std::endl;
     }
+    pauseFunction("Press any key to continue...\n");
 }
 
 void Jukebox::printSimpleTime() {
@@ -254,6 +265,7 @@ void Jukebox::printSimpleTime() {
         if (time>0)
         std::cout << "TOTAL TIME: " << time << std::endl;
     }
+    pauseFunction("Press any key to continue...\n");
 }
 
 void Jukebox::open() {
@@ -269,6 +281,7 @@ void Jukebox::open() {
         }
     }
     inFile.close();
+    pauseFunction("File loaded. Press any key to continue.\n");
 }
 
 void Jukebox::save() {
@@ -278,4 +291,5 @@ void Jukebox::save() {
         outFile << album;
     }
     outFile.close();
+    pauseFunction("File saved. Press any key to continue.\n");
 }

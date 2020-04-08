@@ -70,25 +70,17 @@ std::istream &operator>>(std::istream &is, Album &album){
     int amount=0;
     getline(is,tmpString,'\n');
     album.setAlbum(tmpString);
-    std::cout << "Get Album \"" << album.getAlbum()<< "\"" << std::endl;
     is >> amount;
-    std::cout << "AMOUNT " << amount << std::endl;
     getline(is,tmpString,'\n');
     for(int i=0; i<amount; i++) {
         int tmpInt = 0;
         getline(is, tmpString, '|');
         tmpSong.setTitle(tmpString);
-        std::cout << "Get Title " << tmpSong.getTitle() << std::endl;
         getline(is, tmpString, '|');
         tmpSong.setArtist(tmpString);
-        std::cout << "Get Artist " << tmpSong.getArtist() << std::endl;
         is >> tmpInt;
-        std::cout << "tmpInt: " << tmpInt << std::endl;
         is.get();
         tmpSong.setLength(tmpInt);
-        std::cout << "H: " << tmpSong.getHour();
-        std::cout << " M: " << tmpSong.getMin();
-        std::cout << " S" << tmpSong.getSec() << std::endl;
         album.addSong(tmpSong);
     }
     return is;
