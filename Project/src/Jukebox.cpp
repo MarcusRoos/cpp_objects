@@ -172,6 +172,7 @@ void Jukebox::printOne() {
                 if (albumName == e.getAlbum()) {
                     count++;
                     std::cout << std::left << std::setw(5) << count;
+                    std::cout << std::left << std::setw(31) << f.getTitle();
                     std::cout << std::left << std::setw(16) << f.getArtist();
                     if (f.getHour() >= 1)
                         std::cout << std::left << f.getHour() << ":";
@@ -270,14 +271,15 @@ void Jukebox::printSimpleTime() {
 
 void Jukebox::open() {
     using namespace std;
+    Album tmpAlbum;
     ifstream inFile(filename, ios::in);
     albumList.clear();
     menu.setenableMenu();
     if (inFile.is_open()) {
-        while (!inFile.eof()) {
-            Album tmpAlbum;
-            inFile >> tmpAlbum;
+        while (inFile >> tmpAlbum) {
             albumList.push_back(tmpAlbum);
+            Album tmpAlbumReset;
+            tmpAlbum = tmpAlbumReset;
         }
     }
     inFile.close();
