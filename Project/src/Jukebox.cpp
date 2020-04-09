@@ -231,7 +231,6 @@ void Jukebox::printOne() {
 }
 
 void Jukebox::printAllByName() {
-
         sort(albumList.begin(), albumList.end(),
              [](const Album &a, const Album &b) {
             std::string tmpA = a.getAlbum(), tmpB = b.getAlbum();
@@ -265,7 +264,6 @@ void Jukebox::printAllByName() {
             }
         }
         pauseFunction("Press any key to continue...\n");
-
 }
 
 void Jukebox::printAllTime() {
@@ -298,7 +296,12 @@ void Jukebox::printAllTime() {
 void Jukebox::printSimpleName() {
     sort(albumList.begin(), albumList.end(),
          [](const Album &a, const Album &b) {
-             return a.getAlbum() < b.getAlbum();
+             std::string tmpA = a.getAlbum(), tmpB = b.getAlbum();
+             tmpA = lowercase(tmpA);
+             tmpB = lowercase(tmpB);
+
+             return tmpA < tmpB;
+
          });
     std::cout << "Sorted by album name\n";
     for (const auto &e : albumList) {
