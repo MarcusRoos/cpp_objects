@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <cctype>
 
 void Jukebox::run() {
     bool again = true;
@@ -182,6 +183,7 @@ void Jukebox::deleteAlbum() {
     }
 }
 
+
 void Jukebox::printOne() {
     std::cout << "Enter name of album to search for\n";
     std::string albumName;
@@ -323,11 +325,23 @@ void Jukebox::save() {
 }
 
 /*
+ * void Jukebox::deleteAlbum() {
+    std::cout << "Enter name of album to delete\n";
 
- Convert to lower
-       std::for_each(person.signature.begin(), person.signature.end(),
-                [](char & c){
-            c = tolower(c);
-        });
-
-        */
+    std::string albumName, compare;
+    std::getline(std::cin >> std::ws, albumName);
+    for (auto &it : albumList){
+        compare = it.getAlbum();
+        std::for_each(compare.begin(), compare.end(),
+                      [](char & c){
+                          c = tolower(c);
+                      });
+        if (compare == albumName){
+            albumList.erase(albumList.begin(), albumList.end());
+            break;
+        }
+        std::cout << "Compare : " << compare << std::endl;
+    }
+    std::cout << "Album name: " <<albumName << std::endl;
+}
+ */
