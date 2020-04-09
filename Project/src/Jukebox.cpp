@@ -114,7 +114,6 @@ void Jukebox::addAlbum() {
     Song tmpSong;
     std::vector <Song> song;
     string tmpalbum, tmpartist, tmpsong;
-    char again;
     cout << "Enter albums name: " << endl;
     std::getline(std::cin >> std::ws, tmpalbum);
     album.setAlbum(tmpalbum);
@@ -122,28 +121,45 @@ void Jukebox::addAlbum() {
     std::getline(std::cin >> std::ws, tmpartist);
     tmpSong.setArtist(tmpartist);
     int length=0;
-    bool loop=true;
+    bool add=true;
     do {
         cout << "Enter name of the song: " << endl;
         std::getline(std::cin >> std::ws, tmpsong);
         cout << "Enter the songs length in seconds: " << endl;
         cin >> length;
-        while (length<=0 || length>9999){
+        while (std::cin.fail() || length<=0 || length>9999){
             std::cout << "Wrong input, enter a value between 1 and 9999.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             cin >> length;
         }
         cout << "Add another song to album " << tmpalbum << "? (Y/N)\n";
-        cin >> again;
-        while(again != 'y' && again != 'Y' && again != 'n' && again != 'N'){
-            std::cout << "Wrong input, (Y/N)\n";
+        char again=0;
+        bool loop=true;
+        do {
             cin >> again;
-        }
-        if (again == 'n' || again == 'N')
-            loop = false;
+            again = toupper(again);
+            if (again != 'Y' && again != 'N') { // If input is not valid, run
+                cin.clear(); // Clear cin buffer
+                cin.ignore(
+                        reinterpret_cast<streamsize>
+                        (numeric_limits<streamsize>::max), '\n');
+                // Ignore cin stream
+                cout << "Invalid input\n";
+            }
+            if (again == 'N') { // If no, break both loops
+                loop = false;
+                add = false;
+            }
+            if (again == 'Y') { // If yes, break inner loop, keep outer true
+                loop = false;
+                add = true;
+            }
+        }while(loop);
         tmpSong.setLength(length);
         tmpSong.setTitle(tmpsong);
         album.addSong(tmpSong);
-    }while(loop);
+    }while(add);
     albumList.push_back(album);
 }
 
@@ -153,8 +169,17 @@ void Jukebox::deleteAlbum() {
     std::getline(std::cin >> std::ws, albumName);
     auto it = find_if(albumList.begin(), albumList.end(),
                       [&albumName](const Album& a) {return a.getAlbum() == albumName;});
-    if (it != albumList.end()) albumList.erase(it);
-    std::cout <<"Successfully deleted album " <<albumName << std::endl;
+    if (it != albumList.end()) {
+        if (it != albumList.end()) albumList.erase(it);
+        {
+            std::cout << "Successfully deleted album " << albumName
+                      << std::endl;
+        }
+    }
+    else if (it == albumList.end())
+    {
+        std::cout << "Couldn't find album " << albumName << std::endl;
+    }
 }
 
 void Jukebox::printOne() {
@@ -223,7 +248,7 @@ void Jukebox::printAllTime() {
     std::cout << "============================================================\n";
     for (const auto& e : albumList) {
         int time=0;
-        std::cout << "ALBUM: "<<e.getAlbum() << std::endl;
+        std::cout << "Album name: "<< e.getAlbum() << std::endl;
         for (const auto &f : e.getSong()) {
             count++;
             std::cout << std::left << std::setw(5) << count;
@@ -237,7 +262,8 @@ void Jukebox::printAllTime() {
             std::cout << std::setfill(' ');
             time += f.getLength();
         }
-        std::cout << "TOTAL TIME: " << time << std::endl;
+        // Comment off to show total time of the album
+      //  std::cout << "Total time: " << time << std::endl;
     }
     pauseFunction("Press any key to continue...\n");
 }
@@ -295,3 +321,13 @@ void Jukebox::save() {
     outFile.close();
     pauseFunction("File saved. Press any key to continue.\n");
 }
+
+/*
+
+ Convert to lower
+       std::for_each(person.signature.begin(), person.signature.end(),
+                [](char & c){
+            c = tolower(c);
+        });
+
+        */

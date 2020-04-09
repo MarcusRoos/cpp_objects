@@ -7,14 +7,10 @@
 #include "Menu.h"
 #include <iostream>
 #include <utility>
+#include <limits>
 
 Menu::Menu() {
     menuTitle="";
-}
-
-Menu::Menu(std::vector<MenuItem> pmenuItem, std::string pmenuTitle) {
-    menuTitle = std::move(pmenuTitle);
-    menuItem = std::move(pmenuItem);
 }
 
 void Menu::setTitle(std::string ptitle) {
@@ -46,10 +42,11 @@ int Menu::menuChoice() {
         cout << "Menu currently disabled\n";
     if (menuItem[choice-1].getEnabled()) {
         cout << "Menu is enabled\n";
-
     }
-    while (choice <1 || choice >6){
+    while (std::cin.fail() || choice <1 || choice >6){
         std::cout << "Wrong input.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cin >> choice;
     }
     if (menuItem[choice-1].getEnabled())
