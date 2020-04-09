@@ -171,18 +171,12 @@ void Jukebox::deleteAlbum() {
 
     std::getline(std::cin >> std::ws, albumName);
     std::string tmpName = albumName;
-    std::for_each(albumName.begin(), albumName.end(),
-                  [](char &b) {
-                      b = tolower(b);
-                  });
+    albumName = lowercase(albumName);
     for (auto pos = albumList.begin(); pos != albumList.end();) {
         for (auto &it : albumList) {
             compare = it.getAlbum();
             tmpAlbum = it.getAlbum();
-            std::for_each(compare.begin(), compare.end(),
-                          [](char &c) {
-                              c = tolower(c);
-                          });
+            compare = lowercase(compare);
             if (compare == albumName) {
                 pos = albumList.erase(pos);
                 std::cout << "Successfully deleted album " << tmpAlbum << std::endl;
@@ -201,10 +195,7 @@ void Jukebox::printOne() {
     std::cout << "Enter name of album to search for\n";
     std::string albumName, compare;
     std::getline(std::cin >> std::ws, albumName);
-    std::for_each(albumName.begin(), albumName.end(),
-                  [](char &c) {
-                      c = tolower(c);
-                  });
+    albumName = lowercase(albumName);
     for (auto pos = albumList.begin(); pos != albumList.end();) {
         if (pos != albumList.end()) {
             int count = 0;
@@ -214,10 +205,7 @@ void Jukebox::printOne() {
                     << "============================================================\n";
             for (const auto &e : albumList) {
                 compare = e.getAlbum();
-                std::for_each(compare.begin(), compare.end(),
-                              [](char &c) {
-                                  c = tolower(c);
-                              });
+                compare = lowercase(compare);
                 for (const auto &f : e.getSong()) {
                     if (albumName == compare) {
                         count++;
@@ -243,32 +231,41 @@ void Jukebox::printOne() {
 }
 
 void Jukebox::printAllByName() {
-    sort(albumList.begin(), albumList.end(),
-         [](const Album& a, const Album& b) {
-             return a.getAlbum() < b.getAlbum();
-         });
-    int count=0;
-    std::cout << "No.  Title                          Artist          Length\n";
-    std::cout << "============================================================\n";
-    for (const auto& e : albumList) {
-        if(e.getAlbum().length() >0)
-        {
-            std::cout << "=== Album name: " << e.getAlbum() << " ==="<< std::endl;
+
+        sort(albumList.begin(), albumList.end(),
+             [](const Album &a, const Album &b) {
+            std::string tmpA = a.getAlbum(), tmpB = b.getAlbum();
+                 tmpA = lowercase(tmpA);
+                 tmpB = lowercase(tmpB);
+
+                    return tmpA < tmpB;
+
+             });
+        int count = 0;
+        std::cout
+                << "No.  Title                          Artist          Length\n";
+        std::cout
+                << "============================================================\n";
+        for (const auto &e : albumList) {
+            if (e.getAlbum().length() > 0) {
+                std::cout << "=== Album name: " << e.getAlbum() << " ==="
+                          << std::endl;
+            }
+            for (const auto &f : e.getSong()) {
+                count++;
+                std::cout << std::left << std::setw(5) << count;
+                std::cout << std::left << std::setw(31) << f.getTitle();
+                std::cout << std::left << std::setw(16) << f.getArtist();
+                if (f.getHour() >= 1)
+                    std::cout << std::left << f.getHour() << ":";
+                std::cout << std::left << f.getMin() << ":" <<
+                          std::setw(2) << std::setfill('0') << std::right
+                          << f.getSec() << std::endl;
+                std::cout << std::setfill(' ');
+            }
         }
-        for (const auto &f : e.getSong()) {
-            count++;
-            std::cout << std::left << std::setw(5) << count;
-            std::cout << std::left << std::setw(31) << f.getTitle();
-            std::cout << std::left << std::setw(16) << f.getArtist();
-            if (f.getHour()>=1)
-                std::cout << std::left << f.getHour() << ":";
-            std::cout << std::left << f.getMin() << ":" <<
-                      std::setw(2) << std::setfill('0') << std::right
-                      << f.getSec() << std::endl;
-            std::cout << std::setfill(' ');
-        }
-    }
-    pauseFunction("Press any key to continue...\n");
+        pauseFunction("Press any key to continue...\n");
+
 }
 
 void Jukebox::printAllTime() {

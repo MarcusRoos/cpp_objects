@@ -85,3 +85,4 @@ std::istream &operator>>(std::istream &is, Album &album){
     }
     return is;
 }
+

@@ -3,6 +3,7 @@
 //
 #include <limits>
 #include <iostream>
+#include <algorithm>
 #include "Management.h"
 using namespace std;
 
@@ -59,5 +60,13 @@ std::string validateFileName(std::string input){ // Validate input
             }
         }
     } while (!valid);
+    return input;
+}
+
+std::string lowercase(std::string input){
+    std::for_each(input.begin(), input.end(),
+                  [](char &c) {
+                      c = tolower(c);
+                  });
     return input;
 }
