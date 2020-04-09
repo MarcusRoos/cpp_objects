@@ -166,22 +166,37 @@ void Jukebox::addAlbum() {
 
 void Jukebox::deleteAlbum() {
     std::cout << "Enter name of album to delete\n";
-    std::string albumName;
+    std::string albumName, compare, tmpAlbum;
+    bool print = true;
+
     std::getline(std::cin >> std::ws, albumName);
-    auto it = find_if(albumList.begin(), albumList.end(),
-                      [&albumName](const Album& a) {return a.getAlbum() == albumName;});
-    if (it != albumList.end()) {
-        if (it != albumList.end()) albumList.erase(it);
-        {
-            std::cout << "Successfully deleted album " << albumName
-                      << std::endl;
+    std::string tmpName = albumName;
+    std::for_each(albumName.begin(), albumName.end(),
+                  [](char &b) {
+                      b = tolower(b);
+                  });
+    for (auto pos = albumList.begin(); pos != albumList.end();) {
+        for (auto &it : albumList) {
+            compare = it.getAlbum();
+            tmpAlbum = it.getAlbum();
+            std::for_each(compare.begin(), compare.end(),
+                          [](char &c) {
+                              c = tolower(c);
+                          });
+            if (compare == albumName) {
+                pos = albumList.erase(pos);
+                std::cout << "Successfully deleted album " << tmpAlbum << std::endl;
+                print = false;
+            }
+            else
+                pos++;
         }
     }
-    else if (it == albumList.end())
-    {
-        std::cout << "Couldn't find album " << albumName << std::endl;
+    if (print){
+        std::cout << "Could not find album "<< tmpName << std::endl;
     }
 }
+
 
 
 void Jukebox::printOne() {
