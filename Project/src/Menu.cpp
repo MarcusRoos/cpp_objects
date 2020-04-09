@@ -46,9 +46,6 @@ int Menu::menuChoice() {
     }
     if (!menuItem[choice-1].getEnabled())
         cout << "Menu currently disabled\n";
-    if (menuItem[choice-1].getEnabled()) {
-        cout << "Menu is enabled\n";
-    }
     if (menuItem[choice-1].getEnabled())
     return choice;
 }
