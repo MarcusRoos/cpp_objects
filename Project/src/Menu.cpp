@@ -38,16 +38,16 @@ int Menu::menuChoice() {
     int choice;
     cout << "Choice...";
     cin >> choice;
-    if (!menuItem[choice-1].getEnabled())
-        cout << "Menu currently disabled\n";
-    if (menuItem[choice-1].getEnabled()) {
-        cout << "Menu is enabled\n";
-    }
     while (std::cin.fail() || choice <1 || choice >6){
         std::cout << "Wrong input.\n";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cin >> choice;
+    }
+    if (!menuItem[choice-1].getEnabled())
+        cout << "Menu currently disabled\n";
+    if (menuItem[choice-1].getEnabled()) {
+        cout << "Menu is enabled\n";
     }
     if (menuItem[choice-1].getEnabled())
     return choice;
