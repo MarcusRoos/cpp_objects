@@ -50,10 +50,6 @@ int Menu::menuChoice() {
     return choice;
 }
 
-std::string Menu::getTitle() const {
-    return menuTitle;
-}
-
 void Menu::setenableMenu() {
     for (auto &e : menuItem)
         e.setEnabled(true);

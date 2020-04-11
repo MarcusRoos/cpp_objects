@@ -7,6 +7,18 @@
 #ifndef DT019G_MENUITEM_H
 #define DT019G_MENUITEM_H
 #include <string>
+//------------------------------------------------------------------------------
+// Class definition
+//------------------------------------------------------------------------------
+/**
+ Class MenuItem
+
+ Keeps track of whether a menu is enabled or not, as well as the text of menu.
+ Contain members album as type string, as song of custom type Song.
+ Several different public member functions used to either set, get or add a song
+ as well as overloading the less than operator which will compare the length of
+ a song to another.
+ */
 class MenuItem {
 private:
 std::string menutext;
