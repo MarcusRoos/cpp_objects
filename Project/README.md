@@ -186,3 +186,18 @@ need to prioritise differently and catch up with the other courses. It wasn't
 entirely clear in the description, but the queue and play parts are entirely for
 grades higher than C, so I decided to remove them entirely from the menu as 
 it didn't seem to serve any purpose having them lying around with no functionality.
+
+In my "Song" class I decided to add 3 additional member functions as below:
+ "The individual get functions for hour/min/sec were added in order to easier
+ to pick out the value needed, as the getting the length would return the
+ entire songs length in form of seconds which would later need to be converted
+ back into hours, minutes or seconds. To make the program less verbose I decided
+ for these functions. If these are however not allowed the different approach
+ would be to get the length of the song, if the length is longer than 3600
+ a value on the "hour" section would be printed, if the length is lower than
+ 3600 but bigger or equal to 60 a minute would be added, if its below 60 it will
+ be printed as is, as it's a second. I hope I have made myself clear in this regard
+ as I didn't see it in the specifications but I deemed the program to be 
+ more agile doing it this way, I simply have to call these functions once
+ without converting any values, I simply have to confirm the size of the 
+ length and print if its at either size."

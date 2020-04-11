@@ -52,17 +52,6 @@ void Song::setLength(int ptitle) {
     length.setSec(ptitle);
 }
 
-// Gets title
-std::string Song::getTitle() const
-{
-    return title;
-}
-
-// Gets artist
-std::string Song::getArtist() const
-{
-    return artist;
-}
 
 int Song::getLength() const {
     return length.getHour()*3600 + length.getMin()*60 + length.getSec();

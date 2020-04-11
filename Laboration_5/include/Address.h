@@ -127,6 +127,6 @@ std::ostream &operator<<(std::ostream &os, const Address &address);
 * @param Constant reference of class Address, in stream is.
 * @return is.
 */
-std::istream &operator>>(std::istream &is, Address &address);
+std::istream &operator>>(std::istream &is, const Address &address);
 
 #endif

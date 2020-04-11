@@ -70,3 +70,10 @@ std::string lowercase(std::string input){
                   });
     return input;
 }
+
+void printHeader(){
+    std::cout << "No.  Title                                                  "
+                 "Artist         Length\n";
+    std::cout << "==========================================================="
+                 "======================\n";
+}

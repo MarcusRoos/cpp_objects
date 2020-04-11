@@ -12,5 +12,6 @@ void pauseFunction(const std::string& text);
 std::string validate(std::string input);
 std::string validateFileName(std::string input);
 std::string lowercase(std::string input);
+void printHeader();
 
 #endif //DT019G_MANAGEMENT_H

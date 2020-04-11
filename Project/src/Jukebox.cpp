@@ -199,10 +199,7 @@ void Jukebox::printOne() {
     for (auto pos = albumList.begin(); pos != albumList.end();) {
         if (pos != albumList.end()) {
             int count = 0;
-            std::cout
-                    << "No.  Title                          Artist          Length\n";
-            std::cout
-                    << "============================================================\n";
+            printHeader();
             for (const auto &e : albumList) {
                 compare = e.getAlbum();
                 compare = lowercase(compare);
@@ -210,7 +207,7 @@ void Jukebox::printOne() {
                     if (albumName == compare) {
                         count++;
                         std::cout << std::left << std::setw(5) << count;
-                        std::cout << std::left << std::setw(31) << f.getTitle();
+                        std::cout << std::left << std::setw(55) << f.getTitle();
                         std::cout << std::left << std::setw(16)
                                   << f.getArtist();
                         if (f.getHour() >= 1)
@@ -239,19 +236,16 @@ void Jukebox::printAllByName() {
                     return tmpA < tmpB;
              });
         int count = 0;
-        std::cout
-                << "No.  Title                          Artist          Length\n";
-        std::cout
-                << "============================================================\n";
+        printHeader();
         for (const auto &e : albumList) {
             if (e.getAlbum().length() > 0) {
-                std::cout << "=== Album name: " << e.getAlbum() << " ==="
+                std::cout << "--- Album name: " << e.getAlbum() << " ---"
                           << std::endl;
             }
             for (const auto &f : e.getSong()) {
                 count++;
                 std::cout << std::left << std::setw(5) << count;
-                std::cout << std::left << std::setw(31) << f.getTitle();
+                std::cout << std::left << std::setw(55) << f.getTitle();
                 std::cout << std::left << std::setw(16) << f.getArtist();
                 if (f.getHour() >= 1)
                     std::cout << std::left << f.getHour() << ":";
@@ -259,6 +253,9 @@ void Jukebox::printAllByName() {
                           std::setw(2) << std::setfill('0') << std::right
                           << f.getSec() << std::endl;
                 std::cout << std::setfill(' ');
+                if (count == e.getSong().size()){
+                    std::cout << std::endl;
+                }
             }
         }
         pauseFunction("Press any key to continue...\n");
@@ -266,16 +263,17 @@ void Jukebox::printAllByName() {
 
 void Jukebox::printAllTime() {
     std::sort(albumList.begin(), albumList.end());
-    int count=0;
-    std::cout << "No.  Title                          Artist          Length\n";
-    std::cout << "============================================================\n";
+    int count=0, tmpSize=0;
+    printHeader();
     for (const auto& e : albumList) {
         int time=0;
-        std::cout << "Album name: "<< e.getAlbum() << std::endl;
+        std::cout << "--- Album name: " << e.getAlbum() << " ---"
+                  << std::endl;
         for (const auto &f : e.getSong()) {
+            tmpSize++;
             count++;
             std::cout << std::left << std::setw(5) << count;
-            std::cout << std::left << std::setw(31) << f.getTitle();
+            std::cout << std::left << std::setw(55) << f.getTitle();
             std::cout << std::left << std::setw(16) << f.getArtist();
             if (f.getHour()>=1)
                 std::cout << std::left << f.getHour() << ":";
@@ -284,6 +282,11 @@ void Jukebox::printAllTime() {
                       << f.getSec() << std::endl;
             std::cout << std::setfill(' ');
             time += f.getLength();
+            if (tmpSize == e.getSong().size()){
+                std::cout << std::endl;
+                tmpSize = 0;
+                std::cout << "LANGD:  "<< time << std::endl;
+            }
         }
         // Comment off to show total time of the album
       //  std::cout << "Total time: " << time << std::endl;
