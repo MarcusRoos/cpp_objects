@@ -16,7 +16,6 @@ std::vector<MenuItem>menuItem;
 std::string menuTitle;
 public:
     Menu();
-    Menu(std::vector<MenuItem>pmenuItem, std::string pmenuTitle);
     ~Menu()=default;
     void setTitle(std::string ptitle);
     void setenableMenu();

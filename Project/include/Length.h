@@ -128,4 +128,4 @@ std::ostream &operator<<(std::ostream &os, const Length &length);
 * @return is.
 */
 std::istream &operator>>(std::istream &is, const Length &length);
-#endif
+#endif //DT019G_LENGTH_H
