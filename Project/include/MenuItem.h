@@ -14,22 +14,60 @@
  Class MenuItem
 
  Keeps track of whether a menu is enabled or not, as well as the text of menu.
- Contain members album as type string, as song of custom type Song.
- Several different public member functions used to either set, get or add a song
- as well as overloading the less than operator which will compare the length of
- a song to another.
+ Contain members menutext of type string, and enabler of type bool.
+ Member functions include constructor, destructor, get and set functions.
  */
 class MenuItem {
 private:
 std::string menutext;
 bool enabler;
 public:
+    /**
+* Default constructor of class MenuItem
+*
+* @param None.
+* @return None.
+*/
     MenuItem();
+
+    /**
+* Constructor for initialization of class MenuItem
+*
+* @param string pmenutext and bool penabler
+* @return None.
+*/
     MenuItem(std::string pmenutext, bool penabler);
+
+    /**
+* Destructor of class MenuItem
+*
+* @param None.
+* @return None.
+*/
     ~MenuItem()=default;
-    void setMenuText(std::string pmenutext);
+
+    /**
+* Sets value for class member enabler
+*
+* @param bool penabler
+* @return None.
+*/
     void setEnabled(bool penabler);
-    std::string getMenuText() const;
-    bool getEnabled() const;
+
+    /**
+* Returns value for class member menutext, constant
+* Inline
+* @param None.
+* @return menutext.
+*/
+    std::string getMenuText() const { return menutext;}
+
+    /**
+* Returns value for class member enabler, constant
+* Inline
+* @param None.
+* @return enabler.
+*/
+    bool getEnabled() const { return enabler; }
 };
 #endif //DT019G_MENUITEM_H

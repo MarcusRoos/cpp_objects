@@ -21,12 +21,4 @@ void MenuItem::setEnabled(bool penabler) {
     enabler = penabler;
 }
 
-std::string MenuItem::getMenuText() const {
-    return menutext;
-}
-
-bool MenuItem::getEnabled() const {
-    return enabler;
-}
-
 
