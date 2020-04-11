@@ -236,9 +236,7 @@ void Jukebox::printAllByName() {
             std::string tmpA = a.getAlbum(), tmpB = b.getAlbum();
                  tmpA = lowercase(tmpA);
                  tmpB = lowercase(tmpB);
-
                     return tmpA < tmpB;
-
              });
         int count = 0;
         std::cout
