@@ -41,6 +41,8 @@ as a string, as well as a vector containing songs the albums songs. Those songs
 will be in the container vector but their type will be a user defined class named
 as "Song", this class will store the songs related to this album and it will
 keep track of the songs name, which artist wrote it, as well as the songs length.
+The user should be able to add an album to the jokebox, this will be done by
+having the user input the albums name, then adding any songs they see fit.
 
 The printing sub menu will have to iterate through both these containers to properly
 print out the information the user is looking for, for this an actual iterator as well
@@ -48,7 +50,15 @@ as automated vector iterator will be used. It should also be possible to delete 
 album, the user enters the albums name and gets the entry deleted from the vector as well
 as any songs related to it. 
 
-To handle the different menus two different classes will be used, menu and menuitem,
-menuitem will take care of enabling or disabling 
+To handle the different menus two different classes will be used, "menu" and "menuitem",
+menuitem will take care of enabling or disabling the different menus, while the menu
+class will take care of printing menus and handling user choice. In the end all the contents
+of the jukebox (album+songs+length) will be saved to a txt file if the user so
+choose to use the "save" option. The text file will contain the albums name, 
+total amount of songs belonging to that album, as well as every song with
+all the relevant information meaning the songs title, artist and its length in seconds.
+Once the program is terminated and started up again, it will then be possible to 
+load said file into the program to fill the jukebox with albums.
+
 
 ## Discussion

@@ -351,25 +351,3 @@ void Jukebox::save() {
     outFile.close();
     pauseFunction("File saved. Press any key to continue.\n");
 }
-
-/*
- * void Jukebox::deleteAlbum() {
-    std::cout << "Enter name of album to delete\n";
-
-    std::string albumName, compare;
-    std::getline(std::cin >> std::ws, albumName);
-    for (auto &it : albumList){
-        compare = it.getAlbum();
-        std::for_each(compare.begin(), compare.end(),
-                      [](char & c){
-                          c = tolower(c);
-                      });
-        if (compare == albumName){
-            albumList.erase(albumList.begin(), albumList.end());
-            break;
-        }
-        std::cout << "Compare : " << compare << std::endl;
-    }
-    std::cout << "Album name: " <<albumName << std::endl;
-}
- */
