@@ -9,18 +9,22 @@
 #include <utility>
 #include <limits>
 
+// Default constructor for class Menu
 Menu::Menu() {
     menuTitle="";
 }
 
+// Sets title
 void Menu::setTitle(std::string ptitle) {
     menuTitle = std::move(ptitle);
 }
 
+// Add item to vector of type menuItem
 void Menu::addItem(const std::string& pmenuText, bool penabler) {
    menuItem.emplace_back(pmenuText, penabler);
 }
 
+// Prints menu
 void Menu::printMenuItems() const {
     using namespace std;
     int i = 0;
@@ -33,6 +37,7 @@ void Menu::printMenuItems() const {
     }
 }
 
+// Allows user input to choose a menu option
 int Menu::menuChoice() {
     using namespace std;
     int choice;
@@ -53,6 +58,7 @@ int Menu::menuChoice() {
         return 0;
 }
 
+// Flicks a switch enabling all the previously disabled menus
 void Menu::setenableMenu() {
     for (auto &e : menuItem)
         e.setEnabled(true);

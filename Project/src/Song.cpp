@@ -22,6 +22,7 @@ Song::Song(std::string partist, std::string ptitle, Length plength)
     length = Length(plength);
 }
 
+// Sets title
 void Song::setTitle(std::string ptitle)
 {
     title = std::move(ptitle);
@@ -33,6 +34,7 @@ void Song::setArtist(std::string partist)
     artist = std::move(partist);
 }
 
+// Sets length
 void Song::setLength(int ptitle) {
     int i=1;
     length.setHour(0);
@@ -52,31 +54,33 @@ void Song::setLength(int ptitle) {
     length.setSec(ptitle);
 }
 
-
+// Gets length, using above operators to return a single integer
 int Song::getLength() const {
     return length.getHour()*3600 + length.getMin()*60 + length.getSec();
 }
 
+// Gets hour
 int Song::getHour() const {
     return length.getHour();
 }
 
+// Gets min
 int Song::getMin() const {
     return length.getMin();
 }
 
+// Gets sec
 int Song::getSec() const {
     return length.getSec();
 }
 
+// Defines operator <<, used for out stream
 std::ostream &operator<<(std::ostream &os, const Song &song){
     os << song.getTitle() << '|' << song.getArtist() << '|' << song.getLength();
     return os;
 }
 
-/** Defines operator >>, used for in stream, will go through string until
- * it finds a '|', will then set the class object and keep searching the
- * string. **/
+// Defines operator >>, used for in stream
 std::istream &operator>>(std::istream &is, Song &song){
     std::string tmpString;
     getline(is,tmpString,'|');

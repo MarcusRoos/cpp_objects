@@ -1,36 +1,45 @@
 #include "Length.h"
 
+// Default constructor for Length
 Length::Length() {
     hour = min = sec = 0;
 }
 
+// Initializing constructor for Length
 Length::Length(int pHour, int pMin, int pSec) {
     hour = pHour;
     min = pMin;
     sec = pSec;
 }
 
+// Sets value hour
 void Length::setHour(int pHour) {
     hour = pHour;
 }
 
+// Sets value min
 void Length::setMin(int pMin) {
     min = pMin;
 }
+
+// Sets value sec
 void Length::setSec(int pSec) {
     sec = pSec;
 }
 
+// Defines operator == (comparison)
 bool Length::operator == (const Length& a) const
 {
     return hour == a.hour && min == a.min && sec == a.sec;
 }
 
+// Defines operator <
 bool Length::operator < (const Length& a) const
 {
     return (hour*60 + min*60 + sec) < (a.hour*60 + a.min*60 + sec);
 }
 
+// Defines operator +
 Length Length::operator + (const Length& a) const
 {
     Length sum;
@@ -42,6 +51,7 @@ Length Length::operator + (const Length& a) const
     return sum;
 }
 
+// Defines operator <<, used for out stream
 std::ostream &operator<<(std::ostream &os, const Length &length){
     os <<  length.getHour()*3600 + length.getMin()*60 + length.getSec();
     return os;

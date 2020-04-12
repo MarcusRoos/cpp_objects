@@ -10,6 +10,14 @@
 #include <algorithm>
 #include <cctype>
 
+/**
+The run function, this function will be called in the main program, from here a
+ it will enter a switch which will call another function from the menu class.
+ Here the user will be able to choose what they would like to do with the
+ program, at first only the first "file" option will be option, once a file
+ has been loaded in from the first option the rest of the menus will open
+ up.
+*/
 void Jukebox::run() {
     bool again = true;
     do
@@ -35,7 +43,12 @@ void Jukebox::run() {
         }
     }while(again);
 }
-
+/**
+The file function, used to call the submenu file from where the user is allowed
+ to make another choice. The "save" option will initially be disabled, until
+ the user choose the first option "open". Once this option has been chosen all
+ the menus will be opened, even in the print submenu and the mainmenu.
+*/
 void Jukebox::file() {
     // I skipped a loop here as user should be returned to main menu.
         filemenu.printMenuItems();
@@ -54,6 +67,13 @@ void Jukebox::file() {
         }
 }
 
+/**
+The print function, used to call the submenu print in which the user will
+ be able to print the albums from the jukebox in different fashions.
+ Depending on the users input here the albums will be printed in 5 different
+ ways, either by searching for the albums name or simply all the albums
+ currently in the jukebox.
+*/
 void Jukebox::print() {
     bool again = true;
     do
@@ -89,6 +109,10 @@ void Jukebox::print() {
     }while(again);
 }
 
+/**
+The default constructor, will initialize the objects menu, filemenu and print
+ with their relevant values.
+*/
 Jukebox::Jukebox() {
     menu.setTitle("**** JUKEBOX ****");
     menu.addItem("File...", true);
@@ -109,6 +133,15 @@ Jukebox::Jukebox() {
     printmenu.addItem("Back to main menu", true);
 }
 
+/**
+The addAlbum function, here the user will be able to add new albums and songs.
+ The user will be asked to enter the name of the album, followed by the name
+ of the artist, from here on out the function will enter a loop. Within this
+ loop the user will be able to add a song and the length of the song,
+ if the user so wishes they are able to keep adding songs to the album
+ until they decide to exit the program, at which point they will be returned
+ to the main menu.
+*/
 void Jukebox::addAlbum() {
     using namespace std;
     Album album;
@@ -164,6 +197,15 @@ void Jukebox::addAlbum() {
     albumList.push_back(album);
 }
 
+/**
+The deleteAlbum function. Once called the user will be asked to enter the name
+ of an album, the function will then iterate through the album container until
+ a match is found. If a match is found it will be deleted from the vector.
+ This is done by using an actual iterator outside the inner iterator which
+ is iterating through the vector, this is done so we can get an index as to
+ where the found album is located. Once a match has been found the index from
+ the actual iterator will be used to call the erase function.
+*/
 void Jukebox::deleteAlbum() {
     std::cout << "Enter name of album to delete\n";
     std::string albumName, compare, tmpAlbum;
@@ -191,6 +233,13 @@ void Jukebox::deleteAlbum() {
     }
 }
 
+/**
+The printOne function, allows the user to enter the name of an album to
+ search for. If a match is found within the albumList vector the said
+ album will be printed on the screen with formatting. The search is done
+ case insensitive which means a search of for instance "abBey roAd" will
+ still match with the album "Abbey Road".
+*/
 void Jukebox::printOne() {
     std::cout << "Enter name of album to search for\n";
     std::string albumName, compare;
@@ -227,6 +276,12 @@ void Jukebox::printOne() {
     }
 }
 
+/**
+The printAllByName function, this function will print all the albums
+ within the jukebox sorted by albums name. The sorting is done case insensitive
+ and all the relevant information will be printed on the screen in an easy to
+ read formatting.
+*/
 void Jukebox::printAllByName() {
         sort(albumList.begin(), albumList.end(),
              [](const Album &a, const Album &b) {
@@ -261,6 +316,12 @@ void Jukebox::printAllByName() {
         pauseFunction("Press any key to continue...\n");
 }
 
+/**
+The printAllTime function, this function will print all the albums
+ within the jukebox sorted by albums total length. The albums will be printed
+ with an easy to read formatting, the total amount of time per album is
+ printed out at the end of each album.
+*/
 void Jukebox::printAllTime() {
     std::sort(albumList.begin(), albumList.end());
     int count=0, tmpSize=0;
@@ -283,17 +344,21 @@ void Jukebox::printAllTime() {
             std::cout << std::setfill(' ');
             time += f.getLength();
             if (tmpSize == e.getSong().size()){
-                std::cout << std::endl;
                 tmpSize = 0;
                 std::cout << "LANGD:  "<< time << std::endl;
+                std::cout << std::endl;
             }
         }
-        // Comment off to show total time of the album
-      //  std::cout << "Total time: " << time << std::endl;
     }
     pauseFunction("Press any key to continue...\n");
 }
 
+/**
+The printSimpleName function, this function will print all the albums
+ within the jukebox sorted by albums name. The sorting is done case insensitive,
+ unlike the first print all album function this one will only print the
+ albums name and nothing else.
+*/
 void Jukebox::printSimpleName() {
     sort(albumList.begin(), albumList.end(),
          [](const Album &a, const Album &b) {
@@ -312,6 +377,12 @@ void Jukebox::printSimpleName() {
     pauseFunction("Press any key to continue...\n");
 }
 
+/**
+The printSimpleTime function, this function will print all the albums
+ within the jukebox sorted by albums total length. The albums will be printed
+ with an easy to read formatting, only the albums name and total time will
+ be printed on the screen unlike the previous print time function.
+*/
 void Jukebox::printSimpleTime() {
     std::sort(albumList.begin(), albumList.end());
     for (const auto &e : albumList) {
@@ -326,6 +397,13 @@ void Jukebox::printSimpleTime() {
     pauseFunction("Press any key to continue...\n");
 }
 
+/**
+The open function, once called it will open a file on the computer, the name
+ will be determined by the program and is hardcoded into to code, under the
+ constant name "filename". Once the file has been opened it will read until
+ end of file and store its contents in albumList, using overloaded operators
+ from the underlying classes.
+*/
 void Jukebox::open() {
     using namespace std;
     Album tmpAlbum;
@@ -343,6 +421,14 @@ void Jukebox::open() {
     pauseFunction("File loaded. Press any key to continue.\n");
 }
 
+/**
+The save function, once called it will save a file to the computer, the name
+ will be determined by the program and is hardcoded into to code, under the
+ constant name "filename". If the file does not exist on the computer it
+ will be created, once created the file will be opened and the contents
+ of the albumList vector will be written onto the file with a pre-determined
+ formatting.
+*/
 void Jukebox::save() {
     using namespace std;
     ofstream outFile(filename, ios::out);

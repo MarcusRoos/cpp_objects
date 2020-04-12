@@ -7,26 +7,32 @@
 #include "Album.h"
 #include <utility>
 
+// Sets albums name
 void Album::setAlbum(std::string palbum) {
     album = std::move(palbum);
 }
+// Sets albums song
 /*
 void Album::setSong(std::vector<Song> psong) {
     song = std::move(psong);
 }*/
 
+// Adds song to vector of type Song
 void Album::addSong(const Song& psong){
     song.push_back(psong);
 }
 
+// Gets album
 std::string Album::getAlbum() const {
     return album;
 }
 
+// Gets song
 std::vector<Song> Album::getSong() const {
     return song;
 }
 
+// Defines operator <
 bool Album::operator<(const Album &a) const {
     int tmpE=0, tmpA=0;
     for (auto &e : song){
@@ -38,6 +44,7 @@ bool Album::operator<(const Album &a) const {
     return tmpA < tmpE;
 }
 
+// Defines operator <<, used for out stream
 std::ostream &operator<<(std::ostream &os, const Album &album){
     int amount=0, i=0;
     bool test=true;
@@ -61,9 +68,7 @@ std::ostream &operator<<(std::ostream &os, const Album &album){
     return os;
 }
 
-/** Defines operator >>, used for in stream, will go through string until
- * it finds deliminator, will then set the class object and keep searching the
- * string. **/
+// Defines operator >>, used for in stream
 std::istream &operator>>(std::istream &is, Album &album){
     std::string tmpString;
     Song tmpSong;

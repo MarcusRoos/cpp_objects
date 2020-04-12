@@ -160,7 +160,7 @@ public:
      * from within, depending on user choice.
 *
 * @param None.
-* @return None. 
+* @return None.
 */
     void run();
 };
