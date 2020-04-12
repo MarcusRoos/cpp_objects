@@ -416,9 +416,13 @@ void Jukebox::open() {
             Album tmpAlbumReset;
             tmpAlbum = tmpAlbumReset;
         }
+        if (albumList.empty())
+            pauseFunction("File is empty, but has been loaded up. "
+                          " Press any key to continue. \n");
+        else
+            pauseFunction("File loaded. Press any key to continue.\n");
     }
     inFile.close();
-    pauseFunction("File loaded. Press any key to continue.\n");
 }
 
 /**
@@ -431,10 +435,15 @@ The save function, once called it will save a file to the computer, the name
 */
 void Jukebox::save() {
     using namespace std;
+    if (albumList.empty())
+        pauseFunction("No albums currently stored in the jukebox. "
+                      "Press any key to continue.\n");
+    else {
     ofstream outFile(filename, ios::out);
-    for (const auto& album : albumList) {
-        outFile << album;
+        pauseFunction("File saved. Press any key to continue.\n");
+        for (const auto &album : albumList) {
+            outFile << album;
+        }
+        outFile.close();
     }
-    outFile.close();
-    pauseFunction("File saved. Press any key to continue.\n");
 }
