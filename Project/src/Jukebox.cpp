@@ -128,7 +128,7 @@ Jukebox::Jukebox() {
     printmenu.addItem("Print one album", true);
     printmenu.addItem("Print all sorted by album name", true);
     printmenu.addItem("Print all sorted by album total time", true);
-    printmenu.addItem("Print simple sorted by album name ALSO TEST", true);
+    printmenu.addItem("Print simple sorted by album name", true);
     printmenu.addItem("Print simple sorted by album total time", true);
     printmenu.addItem("Back to main menu", true);
 }
@@ -310,6 +310,7 @@ void Jukebox::printAllByName() {
                 std::cout << std::setfill(' ');
                 if (count == e.getSong().size()){
                     std::cout << std::endl;
+                    count=0;
                 }
             }
         }
